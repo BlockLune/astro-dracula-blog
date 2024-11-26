@@ -4,8 +4,6 @@ import { type Lang, ui } from "@/utils/i18n";
 import { classifyByLangs } from "@/utils/post";
 import { generateOgImageForPost } from "@/utils/og";
 
-export const prerender = false;
-
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   const classified = classifyByLangs(posts);
@@ -24,21 +22,19 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props, params }) => {
-  const { post } = props;
+  let { post } = props;
   const { lang, slug } = params;
 
   if (!post) {
     for (const possibleLang of Object.keys(ui)) {
-      if (await getEntry("posts", `${possibleLang}/${slug}`)) {
-        return new Response(null, {
-          status: 302,
-          headers: { Location: `/${possibleLang}/og-images/${slug}.png` },
-        });
+      const possiblePost = await getEntry("posts", `${possibleLang}/${slug}`);
+      if (possiblePost) {
+        post = possiblePost;
       }
     }
-    return new Response("Not Found", { status: 404 });
   }
+
   return new Response(await generateOgImageForPost(lang as Lang, post!), {
     headers: { "Content-Type": "image/png" },
   });
-}
+};
