@@ -9,6 +9,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import partytown from "@astrojs/partytown";
+import netlify from "@astrojs/netlify";
 
 import { SITE } from "./src/config.ts";
 import { remarkDescPlugin } from "./src/utils/markdown.ts";
@@ -16,6 +17,7 @@ import { remarkDescPlugin } from "./src/utils/markdown.ts";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.url,
+
   markdown: {
     shikiConfig: {
       theme: "dracula",
@@ -28,11 +30,15 @@ export default defineConfig({
     remarkPlugins: [remarkDescPlugin, remarkMath],
     rehypePlugins: [rehypeExternalLinks, rehypeGithubAlerts, rehypeMathjax],
   },
+
   integrations: [react(), sitemap(), tailwind(), partytown()],
-  output: "static",
+  output: "hybrid",
+
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
   },
+
+  adapter: netlify(),
 });
