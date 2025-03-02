@@ -31,24 +31,33 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
   <h1 class="text-dracula-pink font-black text-4xl">{title}</h1>
   <div class="flex flex-wrap gap-2 mt-4">
     <!-- date tags -->
-    <DateTag lang={lang} date={publishedAt} type="published" />
-    {updatedAt && <DateTag lang={lang} date={updatedAt} type="updated" />}
-    <DateStatusTag lang={lang} diffInDays={diffInDays} />
+    <DateTag lang={lang} date={publishedAt} type="published" client:load />
+    {
+      updatedAt && (
+        <DateTag lang={lang} date={updatedAt} type="updated" client:load />
+      )
+    }
+    <DateStatusTag lang={lang} diffInDays={diffInDays} client:load />
 
     <!-- language tag -->
-    {lang !== actualLang && <NotSupportedLangTag lang={lang} />}
+    {lang !== actualLang && <NotSupportedLangTag lang={lang} client:load />}
 
     <!-- license tag -->
     {
       licenseEnabled && (
-        <LicenseTag lang={lang} license={license} link={licenseLink} />
+        <LicenseTag
+          lang={lang}
+          license={license}
+          link={licenseLink}
+          client:load
+        />
       )
     }
 
     <!-- label tags -->
     {
       Array.from(getUniqueLowerCaseTagMap(post.data.tags).keys()).map((tag) => (
-        <LabelTag lang={lang} label={tag} type="link" />
+        <LabelTag lang={lang} label={tag} type="link" client:load />
       ))
     }
   </div>
