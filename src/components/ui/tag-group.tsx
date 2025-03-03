@@ -1,8 +1,8 @@
 import Fuse from "fuse.js";
 import LabelTag from "@/components/ui/tags/label-tag";
-import { type Lang, useTranslations } from "@/utils/i18n";
-import { useDebounce } from "use-debounce";
-import { useState } from "react";
+import SearchInput from "@/components/ui/search-input";
+import { useTranslations, type Lang } from "@/utils/i18n";
+import { useSearchParams } from "@/hooks/use-search-params";
 
 export default function TagGroup({
   lang,
@@ -12,8 +12,7 @@ export default function TagGroup({
   tagMap: Map<string, number>;
 }) {
   const t = useTranslations(lang);
-  const [query, setQuery] = useState("");
-  const [debouncedQuery] = useDebounce(query, 300);
+  const { query, debouncedQuery, setQuery } = useSearchParams();
   const numberOfTags = tagMap.size;
 
   let results: string[] = [];
@@ -22,53 +21,44 @@ export default function TagGroup({
     results = fuse.search(debouncedQuery).map((result) => result.item);
   }
 
-  function handleOnSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    setQuery(event.target.value);
-  }
-
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col">
-        <label className="sr-only" htmlFor="search">
-          Search
-        </label>
-        <input
-          id="search"
-          type="text"
-          placeholder={
-            t("search.placeholder.firstPart") +
-            numberOfTags +
-            t("search.placeholder.secondPart.tag")
-          }
-          className="card-input"
-          value={query}
-          onChange={handleOnSearch}
-        />
-      </div>
+      <SearchInput
+        lang={lang}
+        query={query}
+        onChange={setQuery}
+        totalCount={numberOfTags}
+        type="tag"
+      />
+
       <div className="flex flex-wrap gap-2">
         {debouncedQuery === ""
           ? Array.from(tagMap.entries())
-              .sort((a, b) => b[1] - a[1])
-              .map(([tag, count]) => (
+            .sort((a, b) => b[1] - a[1])
+            .map(([tag, count]) => (
+              <LabelTag
+                lang={lang}
+                label={tag}
+                count={count}
+                type="link"
+                key={tag}
+                animate={true}
+              />
+            ))
+          : (
+            results.length > 0 ?
+              results.map((tag) => (
                 <LabelTag
                   lang={lang}
                   label={tag}
-                  count={count}
+                  count={tagMap.get(tag)}
                   type="link"
                   key={tag}
                   animate={true}
                 />
               ))
-          : results.map((tag) => (
-              <LabelTag
-                lang={lang}
-                label={tag}
-                count={tagMap.get(tag)}
-                type="link"
-                key={tag}
-                animate={true}
-              />
-            ))}
+              : <p className="text-center">{t("search.noResults")}</p>
+          )}
       </div>
     </div>
   );
