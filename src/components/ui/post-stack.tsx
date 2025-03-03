@@ -3,7 +3,7 @@ import PostCard from "@/components/ui/cards/post-card";
 import type { PostSnapshot } from "@/schemas/post";
 import { type Lang, useTranslations } from "@/utils/i18n";
 import { useDebounce } from "use-debounce";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const fuseOptions = {
   keys: ["slug", "title", "description", "tags"],
@@ -20,20 +20,25 @@ export default function PostStack({
   const [query, setQuery] = useState("");
   const [debouncedQuery] = useDebounce(query, 300);
   const numberOfPosts = snapshots.length;
+  const [visiblePostsCount, setVisiblePostsCount] = useState(10);
 
-  let results: PostSnapshot[] = [];
-  if (debouncedQuery === "") {
-    results = snapshots;
-  } else {
+  const visiblePosts = useMemo(() => {
+    if (debouncedQuery === "") {
+      return snapshots.slice(0, visiblePostsCount);
+    }
     const fuse = new Fuse(snapshots, fuseOptions);
-    results = fuse
+    return fuse
       .search(debouncedQuery)
       .map((result) => result.item)
       .slice(0, 5);
-  }
+  }, [debouncedQuery, snapshots, visiblePostsCount]);
 
   function handleOnSearch(event: React.ChangeEvent<HTMLInputElement>) {
     setQuery(event.target.value);
+  }
+
+  function loadMore() {
+    setVisiblePostsCount(prev => prev + 5);
   }
 
   return (
@@ -55,15 +60,27 @@ export default function PostStack({
           onChange={handleOnSearch}
         />
       </div>
-      {results.length > 0 ? (
-        results.map((snapshot) => (
-          <PostCard
-            lang={lang}
-            snapshot={snapshot}
-            animate={true}
-            key={snapshot.slug}
-          />
-        ))
+
+      {visiblePosts.length > 0 ? (
+        <>
+          {visiblePosts.map((snapshot) => (
+            <PostCard
+              lang={lang}
+              snapshot={snapshot}
+              animate={true}
+              key={snapshot.slug}
+            />
+          ))}
+
+          {visiblePosts.length < numberOfPosts && (
+            <button
+              className="card-hoverable p-2"
+              onClick={loadMore}
+            >
+              {t("loadMore")}
+            </button>
+          )}
+        </>
       ) : (
         <p className="text-center">{t("search.noResults")}</p>
       )}
