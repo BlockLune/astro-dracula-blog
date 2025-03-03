@@ -9,6 +9,7 @@ export const defaultLang: Lang = "en";
 
 export const ui = {
   en: {
+    loadMore: "Load More",
     "nav.home": "Home",
     "nav.tags": "Tags",
     "nav.tags.description":
@@ -36,6 +37,7 @@ export const ui = {
     "post.notSupportedLangDescription": "Sorry, your language is unavailable for this post.",
   },
   zh: {
+    loadMore: "加载更多",
     "nav.home": "首页",
     "nav.tags": "标签",
     "nav.tags.description": "这里是本站的标签索引，您可以在这里浏览并快速找到与您感兴趣主题相关的文章和内容。",
