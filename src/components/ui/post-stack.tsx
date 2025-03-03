@@ -3,7 +3,7 @@ import PostCard from "@/components/ui/cards/post-card";
 import type { PostSnapshot } from "@/schemas/post";
 import { type Lang, useTranslations } from "@/utils/i18n";
 import { useDebounce } from "use-debounce";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const fuseOptions = {
   keys: ["slug", "title", "description", "tags"],
@@ -17,11 +17,19 @@ export default function PostStack({
   snapshots: PostSnapshot[];
 }) {
   const t = useTranslations(lang);
+  const numberOfPosts = snapshots.length;
+
+
   const [query, setQuery] = useState("");
   const [debouncedQuery] = useDebounce(query, 300);
-  const numberOfPosts = snapshots.length;
-  const [visiblePostsCount, setVisiblePostsCount] = useState(10);
+  const debouncedQueryRef = useRef(debouncedQuery);
+  useEffect(() => {
+    debouncedQueryRef.current = debouncedQuery;
+  }, [debouncedQuery]);
 
+
+  const [visiblePostsCount, setVisiblePostsCount] = useState(5);
+  const visiblePostsLengthRef = useRef(visiblePostsCount);
   const visiblePosts = useMemo(() => {
     if (debouncedQuery === "") {
       return snapshots.slice(0, visiblePostsCount);
@@ -30,15 +38,46 @@ export default function PostStack({
     return fuse
       .search(debouncedQuery)
       .map((result) => result.item)
-      .slice(0, 5);
+      .slice(0, 5); // Limit search results to 5
   }, [debouncedQuery, snapshots, visiblePostsCount]);
+
+  useEffect(() => {
+    visiblePostsLengthRef.current = visiblePosts.length;
+  }, [visiblePosts.length]);
+
+
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (
+          entry.isIntersecting &&
+          debouncedQueryRef.current === "" &&
+          visiblePostsLengthRef.current < numberOfPosts
+        ) {
+          setVisiblePostsCount((prev) => prev + 5);
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    const currentSentinel = sentinelRef.current;
+    if (currentSentinel) {
+      observer.observe(currentSentinel);
+    }
+
+    return () => {
+      if (currentSentinel) {
+        observer.unobserve(currentSentinel);
+      }
+      observer.disconnect();
+    };
+  }, []);
 
   function handleOnSearch(event: React.ChangeEvent<HTMLInputElement>) {
     setQuery(event.target.value);
-  }
-
-  function loadMore() {
-    setVisiblePostsCount(prev => prev + 5);
   }
 
   return (
@@ -72,14 +111,14 @@ export default function PostStack({
             />
           ))}
 
-          {visiblePosts.length < numberOfPosts && (
-            <button
-              className="card-hoverable p-2"
-              onClick={loadMore}
-            >
-              {t("loadMore")}
-            </button>
-          )}
+          {debouncedQuery === "" &&
+            visiblePosts.length < numberOfPosts && (
+              <div
+                ref={sentinelRef}
+                className="h-2 w-full"
+                aria-label="Load more trigger"
+              />
+            )}
         </>
       ) : (
         <p className="text-center">{t("search.noResults")}</p>
