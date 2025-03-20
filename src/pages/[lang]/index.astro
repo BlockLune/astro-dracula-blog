@@ -1,9 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import PostStack from "@/components/ui/post-stack";
 import BaseLayout from "@/layouts/base-layout.astro";
-import { supportedLangs } from "@/utils/i18n";
+import Hero from "@/components/ui/hero.astro";
+import PostStack from "@/components/ui/post-stack";
+import { getCollection } from "astro:content";
 import { getSnapshots } from "@/utils/post";
+import { supportedLangs } from "@/utils/i18n";
 
 const posts = await getCollection("posts");
 
@@ -18,5 +19,6 @@ export function getStaticPaths() {
 ---
 
 <BaseLayout>
+  <Hero lang={lang} />
   <PostStack lang={lang} snapshots={snapshots} client:load />
 </BaseLayout>

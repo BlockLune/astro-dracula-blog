@@ -9,6 +9,8 @@ export const defaultLang: Lang = "en";
 
 export const ui = {
   en: {
+    "hero.hello": "Hello, there 👋",
+    "hero.im": "I'm",
     loadMore: "Load More",
     "nav.home": "Home",
     "nav.tags": "Tags",
@@ -37,6 +39,8 @@ export const ui = {
     "post.notSupportedLangDescription": "Sorry, your language is unavailable for this post.",
   },
   zh: {
+    "hero.hello": "您好，那边的朋友 👋",
+    "hero.im": "I'm",
     loadMore: "加载更多",
     "nav.home": "首页",
     "nav.tags": "标签",

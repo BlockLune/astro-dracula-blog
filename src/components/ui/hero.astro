@@ -1,0 +1,42 @@
+---
+import GitHub from "@/components/icons/github.astro";
+import Mail from "@/components/icons/mail.astro";
+import { AUTHOR, SOCIALS } from "@/config";
+import { type Lang, useTranslations } from "@/utils/i18n";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="space-y-4 mb-8">
+  <h2 class="font-semibold text-2xl">{t("hero.hello")}</h2>
+  <h2 class="font-black">
+    <span class="text-4xl">
+      {t("hero.im")}
+    </span>
+    {" "}
+    <span class="text-6xl">
+      {AUTHOR.name}
+    </span>
+  </h2>
+  <p class="text-lg">{AUTHOR.bio[lang as Lang]}</p>
+
+  <div class="flex gap-4">
+    <a
+      class="card-hoverable p-2 text-dracula-cyan flex gap-2"
+      href={SOCIALS[0].href}
+      title={SOCIALS[0].linkTitle}
+    >
+      <GitHub />
+      <span>GitHub</span>
+    </a>
+    <a
+      class="card-hoverable p-2 text-dracula-pink flex gap-2"
+      href={SOCIALS[1].href}
+      title={SOCIALS[1].linkTitle}
+    >
+      <Mail />
+      <span>Mail</span>
+    </a>
+  </div>
+</div>
