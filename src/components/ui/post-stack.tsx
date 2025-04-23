@@ -58,7 +58,7 @@ export default function PostStack({
           setVisiblePostsCount((prev) => prev + 5);
         }
       },
-      { threshold: 1.0 }
+      { threshold: 1.0 },
     );
 
     const currentSentinel = sentinelRef.current;
@@ -91,14 +91,17 @@ export default function PostStack({
             />
           ))}
 
-          {debouncedQuery === "" &&
-            visiblePosts.length < numberOfPosts && (
-              <div
-                ref={sentinelRef}
-                className="h-2 w-full"
-                aria-label="Load more trigger"
-              />
-            )}
+          {debouncedQuery === "" && visiblePosts.length < numberOfPosts && (
+            <section
+              ref={sentinelRef}
+              aria-labelledby="observer-label"
+              className="h-2 w-full"
+            >
+              <h2 id="observer-label" className="sr-only">
+                Load more trigger
+              </h2>
+            </section>
+          )}
         </>
       ) : (
         <p className="text-center">{t("search.noResults")}</p>
