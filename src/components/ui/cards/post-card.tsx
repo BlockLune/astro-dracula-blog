@@ -13,7 +13,8 @@ export default function PostCard({
   snapshot: PostSnapshot;
   animate?: boolean;
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  // const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = false;
   const initialOpacity = shouldReduceMotion ? 1 : 0;
   const initialX = shouldReduceMotion ? 0 : 10;
 

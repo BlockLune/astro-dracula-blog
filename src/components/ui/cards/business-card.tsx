@@ -4,7 +4,8 @@ import { AUTHOR, SOCIALS } from "@/config";
 import { motion, useReducedMotion } from "motion/react";
 
 export default function BusinessCard({ lang }: { lang: Lang }) {
-  const shouldReduceMotion = useReducedMotion();
+  // const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = false;
   const initialOpacity = shouldReduceMotion ? 1 : 0;
   const initialX = shouldReduceMotion ? 0 : 10;
 

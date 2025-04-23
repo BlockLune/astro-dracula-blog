@@ -17,7 +17,8 @@ export default function LabelTag({
   large?: boolean;
   animate?: boolean;
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  // const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = false;
   const initialOpacity = shouldReduceMotion ? 1 : 0;
   const initialX = shouldReduceMotion ? 0 : 10;
 

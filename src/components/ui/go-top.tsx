@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 
 export default function GoTop() {
-  const shouldReduceMotion = useReducedMotion();
+  // const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = false;
   const initialOpacity = shouldReduceMotion ? 1 : 0;
 
   const [showGoTop, setShowGoTop] = useState(false);
