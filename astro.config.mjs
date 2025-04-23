@@ -5,10 +5,11 @@ import rehypeMathjax from "rehype-mathjax";
 import remarkMath from "remark-math";
 import { rehypeGithubAlerts } from "rehype-github-alerts";
 
+import icon from "astro-icon";
+import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import partytown from "@astrojs/partytown";
 
 import { SITE } from "./src/config.ts";
 import { remarkDescPlugin } from "./src/utils/markdown.ts";
@@ -33,7 +34,7 @@ export default defineConfig({
     ],
     smartypants: false,
   },
-  integrations: [react(), sitemap(), tailwind(), partytown()],
+  integrations: [react(), sitemap(), tailwind(), partytown(), icon()],
   output: "static",
   vite: {
     optimizeDeps: {
