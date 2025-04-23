@@ -1,0 +1,289 @@
+/* Reference: https://github.com/dracula/tailwind/blob/master/colors.js */
+
+@theme {
+  /* Darker Palette */
+  --color-dracula-darker-50: #cdd0e4;
+  --color-dracula-darker-100: #b5bad6;
+  --color-dracula-darker-200: #9ea4c8;
+  --color-dracula-darker-300: #888fb8;
+  --color-dracula-darker-400: #727aa8;
+  --color-dracula-darker-500: #5f6795;
+  --color-dracula-darker-600: #53597c;
+  --color-dracula-darker-700: #454a64;
+  --color-dracula-darker-800: #373a4d;
+  --color-dracula-darker-900: #282a36;
+  --color-dracula-darker: #282a36; /* DEFAULT */
+
+  /* Dark Palette */
+  --color-dracula-dark-50: #f7f7fb;
+  --color-dracula-dark-100: #dfe1ed;
+  --color-dracula-dark-200: #c7cadf;
+  --color-dracula-dark-300: #b1b5d0;
+  --color-dracula-dark-400: #9ba0c0;
+  --color-dracula-dark-500: #858bb0;
+  --color-dracula-dark-600: #71779f;
+  --color-dracula-dark-700: #606689;
+  --color-dracula-dark-800: #525771;
+  --color-dracula-dark-900: #44475a;
+  --color-dracula-dark: #44475a; /* DEFAULT */
+
+  /* Light Palette */
+  --color-dracula-light-50: #f8f8f2;
+  --color-dracula-light-100: #eaeada;
+  --color-dracula-light-200: #dcdcc3;
+  --color-dracula-light-300: #cdcdac;
+  --color-dracula-light-400: #bdbd96;
+  --color-dracula-light-500: #adad81;
+  --color-dracula-light-600: #9c9c6c;
+  --color-dracula-light-700: #85855d;
+  --color-dracula-light-800: #6d6d4f;
+  --color-dracula-light-900: #565641;
+  --color-dracula-light: #f8f8f2; /* DEFAULT */
+
+  /* Blue Palette */
+  --color-dracula-blue-50: #f0f2f8;
+  --color-dracula-blue-100: #d7dcec;
+  --color-dracula-blue-200: #bec6df;
+  --color-dracula-blue-300: #a6b0d1;
+  --color-dracula-blue-400: #8f9bc3;
+  --color-dracula-blue-500: #7886b4;
+  --color-dracula-blue-600: #6272a4;
+  --color-dracula-blue-700: #54628c;
+  --color-dracula-blue-800: #485273;
+  --color-dracula-blue-900: #3b425a;
+  --color-dracula-blue: #6272a4; /* DEFAULT */
+
+  /* Cyan Palette */
+  --color-dracula-cyan-50: #fafeff;
+  --color-dracula-cyan-100: #d4f8ff;
+  --color-dracula-cyan-200: #aff0fe;
+  --color-dracula-cyan-300: #8be9fd;
+  --color-dracula-cyan-400: #67e1fb;
+  --color-dracula-cyan-500: #44d9f8;
+  --color-dracula-cyan-600: #22d0f5;
+  --color-dracula-cyan-700: #0dbfe5;
+  --color-dracula-cyan-800: #0ca0bf;
+  --color-dracula-cyan-900: #0c819a;
+  --color-dracula-cyan: #8be9fd; /* DEFAULT */
+
+  /* Green Palette */
+  --color-dracula-green-50: #e2ffe9;
+  --color-dracula-green-100: #bcffcd;
+  --color-dracula-green-200: #97feb1;
+  --color-dracula-green-300: #73fc96;
+  --color-dracula-green-400: #50fa7b;
+  --color-dracula-green-500: #2df760;
+  --color-dracula-green-600: #0cf346;
+  --color-dracula-green-700: #0ccd3d;
+  --color-dracula-green-800: #0ba833;
+  --color-dracula-green-900: #0a8329;
+  --color-dracula-green: #50fa7b; /* DEFAULT */
+
+  /* Orange Palette */
+  --color-dracula-orange-50: #ffefdd;
+  --color-dracula-orange-100: #ffdcb7;
+  --color-dracula-orange-200: #ffca92;
+  --color-dracula-orange-300: #ffb86c;
+  --color-dracula-orange-400: #fda648;
+  --color-dracula-orange-500: #fb9325;
+  --color-dracula-orange-600: #f38107;
+  --color-dracula-orange-700: #cd6d08;
+  --color-dracula-orange-800: #a75a08;
+  --color-dracula-orange-900: #824707;
+  --color-dracula-orange: #ffb86c; /* DEFAULT */
+
+  /* Pink Palette */
+  --color-dracula-pink-50: #ffeaf6;
+  --color-dracula-pink-100: #ffc4e6;
+  --color-dracula-pink-200: #ff9fd6;
+  --color-dracula-pink-300: #ff79c6;
+  --color-dracula-pink-400: #fd55b6;
+  --color-dracula-pink-500: #fb31a5;
+  --color-dracula-pink-600: #f80e95;
+  --color-dracula-pink-700: #d90880;
+  --color-dracula-pink-800: #b3086b;
+  --color-dracula-pink-900: #8e0855;
+  --color-dracula-pink: #ff79c6; /* DEFAULT */
+
+  /* Purple Palette (Original Name) */
+  --color-dracula-purple-50: #fefeff;
+  --color-dracula-purple-100: #e9dafe;
+  --color-dracula-purple-200: #d3b6fc;
+  --color-dracula-purple-300: #bd93f9;
+  --color-dracula-purple-400: #a771f6;
+  --color-dracula-purple-500: #924ff2;
+  --color-dracula-purple-600: #7d2eed;
+  --color-dracula-purple-700: #6916e0;
+  --color-dracula-purple-800: #5914bb;
+  --color-dracula-purple-900: #491298;
+  --color-dracula-purple: #bd93f9; /* DEFAULT */
+
+  /* Red Palette */
+  --color-dracula-red-50: #ffecec;
+  --color-dracula-red-100: #ffc6c6;
+  --color-dracula-red-200: #ffa0a0;
+  --color-dracula-red-300: #ff7b7b;
+  --color-dracula-red-400: #ff5555;
+  --color-dracula-red-500: #fd3131;
+  --color-dracula-red-600: #fb0e0e;
+  --color-dracula-red-700: #dd0606;
+  --color-dracula-red-800: #b70707;
+  --color-dracula-red-900: #910707;
+  --color-dracula-red: #ff5555; /* DEFAULT */
+
+  /* Yellow Palette */
+  --color-dracula-yellow-50: #fefff8;
+  --color-dracula-yellow-100: #fafed3;
+  --color-dracula-yellow-200: #f6fcaf;
+  --color-dracula-yellow-300: #f1fa8c;
+  --color-dracula-yellow-400: #ebf769;
+  --color-dracula-yellow-500: #e5f347;
+  --color-dracula-yellow-600: #dfef26;
+  --color-dracula-yellow-700: #ccdd12;
+  --color-dracula-yellow-800: #abb811;
+  --color-dracula-yellow-900: #899410;
+  --color-dracula-yellow: #f1fa8c; /* DEFAULT */
+
+  /* Nosferatu Palette */
+  --color-dracula-nosferatu-50: #cdd0e4;
+  --color-dracula-nosferatu-100: #b5bad6;
+  --color-dracula-nosferatu-200: #9ea4c8;
+  --color-dracula-nosferatu-300: #888fb8;
+  --color-dracula-nosferatu-400: #727aa8;
+  --color-dracula-nosferatu-500: #5f6795;
+  --color-dracula-nosferatu-600: #53597c;
+  --color-dracula-nosferatu-700: #454a64;
+  --color-dracula-nosferatu-800: #373a4d;
+  --color-dracula-nosferatu-900: #282a36;
+  --color-dracula-nosferatu: #282a36; /* DEFAULT */
+
+  /* Aro Palette */
+  --color-dracula-aro-50: #f7f7fb;
+  --color-dracula-aro-100: #dfe1ed;
+  --color-dracula-aro-200: #c7cadf;
+  --color-dracula-aro-300: #b1b5d0;
+  --color-dracula-aro-400: #9ba0c0;
+  --color-dracula-aro-500: #858bb0;
+  --color-dracula-aro-600: #71779f;
+  --color-dracula-aro-700: #606689;
+  --color-dracula-aro-800: #525771;
+  --color-dracula-aro-900: #44475a;
+  --color-dracula-aro: #44475a; /* DEFAULT */
+
+  /* Cullen Palette */
+  --color-dracula-cullen-50: #f8f8f2;
+  --color-dracula-cullen-100: #eaeada;
+  --color-dracula-cullen-200: #dcdcc3;
+  --color-dracula-cullen-300: #cdcdac;
+  --color-dracula-cullen-400: #bdbd96;
+  --color-dracula-cullen-500: #adad81;
+  --color-dracula-cullen-600: #9c9c6c;
+  --color-dracula-cullen-700: #85855d;
+  --color-dracula-cullen-800: #6d6d4f;
+  --color-dracula-cullen-900: #565641;
+  --color-dracula-cullen: #f8f8f2; /* DEFAULT */
+
+  /* VonCount Palette */
+  --color-dracula-vonCount-50: #f0f2f8;
+  --color-dracula-vonCount-100: #d7dcec;
+  --color-dracula-vonCount-200: #bec6df;
+  --color-dracula-vonCount-300: #a6b0d1;
+  --color-dracula-vonCount-400: #8f9bc3;
+  --color-dracula-vonCount-500: #7886b4;
+  --color-dracula-vonCount-600: #6272a4;
+  --color-dracula-vonCount-700: #54628c;
+  --color-dracula-vonCount-800: #485273;
+  --color-dracula-vonCount-900: #3b425a;
+  --color-dracula-vonCount: #6272a4; /* DEFAULT */
+
+  /* VanHelsing Palette */
+  --color-dracula-vanHelsing-50: #fafeff;
+  --color-dracula-vanHelsing-100: #d4f8ff;
+  --color-dracula-vanHelsing-200: #aff0fe;
+  --color-dracula-vanHelsing-300: #8be9fd;
+  --color-dracula-vanHelsing-400: #67e1fb;
+  --color-dracula-vanHelsing-500: #44d9f8;
+  --color-dracula-vanHelsing-600: #22d0f5;
+  --color-dracula-vanHelsing-700: #0dbfe5;
+  --color-dracula-vanHelsing-800: #0ca0bf;
+  --color-dracula-vanHelsing-900: #0c819a;
+  --color-dracula-vanHelsing: #8be9fd; /* DEFAULT */
+
+  /* Blade Palette */
+  --color-dracula-blade-50: #e2ffe9;
+  --color-dracula-blade-100: #bcffcd;
+  --color-dracula-blade-200: #97feb1;
+  --color-dracula-blade-300: #73fc96;
+  --color-dracula-blade-400: #50fa7b;
+  --color-dracula-blade-500: #2df760;
+  --color-dracula-blade-600: #0cf346;
+  --color-dracula-blade-700: #0ccd3d;
+  --color-dracula-blade-800: #0ba833;
+  --color-dracula-blade-900: #0a8329;
+  --color-dracula-blade: #50fa7b; /* DEFAULT */
+
+  /* Morbius Palette */
+  --color-dracula-morbius-50: #ffefdd;
+  --color-dracula-morbius-100: #ffdcb7;
+  --color-dracula-morbius-200: #ffca92;
+  --color-dracula-morbius-300: #ffb86c;
+  --color-dracula-morbius-400: #fda648;
+  --color-dracula-morbius-500: #fb9325;
+  --color-dracula-morbius-600: #f38107;
+  --color-dracula-morbius-700: #cd6d08;
+  --color-dracula-morbius-800: #a75a08;
+  --color-dracula-morbius-900: #824707;
+  --color-dracula-morbius: #ffb86c; /* DEFAULT */
+
+  /* Buffy Palette */
+  --color-dracula-buffy-50: #ffeaf6;
+  --color-dracula-buffy-100: #ffc4e6;
+  --color-dracula-buffy-200: #ff9fd6;
+  --color-dracula-buffy-300: #ff79c6;
+  --color-dracula-buffy-400: #fd55b6;
+  --color-dracula-buffy-500: #fb31a5;
+  --color-dracula-buffy-600: #f80e95;
+  --color-dracula-buffy-700: #d90880;
+  --color-dracula-buffy-800: #b3086b;
+  --color-dracula-buffy-900: #8e0855;
+  --color-dracula-buffy: #ff79c6; /* DEFAULT */
+
+  /* Dracula Palette (Original Name, was Purple) */
+  --color-dracula-dracula-50: #fefeff;
+  --color-dracula-dracula-100: #e9dafe;
+  --color-dracula-dracula-200: #d3b6fc;
+  --color-dracula-dracula-300: #bd93f9;
+  --color-dracula-dracula-400: #a771f6;
+  --color-dracula-dracula-500: #924ff2;
+  --color-dracula-dracula-600: #7d2eed;
+  --color-dracula-dracula-700: #6916e0;
+  --color-dracula-dracula-800: #5914bb;
+  --color-dracula-dracula-900: #491298;
+  --color-dracula-dracula: #bd93f9; /* DEFAULT */
+
+  /* Marcelin Palette */
+  --color-dracula-marcelin-50: #ffecec;
+  --color-dracula-marcelin-100: #ffc6c6;
+  --color-dracula-marcelin-200: #ffa0a0;
+  --color-dracula-marcelin-300: #ff7b7b;
+  --color-dracula-marcelin-400: #ff5555;
+  --color-dracula-marcelin-500: #fd3131;
+  --color-dracula-marcelin-600: #fb0e0e;
+  --color-dracula-marcelin-700: #dd0606;
+  --color-dracula-marcelin-800: #b70707;
+  --color-dracula-marcelin-900: #910707;
+  --color-dracula-marcelin: #ff5555; /* DEFAULT */
+
+  /* Lincoln Palette */
+  --color-dracula-lincoln-50: #fefff8;
+  --color-dracula-lincoln-100: #fafed3;
+  --color-dracula-lincoln-200: #f6fcaf;
+  --color-dracula-lincoln-300: #f1fa8c;
+  --color-dracula-lincoln-400: #ebf769;
+  --color-dracula-lincoln-500: #e5f347;
+  --color-dracula-lincoln-600: #dfef26;
+  --color-dracula-lincoln-700: #ccdd12;
+  --color-dracula-lincoln-800: #abb811;
+  --color-dracula-lincoln-900: #899410;
+  --color-dracula-lincoln: #f1fa8c; /* DEFAULT */
+}

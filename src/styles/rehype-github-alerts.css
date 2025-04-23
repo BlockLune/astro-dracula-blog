@@ -1,10 +1,10 @@
 :root {
-  --github-alert-default-color: theme("colors.dracula-darker.DEFAULT");
-  --github-alert-note-color: theme("colors.dracula-blue.DEFAULT");
-  --github-alert-tip-color: theme("colors.dracula-green.DEFAULT");
-  --github-alert-important-color: theme("colors.dracula-purple.DEFAULT");
-  --github-alert-warning-color: theme("colors.dracula-orange.DEFAULT");
-  --github-alert-caution-color: theme("colors.dracula-red.DEFAULT");
+  --github-alert-default-color: var(--color-dracula-darker);
+  --github-alert-note-color: var(--color-dracula-blue);
+  --github-alert-tip-color: var(--color-dracula-green);
+  --github-alert-important-color: var(--color-dracula-purple)
+  --github-alert-warning-color: var(--color-dracula-orange);
+  --github-alert-caution-color: var(--color-dracula-red);
 }
 
 .markdown-alert {

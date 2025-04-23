@@ -29,7 +29,7 @@ export default function PostCard({
           <LabelTag lang={lang} label={tag} key={tag} />
         ))}
       </div>
-      <p className="overflow-ellipsis break-all line-clamp-3">
+      <p className="text-ellipsis break-all line-clamp-3">
         {snapshot.description}
       </p>
     </a>
