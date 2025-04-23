@@ -18,6 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import slugify from "slugify";
 import minimist from "minimist";
+import process from "node:process";
 
 function getDate() {
   const date = new Date();

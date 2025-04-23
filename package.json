@@ -9,7 +9,10 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "new": "node scripts/new.js"
+    "new": "node scripts/new.js",
+    "lint": "eslint . --fix --max-warnings=0",
+    "format": "prettier . --write",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -43,5 +46,19 @@
     "typescript": "^5.8.2",
     "use-debounce": "^10.0.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.0.0",
+    "husky": ">=7",
+    "lint-staged": ">=10",
+    "prettier": "3.5.3"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*": "prettier --ignore-unknown --write"
+  }
 }
