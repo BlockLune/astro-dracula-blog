@@ -9,7 +9,6 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "biome check --write ./src",
     "new": "node scripts/new.js"
   },
   "dependencies": {
@@ -44,7 +43,5 @@
     "typescript": "^5.8.2",
     "use-debounce": "^10.0.4"
   },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4"
-  }
+  "devDependencies": {}
 }
