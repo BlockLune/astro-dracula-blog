@@ -6,7 +6,6 @@ import "@/styles/mathjax.css";
 import "@/styles/rehype-github-alerts.css";
 
 import Favicon from "@/components/head/favicon.astro";
-import FontPreload from "@/components/head/font-preload.astro";
 import Meta from "@/components/head/meta.astro";
 import RssLink from "@/components/head/rss-link.astro";
 import Sitemap from "@/components/head/sitemap.astro";
@@ -35,7 +34,6 @@ const pageTitle = title
       ogImageUrl={ogImageUrl}
     />
     <Favicon />
-    <FontPreload />
     <RssLink lang={lang} />
     <Sitemap />
     <Umami />

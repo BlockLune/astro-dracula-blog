@@ -1,14 +1,7 @@
 @import "tailwindcss";
-
 @import "./dracula.css";
-
-@plugin "@tailwindcss/typography";
-
 @import "@fontsource/fira-code" layer(base);
-@import "@fontsource/noto-sans-sc/400.css" layer(base);
-@import "@fontsource/noto-sans-sc/700.css" layer(base);
-@import "@fontsource/noto-sans-sc/900.css" layer(base);
-
+@plugin "@tailwindcss/typography";
 @config '../../tailwind.config.mjs';
 
 /*

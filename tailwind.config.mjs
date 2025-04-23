@@ -6,8 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Noto Sans SC", ...defaultTheme.fontFamily.sans],
-        code: ["Fira Code", "Noto Sans SC", ...defaultTheme.fontFamily.mono],
+        code: ["Fira Code", ...defaultTheme.fontFamily.mono],
       },
       typography: () => ({
         dracula: {

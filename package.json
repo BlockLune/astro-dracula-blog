@@ -21,7 +21,6 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.1",
     "@fontsource/fira-code": "^5.2.5",
-    "@fontsource/noto-sans-sc": "^5.2.5",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.4",

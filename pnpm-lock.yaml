@@ -25,9 +25,6 @@ importers:
       "@fontsource/fira-code":
         specifier: ^5.2.5
         version: 5.2.5
-      "@fontsource/noto-sans-sc":
-        specifier: ^5.2.5
-        version: 5.2.5
       "@resvg/resvg-js":
         specifier: ^2.6.2
         version: 2.6.2
@@ -762,12 +759,6 @@ packages:
     resolution:
       {
         integrity: sha512-Rn9PJoyfRr5D6ukEhZpzhpD+rbX2rtoz9QjkOuGxqFxrL69fQvhadMUBxQIOuTF4sTTkPRSKlAEpPjTKaI12QA==,
-      }
-
-  "@fontsource/noto-sans-sc@5.2.5":
-    resolution:
-      {
-        integrity: sha512-rYAl3Alcjo2PnI0sqzRfnA022H8yWePNrjYalApQwYE+fFlaXmD6Mm3E9wmJCpmJM8clwhQWq/E8IlPl1bmZHQ==,
       }
 
   "@humanfs/core@0.19.1":
@@ -6633,8 +6624,6 @@ snapshots:
       levn: 0.4.1
 
   "@fontsource/fira-code@5.2.5": {}
-
-  "@fontsource/noto-sans-sc@5.2.5": {}
 
   "@humanfs/core@0.19.1": {}
 
