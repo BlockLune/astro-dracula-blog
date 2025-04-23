@@ -4,7 +4,6 @@ import rehypeMathjax from "rehype-mathjax";
 import remarkMath from "remark-math";
 import { rehypeGithubAlerts } from "rehype-github-alerts";
 
-import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -32,7 +31,7 @@ export default defineConfig({
     ],
     smartypants: false,
   },
-  integrations: [react(), sitemap(), partytown()],
+  integrations: [react(), sitemap()],
   output: "static",
   vite: {
     optimizeDeps: {

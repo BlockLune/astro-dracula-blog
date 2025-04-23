@@ -10,9 +10,6 @@ importers:
       "@astrojs/check":
         specifier: ^0.9.4
         version: 0.9.4(prettier@3.5.3)(typescript@5.8.3)
-      "@astrojs/partytown":
-        specifier: ^2.1.4
-        version: 2.1.4
       "@astrojs/react":
         specifier: ^4.2.5
         version: 4.2.5(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(yaml@2.7.1)
@@ -183,12 +180,6 @@ packages:
     resolution:
       {
         integrity: sha512-c5F5gGrkczUaTVgmMW9g1YMJGzOtRvjjhw6IfGuxarM6ct09MpwysP10US729dy07gg8y+ofVifezvP3BNsWZg==,
-      }
-
-  "@astrojs/partytown@2.1.4":
-    resolution:
-      {
-        integrity: sha512-loUrAu0cGYFDC6dHVRiomdsBJ41VjDYXPA+B3Br51V5hENFgDSOLju86OIj1TvBACcsB22UQV7BlppODDG5gig==,
       }
 
   "@astrojs/prism@3.2.0":
@@ -1024,14 +1015,6 @@ packages:
         integrity: sha512-ROFF39F6ZrnzSUEmQQZUar0Jt4xVoP9WnDRdWwF4NNcXs3xBTLgBUDoOwW141y1jP+S8nahIbdxbFC7IShw9Iw==,
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
-
-  "@qwik.dev/partytown@0.11.0":
-    resolution:
-      {
-        integrity: sha512-MHime7cxj7KGrapGZ1VqLkXXq5BLNqvjNZndRJVvMkUWn92F2bsezlWW1lKDoFaKCKu2xv9LRUZL99RYOs+ccA==,
-      }
-    engines: { node: ">=18.0.0" }
-    hasBin: true
 
   "@resvg/resvg-js-android-arm-eabi@2.6.2":
     resolution:
@@ -2443,13 +2426,6 @@ packages:
         integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==,
       }
     engines: { node: ">=0.10.0" }
-
-  dotenv@16.5.0:
-    resolution:
-      {
-        integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==,
-      }
-    engines: { node: ">=12" }
 
   dset@3.1.4:
     resolution:
@@ -6279,11 +6255,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  "@astrojs/partytown@2.1.4":
-    dependencies:
-      "@qwik.dev/partytown": 0.11.0
-      mrmime: 2.0.1
-
   "@astrojs/prism@3.2.0":
     dependencies:
       prismjs: 1.30.0
@@ -6745,10 +6716,6 @@ snapshots:
   "@oslojs/encoding@1.1.0": {}
 
   "@pkgr/core@0.2.4": {}
-
-  "@qwik.dev/partytown@0.11.0":
-    dependencies:
-      dotenv: 16.5.0
 
   "@resvg/resvg-js-android-arm-eabi@2.6.2":
     optional: true
@@ -7610,8 +7577,6 @@ snapshots:
   doctrine@2.1.0:
     dependencies:
       esutils: 2.0.3
-
-  dotenv@16.5.0: {}
 
   dset@3.1.4: {}
 
