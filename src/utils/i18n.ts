@@ -10,6 +10,12 @@ export const defaultLang: Lang = "en";
 export const ui = {
   en: {
     loadMore: "Load More",
+    loading: "Loading...",
+    errorLoadingSomePosts:
+      "Some posts failed to load. Results might be incomplete.",
+    errorLoadingPosts: "Failed to load more posts. Please try again later.",
+    noMorePosts: "No more posts to load.",
+    noPostsFound: "No posts found.",
     "nav.home": "Home",
     "nav.tags": "Tags",
     "nav.tags.description":
@@ -34,13 +40,20 @@ export const ui = {
     "post.oldPostWarningMsg": `Last update over ${MISC.dateTag.daysToBeRed} days ago`,
     "post.license": "Licensed under",
     "post.notSupportedLang": "Language not supported",
-    "post.notSupportedLangDescription": "Sorry, your language is unavailable for this post.",
+    "post.notSupportedLangDescription":
+      "Sorry, your language is unavailable for this post.",
   },
   zh: {
     loadMore: "加载更多",
+    loading: "加载中...",
+    errorLoadingSomePosts: "部分文章加载失败，结果可能不完整。",
+    errorLoadingPosts: "无法加载更多文章，请稍后再试。",
+    noMorePosts: "没有更多文章可加载。",
+    noPostsFound: "没有找到文章。",
     "nav.home": "首页",
     "nav.tags": "标签",
-    "nav.tags.description": "这里是本站的标签索引，您可以在这里浏览并快速找到与您感兴趣主题相关的文章和内容。",
+    "nav.tags.description":
+      "这里是本站的标签索引，您可以在这里浏览并快速找到与您感兴趣主题相关的文章和内容。",
     "nav.about": "关于",
     "search.placeholder.firstPart": "在 ",
     "search.placeholder.secondPart.post": " 篇文章中搜索...",
