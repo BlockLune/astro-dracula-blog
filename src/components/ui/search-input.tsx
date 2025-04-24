@@ -1,6 +1,4 @@
 import { type Lang, useTranslations } from "@/utils/i18n";
-import { useEffect } from "react";
-import { useSearchParams } from "@/hooks/use-search-params";
 
 export default function SearchInput({
   lang,

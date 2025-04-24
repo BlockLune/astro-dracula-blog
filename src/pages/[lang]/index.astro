@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import DynamicPostStack from "@/components/ui/dynamic-post-stack";
+import DynamicPostStack from "@/components/ui/stack/dynamic-post-stack";
+import SearchablePostStack from "@/components/ui/stack/searchable-post-stack";
 import BaseLayout from "@/layouts/base-layout.astro";
 import { supportedLangs } from "@/utils/i18n";
 import { getSnapshots } from "@/utils/post";
@@ -18,9 +19,14 @@ export function getStaticPaths() {
 ---
 
 <BaseLayout>
-  <DynamicPostStack
+  <!-- <DynamicPostStack
     lang={lang}
     initialSnapshots={snapshots.slice(0, 5)}
+    totalPostCount={snapshots.length}
+    client:load
+  /> -->
+  <SearchablePostStack
+    lang={lang}
     totalPostCount={snapshots.length}
     client:load
   />
