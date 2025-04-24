@@ -14,6 +14,8 @@ export const ui = {
     errorLoadingSomePosts:
       "Some posts failed to load. Results might be incomplete.",
     errorLoadingPosts: "Failed to load more posts. Please try again later.",
+    errorLoadingSearchData:
+      "Failed to load search data. Please try again later.",
     noMorePosts: "No more posts to load.",
     noPostsFound: "No posts found.",
     "nav.home": "Home",
@@ -48,6 +50,7 @@ export const ui = {
     loading: "加载中...",
     errorLoadingSomePosts: "部分文章加载失败，结果可能不完整。",
     errorLoadingPosts: "无法加载更多文章，请稍后再试。",
+    errorLoadingSearchData: "无法加载搜索数据，请稍后再试。",
     noMorePosts: "没有更多文章可加载。",
     noPostsFound: "没有找到文章。",
     "nav.home": "首页",
