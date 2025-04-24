@@ -1,8 +1,10 @@
+import type { APIRoute } from "astro";
+
 import { getCollection } from "astro:content";
 import { getSnapshots } from "@/utils/post";
 import { type Lang, supportedLangs } from "@/utils/i18n";
 
-export const GET = async ({ params, request }) => {
+export const GET: APIRoute = async ({ params, request }) => {
   const lang = params.lang as Lang;
   const id = params.id;
 
