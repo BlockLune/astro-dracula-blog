@@ -21,7 +21,7 @@ export function getStaticPaths() {
   <DynamicPostStack
     lang={lang}
     initialSnapshots={snapshots.slice(0, 5)}
-    totalPostCount={posts.length}
+    totalPostCount={snapshots.length}
     client:load
   />
 </BaseLayout>

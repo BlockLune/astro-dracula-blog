@@ -118,7 +118,7 @@ export default function DynamicPostStack({
 
       {hasMorePosts && (
         <button
-          className="card-hoverable p-8 text-pretty text-center disabled:opacity-50 disabled:cursor-not-allowed"
+          className="card-hoverable p-4 text-pretty text-center disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={loadMorePosts}
           disabled={isLoading}
         >
