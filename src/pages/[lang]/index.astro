@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import DynamicPostStack from "@/components/ui/dynamic-post-stack";
+import PostStack from "@/components/ui/post-stack";
 import BaseLayout from "@/layouts/base-layout.astro";
 import { supportedLangs } from "@/utils/i18n";
 import { getSnapshots } from "@/utils/post";
+import { MISC } from "@/config";
 
 const posts = await getCollection("posts");
 
@@ -18,9 +19,9 @@ export function getStaticPaths() {
 ---
 
 <BaseLayout>
-  <DynamicPostStack
+  <PostStack
     lang={lang}
-    initialSnapshots={snapshots.slice(0, 5)}
+    initialSnapshots={snapshots.slice(0, MISC.postStack.initialLimit)}
     totalPostCount={snapshots.length}
     client:load
   />

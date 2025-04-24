@@ -65,4 +65,9 @@ export const MISC = {
   toc: {
     minHeadings: 3,
   },
+  postStack: {
+    initialLimit: 5,
+    limitIncrement: 10,
+    searchResultsLimit: 5,
+  },
 };
