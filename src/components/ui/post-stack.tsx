@@ -40,20 +40,20 @@ async function fetchAllPostSnapshots(lang: Lang): Promise<PostSnapshot[]> {
 
 export default function PostStack({
   lang,
-  initialSnapshots,
   totalPostCount,
+  initialSnapshots,
+  searchInInitialSnapshots = false,
 }: {
   lang: Lang;
-  initialSnapshots: PostSnapshot[];
   totalPostCount: number;
+  initialSnapshots: PostSnapshot[];
+  searchInInitialSnapshots?: boolean;
 }) {
   const t = useTranslations(lang);
   const { query, debouncedQuery, setQuery } = useSearchParams();
 
   const [posts, setPosts] = useState<PostSnapshot[]>(initialSnapshots);
-  const [allPostsForSearch, setAllPostsForSearch] = useState<PostSnapshot[]>(
-    [],
-  );
+  const [postsForSearch, setPostsForSearch] = useState<PostSnapshot[]>([]);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [isLoadingSearch, setIsLoadingSearch] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,7 +62,7 @@ export default function PostStack({
   );
   const [searchResults, setSearchResults] = useState<PostSnapshot[]>([]);
 
-  const hasLoadedAllPosts = useRef(false);
+  const hasLoadedPostsForSearch = useRef(false);
 
   // check if there are more posts to load
   useEffect(() => {
@@ -71,13 +71,23 @@ export default function PostStack({
 
   // fetch all post snapshots when the component mounts
   useEffect(() => {
-    if (!hasLoadedAllPosts.current) {
+    if (!hasLoadedPostsForSearch.current) {
+      // if searchInInitialSnapshots is true, use the initial snapshots
+      if (searchInInitialSnapshots) {
+        setIsLoadingSearch(true);
+        setPostsForSearch(initialSnapshots);
+        setIsLoadingSearch(false);
+        hasLoadedPostsForSearch.current = true;
+        return;
+      }
+
+      // otherwise, search in all post snapshots
       setIsLoadingSearch(true);
       fetchAllPostSnapshots(lang)
         .then((snapshots) => {
-          setAllPostsForSearch(snapshots);
+          setPostsForSearch(snapshots);
           setIsLoadingSearch(false);
-          hasLoadedAllPosts.current = true;
+          hasLoadedPostsForSearch.current = true;
         })
         .catch((err) => {
           console.error("Error fetching all post snapshots:", err);
@@ -89,29 +99,29 @@ export default function PostStack({
 
   // handle language change
   useEffect(() => {
-    hasLoadedAllPosts.current = false;
+    hasLoadedPostsForSearch.current = false;
 
     setPosts(initialSnapshots);
-    setAllPostsForSearch([]);
+    setPostsForSearch([]);
     setSearchResults([]);
     setError(null);
   }, [lang, initialSnapshots]);
 
   // handle search input change
   useEffect(() => {
-    if (!debouncedQuery || allPostsForSearch.length === 0) {
+    if (!debouncedQuery || postsForSearch.length === 0) {
       setSearchResults([]);
       return;
     }
 
-    const fuse = new Fuse(allPostsForSearch, fuseOptions);
+    const fuse = new Fuse(postsForSearch, fuseOptions);
     const results = fuse
       .search(debouncedQuery)
       .map((result) => result.item)
       .slice(0, 5);
 
     setSearchResults(results);
-  }, [debouncedQuery, allPostsForSearch]);
+  }, [debouncedQuery, postsForSearch]);
 
   // function to load more posts
   const loadMorePosts = useCallback(async () => {

@@ -48,7 +48,13 @@ const t = useTranslations(lang);
       <LabelTag lang={lang} label={tag} large />
       {t("postsWithTag.secondPart")}
     </h1>
-    <!-- TODO -->
-    <!-- <PostStack lang={lang} snapshots={filteredSnapshots} client:load /> -->
+
+    <PostStack
+      lang={lang}
+      initialSnapshots={filteredSnapshots}
+      totalPostCount={filteredSnapshots.length}
+      searchInInitialSnapshots={true}
+      client:load
+    />
   </article>
 </BaseLayout>
