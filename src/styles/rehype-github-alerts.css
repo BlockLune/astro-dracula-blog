@@ -2,7 +2,7 @@
   --github-alert-default-color: var(--color-dracula-darker);
   --github-alert-note-color: var(--color-dracula-blue);
   --github-alert-tip-color: var(--color-dracula-green);
-  --github-alert-important-color: var(--color-dracula-purple)
+  --github-alert-important-color: var(--color-dracula-purple);
   --github-alert-warning-color: var(--color-dracula-orange);
   --github-alert-caution-color: var(--color-dracula-red);
 }
