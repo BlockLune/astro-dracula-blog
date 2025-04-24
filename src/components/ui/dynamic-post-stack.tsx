@@ -6,14 +6,14 @@ import type { PostSnapshot } from "@/schemas/post";
 
 const POSTS_INCREMENT = 5;
 
-async function fetchPostSnapshotById(
-  id: number,
+async function fetchPostSnapshotByRank(
+  rank: number,
   lang: Lang,
 ): Promise<PostSnapshot> {
-  const response = await fetch(`/${lang}/posts/snapshots/${id}.json`);
+  const response = await fetch(`/${lang}/posts/snapshots/${rank}.json`);
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch post snapshot with id ${id}. Status: ${response.status}`,
+      `Failed to fetch post snapshot with rank ${rank}. Status: ${response.status}`,
     );
   }
   const data = await response.json();
@@ -61,14 +61,14 @@ export default function DynamicPostStack({
       return;
     }
 
-    const idsToFetch = Array.from(
+    const ranksToFetch = Array.from(
       { length: countToFetch },
       (_, i) => currentPostCount + i + 1,
     );
 
     try {
-      const fetchPromises = idsToFetch.map((id) =>
-        fetchPostSnapshotById(id, lang),
+      const fetchPromises = ranksToFetch.map((rank) =>
+        fetchPostSnapshotByRank(rank, lang),
       );
       const results = await Promise.allSettled(fetchPromises);
 
@@ -78,7 +78,7 @@ export default function DynamicPostStack({
           newPosts.push(result.value);
         } else {
           console.error(
-            `Error fetching post with id ${idsToFetch[index]}:`,
+            `Error fetching post with rank ${ranksToFetch[index]}:`,
             result.reason,
           );
           setError(t("errorLoadingSomePosts"));

@@ -4,9 +4,9 @@ import { getCollection } from "astro:content";
 import { getSnapshots } from "@/utils/post";
 import { type Lang, supportedLangs } from "@/utils/i18n";
 
-export const GET: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async ({ params }) => {
   const lang = params.lang as Lang;
-  const id = params.id;
+  const rank = params.rank;
 
   const posts = await getCollection("posts");
   const snapshots = await getSnapshots(posts, lang);
@@ -14,8 +14,8 @@ export const GET: APIRoute = async ({ params, request }) => {
   return new Response(
     JSON.stringify(
       snapshots
-        .map((snapshot, index) => ({ id: index + 1, ...snapshot }))
-        .find((snapshot) => snapshot.id === Number(id)),
+        .map((snapshot, index) => ({ rank: index + 1, ...snapshot }))
+        .find((snapshot) => snapshot.rank === Number(rank)),
     ),
   );
 };
@@ -23,10 +23,10 @@ export const GET: APIRoute = async ({ params, request }) => {
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return supportedLangs.flatMap((lang) =>
-    posts.map((post, index) => ({
+    posts.map((_, index) => ({
       params: {
         lang,
-        id: String(index + 1),
+        rank: String(index + 1),
       },
     })),
   );
