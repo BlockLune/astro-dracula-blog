@@ -2,12 +2,11 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import Fuse from "fuse.js";
 
 import PostCard from "@/components/ui/cards/post-card";
-import { type Lang, useTranslations } from "@/utils/i18n";
-import type { PostSnapshot } from "@/schemas/post";
 import SearchInput from "@/components/ui/search-input";
+import type { PostSnapshot } from "@/schemas/post";
+import { MISC } from "@/config";
+import { type Lang, useTranslations } from "@/utils/i18n";
 import { useSearchParams } from "@/hooks/use-search-params";
-
-const POSTS_INCREMENT = 10;
 
 const fuseOptions = {
   keys: ["slug", "title", "description", "tags"],
@@ -118,7 +117,7 @@ export default function PostStack({
     const results = fuse
       .search(debouncedQuery)
       .map((result) => result.item)
-      .slice(0, 5);
+      .slice(0, MISC.postStack.searchResultsLimit);
 
     setSearchResults(results);
   }, [debouncedQuery, postsForSearch]);
@@ -138,7 +137,10 @@ export default function PostStack({
 
     const currentPostCount = posts.length;
     const remainingPosts = totalPostCount - currentPostCount;
-    const countToFetch = Math.min(POSTS_INCREMENT, remainingPosts);
+    const countToFetch = Math.min(
+      MISC.postStack.limitIncrement,
+      remainingPosts,
+    );
 
     if (countToFetch <= 0) {
       setIsLoadingMore(false);
