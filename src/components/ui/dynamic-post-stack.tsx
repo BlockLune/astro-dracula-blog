@@ -4,7 +4,7 @@ import PostCard from "@/components/ui/cards/post-card";
 import { type Lang, useTranslations } from "@/utils/i18n";
 import type { PostSnapshot } from "@/schemas/post";
 
-const POSTS_INCREMENT = 5;
+const POSTS_INCREMENT = 10;
 
 async function fetchPostSnapshotByRank(
   rank: number,
@@ -111,7 +111,7 @@ export default function DynamicPostStack({
       ))}
 
       {error && (
-        <div className="p-4 text-center text-red-600 bg-red-100 border border-red-300 rounded">
+        <div className="p-4 text-center text-dracula-red-600 bg-dracula-red-100 border border-dracula-red-300">
           {error}
         </div>
       )}
