@@ -1,10 +1,10 @@
 ---
 title: 我的 Rime 配置
 tags:
-  - rime
-  - input-method
+    - rime
+    - input-method
 categories:
-  - Misc
+    - Misc
 abbrlink: dc298524
 date: 2024-02-15 10:41:37
 updated: 2025-02-01 17:59:00
@@ -27,13 +27,12 @@ updated: 2025-02-01 17:59:00
 brew install --cask squirrel
 
 # 安装 「东风破」 并使用它来安装 「雾凇拼音」
-git clone --depth=1 git@github.com:rime/plum.git # 克隆 「东风破」 的仓库到本地
+git clone --depth=1 https://github.com/rime/plum.git # 克隆 「东风破」 的仓库到本地
 cd plum
 bash rime-install iDvel/rime-ice:others/recipes/full # 安装 「雾凇拼音」
 ```
 
-> [!Tip]
-> **在「添加输入法」中找不到 Rime？** 安装完成后，你可能需要登出（Log Out）你的当前 macOS 用户并重新登入后，才能在添加输入法中找到 Rime。
+> [!Tip] > **在「添加输入法」中找不到 Rime？** 安装完成后，你可能需要登出（Log Out）你的当前 macOS 用户并重新登入后，才能在添加输入法中找到 Rime。
 
 在 Arch Linux 上的安装命令如下：
 
@@ -61,32 +60,32 @@ paru -S fcitx5 fcitx5-im fcitx5-rime rime-quick rime-ice-double-pinyin-flypy-git
 ```yaml
 # default.custom.yaml
 patch:
-  schema_list:
-    - schema: double_pinyin_flypy # 小鹤双拼
-  menu:
-    page_size: 4 # 候选词个数
-  key_binder:
-    # 以词定字（上屏当前词句的第一个或最后一个字）
-    # 使用 - = 进行以词定字
-    select_first_character: "minus"
-    select_last_character: "equal"
+    schema_list:
+        - schema: double_pinyin_flypy # 小鹤双拼
+    menu:
+        page_size: 4 # 候选词个数
+    key_binder:
+        # 以词定字（上屏当前词句的第一个或最后一个字）
+        # 使用 - = 进行以词定字
+        select_first_character: "minus"
+        select_last_character: "equal"
 
-    bindings:
-      # 翻页 [ ]
-      - { when: paging, accept: bracketleft, send: Page_Up }
-      - { when: has_menu, accept: bracketright, send: Page_Down }
+        bindings:
+            # 翻页 [ ]
+            - { when: paging, accept: bracketleft, send: Page_Up }
+            - { when: has_menu, accept: bracketright, send: Page_Down }
 ```
 
 ```yaml
 # squirrel.custom.yaml
 patch:
-  style:
-    color_scheme: apathy
-    color_scheme_dark: apathy
+    style:
+        color_scheme: apathy
+        color_scheme_dark: apathy
 
-    candidate_list_layout: linear # stacked | linear
-    text_orientation: horizontal # horizontal | vertical
-    font_face: "LXGW WenKai" # 请先安装 [lxgw/LxgwWenKai](https://github.com/lxgw/LxgwWenKai)
+        candidate_list_layout: linear # stacked | linear
+        text_orientation: horizontal # horizontal | vertical
+        font_face: "LXGW WenKai" # 请先安装 [lxgw/LxgwWenKai](https://github.com/lxgw/LxgwWenKai)
 ```
 
 ## 参考资料
