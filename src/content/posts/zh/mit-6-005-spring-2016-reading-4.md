@@ -1,16 +1,17 @@
 ---
 abbrlink: 703bb2b0
 categories:
-- CS
-- Software Engineering
+    - CS
+    - Software Engineering
 date: 2024-09-11 15:00:00
 mathjax: true
 tags:
-- software-engineering
-- java
-- code-review
-- dry
-- code-hygiene
+    - code-hygiene
+    - code-review
+    - dry
+    - java
+    - mit-6-005
+    - software-engineering
 title: 阅读材料 4 - 代码审查 | MIT 6.005 学习笔记
 ---
 
@@ -85,7 +86,7 @@ public static int dayOfYear(int month, int dayOfMonth, int year) {
 
 接下来的几节和练习将指出这段代码示例中的恶臭的地方。
 
-## 不要重复你自己
+## 不要重复你自己（DRY）
 
 重复的代码是一种安全风险。如果你在两个地方都有相同或非常相似的代码，那么最根本的风险就是两个副本中都有一个错误，而某个维护者修复了其中一个地方的错误，却没有修复另一个地方的错误。
 
@@ -141,13 +142,13 @@ sendMessage("as you wish"); // this basically says "I love you"
 
 `dayOfYear` 代码需要一些注释 —— 您会把它们放在哪里？例如，您会在哪里记录 `month` 是从 0 到 11 还是从 1 到 12？
 
-## 快速失败
+## 快速失败（Failing Fast）
 
 _快速失败 (Failing Fast)_ 意味着代码应尽早暴露其错误。越早发现问题（越接近问题的起因），就越容易发现和修复问题。正如我们在第一次阅读材料中看到的，静态检查比动态检查失败得更快，而动态检查比产生一个可能会破坏后续计算的错误答案失败得更快。
 
 `dayOfYear` 函数不会快速失效 —— 如果你以错误的顺序传递参数，它会安静地返回错误的答案。事实上，按照 `dayOfYear` 的设计方式，非美国人极有可能按错误的顺序传递参数！它需要更多的检查 —— 静态检查或动态检查。
 
-## 避免魔法数字
+## 避免魔法数字（Avoid Magic Numbers）
 
 计算机科学家认为只有两个常量本身是有效的：0、1，也许还有 2（好吧，三个常量）。
 
