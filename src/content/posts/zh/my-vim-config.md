@@ -1,21 +1,21 @@
 ---
-title: 我的 Vim 和 NeoVim 配置
+title: 我的 Vim 配置
 abbrlink: 96f7ff9f
 categories:
-- CS
-- Tools
+    - CS
+    - Tools
 tags:
-- vim
-- neovim
-- ide
-- text-editor
-- terminal
-- configuration
+    - vim
+    - neovim
+    - ide
+    - text-editor
+    - terminal
+    - configuration
 date: 2023-04-22 10:27:09
-updated: 2024-11-29 10:45:00
+updated: 2025-06-29 10:58:00
 ---
 
-本文记录了我在 Vim 和 NeoVim 中的配置。
+本文记录了我的 Vim 配置。
 
 <!--more-->
 
@@ -40,7 +40,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 下载我的配置文件：
 
 ```bash
-curl -o ~/.vimrc https://raw.githubusercontent.com/BlockLune/dotfiles/refs/heads/main/.vimrc
+curl -o ~/.vimrc https://raw.githubusercontent.com/BlockLune/dotfiles/refs/heads/main/vim/.vimrc
 ```
 
 在命令行中键入 `vim` 以启动 Vim。此时会因为缺失插件报错，但我们很快就会安装它们。按下回车以继续。
@@ -77,15 +77,15 @@ call plug#end()
 
 - [`mg979/vim-visual-multi`](https://github.com/mg979/vim-visual-multi)：使用 `<C-n>` 来快速创建多光标。
 - [`takac/vim-hardtime`](https://github.com/takac/vim-hardtime)：阻止您在短时间内连续使用 `hijk` 进行移动以敦促形成更好的习惯。阅读下面两篇文章以了解更多（需要注意的是，您可能需要在中文编辑环境下使用 `:HardTimeOff` 关闭这个插件，毕竟您没法用 `w`、`b`、`e`、`f`、`t` 等键位在中文中移动）：
-  - _[Habit breaking, habit making | vimcasts.org](http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/)_（[中文翻译](/zh/posts/habit-breaking-habit-making)）
-  - _[Moving around | Vim Tips Wiki](https://vim.fandom.com/wiki/Moving_around)_
+    - _[Habit breaking, habit making | vimcasts.org](http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/)_（[中文翻译](/zh/posts/habit-breaking-habit-making)）
+    - _[Moving around | Vim Tips Wiki](https://vim.fandom.com/wiki/Moving_around)_
 - [`tpope/vim-eunuch`](https://github.com/tpope/vim-eunuch)：提供了一些与 Unix 常用命令相关的 Vim 语法糖，其中我最常使用的是 `:SudoWrite`（更多用法请在 Vim 中键入 `:help eunuch` 查看）：
-  - 举例而言：您希望使用 `vim /etc/hosts` 来编辑您的 hosts 文件，但在要保存时才意识到您忘记添加 `sudo` 所以您无权保存！尽管您可以使用 `:w !sudo tee % > /dev/null` 这样一条命令来实现不退出 Vim 而以超级用户权限来保存，但显然 `:SudoWrite` 更便于输入。
+    - 举例而言：您希望使用 `vim /etc/hosts` 来编辑您的 hosts 文件，但在要保存时才意识到您忘记添加 `sudo` 所以您无权保存！尽管您可以使用 `:w !sudo tee % > /dev/null` 这样一条命令来实现不退出 Vim 而以超级用户权限来保存，但显然 `:SudoWrite` 更便于输入。
 - [`tpope/vim-unimpaired`](https://github.com/tpope/vim-unimpaired)：提供了一系列使用 `[` 和 `]` 开始的快捷键，包括（更多用法请在 Vim 中键入 `:help unimpaired` 查看）：
-  - `[q` 是 `:cprevious`，`]q` 是 `:cnext`，分别用于显示前一个和后一个错误或 **Q**uickfix 列表项。
-  - `[t` 是 `:tprev`，`]t` 是 `:tnext`，分别前往上一个和下一个标签。
+    - `[q` 是 `:cprevious`，`]q` 是 `:cnext`，分别用于显示前一个和后一个错误或 **Q**uickfix 列表项。
+    - `[t` 是 `:tprev`，`]t` 是 `:tnext`，分别前往上一个和下一个标签。
 
-如果您想知道我使用的插件的完整列表，可以查看我的 [`.vimrc`](https://raw.githubusercontent.com/BlockLune/dotfiles/refs/heads/main/.vimrc)。
+如果您想知道我使用的插件的完整列表，可以查看我的 [`.vimrc`](https://raw.githubusercontent.com/BlockLune/dotfiles/refs/heads/main/vim/.vimrc)。
 
 #### 键位设置
 
@@ -93,7 +93,7 @@ Vim 的强大之处在于它的键位设置。您可以通过键位设置来自�
 
 - 在插入模式下使用 `jk` 映射为 `<Esc>`，以便更快地退出插入模式
 - 使用 `Ctrl` + `hjkl` 来在窗口之间移动
-- 使用 `H` 和 `L` 来在标签页之间移动
+- 使用 `H` 和 `L` 来在标签页（实际上是基于 vim-buftabline 的缓冲区）之间切换
 - 使用 `<leader>bd` 来关闭当前缓冲区
 - 使用 `<leader>bo` 来关闭其他缓冲区
 - 使用 `<leader>e` 来切换文件管理器 NERDTree
@@ -101,9 +101,18 @@ Vim 的强大之处在于它的键位设置。您可以通过键位设置来自�
 
 在 Vim 中键入 `:map` 来查看所有按键映射。
 
-## NeoVim (LazyVim)
+## NeoVim
 
-LazyVim 是一个 NeoVim 配置，它几乎已经是个 IDE 了。我基于 LazyVim 又进行了一些配置，您可以在 [这里](https://github.com/BlockLune/dotfiles/tree/main/.config/nvim) 找到。
+NeoVim 是 Vim 的一个分支，旨在提供更好的可扩展性和现代化的功能。它的配置文件使用 lua 脚本语言编写。
+
+推荐一个不错的视频教程：
+
+- [《Neovim从入门到出门》](https://www.bilibili.com/video/BV171LfzDEXU/)
+
+或者，您也可以尝试一些现成的 NeoVim 配置，例如：
+
+- [LazyVim](https://www.lazyvim.org/)：一组 NeoVim 的配置和插件，旨在提供一个开箱即用的开发环境。
+- [NvChad](https://nvchad.com/)：另一组 NeoVim 配置，但更注重性能。。
 
 ## 其他软件中的 Vim 模式
 
