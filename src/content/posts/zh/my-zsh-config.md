@@ -1,14 +1,14 @@
 ---
 abbrlink: 3e5630f
 categories:
-- CS
-- Tools
+    - CS
+    - Tools
 date: 2024-01-26 12:14:40
 tags:
-- terminal
-- zsh
-- oh-my-zsh
-- configuration
+    - terminal
+    - zsh
+    - oh-my-zsh
+    - configuration
 title: Zsh 简明配置指南
 updated: 2024-11-28 16:42:00
 ---
@@ -177,7 +177,7 @@ alias l="ll -a"
 [[ -f ~/.aliases ]] && source ~/.aliases
 ```
 
-您可以在 [这里](https://github.com/BlockLune/dotfiles/blob/main/.aliases) 找到我的 `.aliases` 文件。
+您可以在 [这里](https://github.com/BlockLune/dotfiles/blob/main/common/.aliases) 找到我的 `.aliases` 文件。
 
 ## 自定义函数
 
