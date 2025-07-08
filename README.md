@@ -21,6 +21,7 @@
 - [x] :mag: Fuzzy Search built with [fuse.js](https://www.fusejs.io/)
 - [x] :world_map: Sitemap & RSS Feed
 - [x] :spider_web: SEO-Friendly
+- [x] :robot: Auto [llms.txt](https://llmstxt.org/) generation (LLMs-Friendly)
 - [x] :earth_asia: I18n-Supported (`zh` & `en`)
 - [x] :triangular_ruler: Mathjax
 - [x] :octocat: [GitHub Alerts](https://github.com/chrisweb/rehype-github-alerts)
