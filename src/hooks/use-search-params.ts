@@ -23,10 +23,18 @@ export function useSearchParams() {
         params.delete("q");
       }
 
+      // Construct the new URL with the updated query string
+      // Remove the trailing question mark if no query string is present
+      const qs = params.toString();
+      const { pathname, hash } = window.location;
+      const newUrl = qs
+        ? `${pathname}?${qs}${hash || ""}`
+        : `${pathname}${hash || ""}`;
+
       window.history.replaceState(
         { ...window.history.state, q: debouncedQuery },
         "",
-        `${window.location.pathname}?${params.toString()}`
+        newUrl,
       );
     }
   }, [debouncedQuery]);
