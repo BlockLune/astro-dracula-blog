@@ -34,7 +34,7 @@ export function useSearchParams() {
       window.history.replaceState(
         { ...window.history.state, q: debouncedQuery },
         "",
-        newUrl,
+        newUrl
       );
     }
   }, [debouncedQuery]);

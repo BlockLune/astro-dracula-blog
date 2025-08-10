@@ -1,9 +1,9 @@
 ---
 title: 揭秘 Git 子模块（翻译）
 tags:
- - git
- - translation
- - version-control
+  - git
+  - translation
+  - version-control
 license: none
 date: 2025-01-12 11:20:58
 ---

@@ -1,20 +1,20 @@
 ---
 abbrlink: 9a8ff4a5
 categories:
-- CS
-- Computing System
-- Nand2Tetris
+  - CS
+  - Computing System
+  - Nand2Tetris
 date: 2023-07-12 11:57:51
 katex: true
 mathjax: true
 tags:
-- nand2tetris
-- computer-architecture
-- hardware-design
-- assembly-language
-- coursera
-- note
-title: 'Notes for Nand2Tetris: Computer Architecture'
+  - nand2tetris
+  - computer-architecture
+  - hardware-design
+  - assembly-language
+  - coursera
+  - note
+title: "Notes for Nand2Tetris: Computer Architecture"
 ---
 
 This is a note for Nand2Tetris Unit 5.

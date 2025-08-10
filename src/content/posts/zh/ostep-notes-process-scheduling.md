@@ -1,11 +1,11 @@
 ---
 title: 进程调度 - OSTEP 笔记
 tags:
- - note
- - operating-system
- - ostep
- - process
- - process-scheduling
+  - note
+  - operating-system
+  - ostep
+  - process
+  - process-scheduling
 date: 2024-12-25 18:59:00
 ---
 

@@ -1,15 +1,15 @@
 ---
 abbrlink: 798c36fc
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-06-22 22:11:51
 tags:
-- windows
-- tool
-- right-click-menu
-- context-menu
-- customization
+  - windows
+  - tool
+  - right-click-menu
+  - context-menu
+  - customization
 title: Windows 11 中更好的右键菜单
 ---
 

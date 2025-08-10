@@ -23,11 +23,11 @@
 }
 
 @utility copy-code {
-  @apply absolute top-0 right-0 bg-dracula-dark/80 hover:bg-dracula-dark px-2 py-1 text-xs text-dracula-light;
+  @apply absolute top-0 right-0 bg-dracula-dark/80 px-2 py-1 text-xs text-dracula-light hover:bg-dracula-dark;
 }
 
 @utility ghost-link {
-  @apply text-dracula-light hover:text-dracula-pink transition;
+  @apply text-dracula-light transition hover:text-dracula-pink;
 }
 
 @utility ghost-link-underline {
@@ -39,11 +39,11 @@
 }
 
 @utility card-hoverable {
-  @apply card-static hover:bg-dracula-dark transition cursor-pointer;
+  @apply cursor-pointer card-static transition hover:bg-dracula-dark;
 }
 
 @utility card-input {
-  @apply card-hoverable cursor-text px-8 py-4 text-dracula-light placeholder-dracula-blue focus:outline-hidden focus:bg-dracula-dark;
+  @apply card-hoverable cursor-text px-8 py-4 text-dracula-light placeholder-dracula-blue focus:bg-dracula-dark focus:outline-hidden;
 }
 
 @layer base {
@@ -56,7 +56,7 @@
   }
 
   pre {
-    @apply bg-dracula-dark/30! rounded-none!;
+    @apply rounded-none! bg-dracula-dark/30!;
   }
 
   ::selection {

@@ -2,15 +2,15 @@
 title: 我的 Vim 配置
 abbrlink: 96f7ff9f
 categories:
-    - CS
-    - Tools
+  - CS
+  - Tools
 tags:
-    - vim
-    - neovim
-    - ide
-    - text-editor
-    - terminal
-    - configuration
+  - vim
+  - neovim
+  - ide
+  - text-editor
+  - terminal
+  - configuration
 date: 2023-04-22 10:27:09
 updated: 2025-06-29 10:58:00
 ---
@@ -77,13 +77,13 @@ call plug#end()
 
 - [`mg979/vim-visual-multi`](https://github.com/mg979/vim-visual-multi)：使用 `<C-n>` 来快速创建多光标。
 - [`takac/vim-hardtime`](https://github.com/takac/vim-hardtime)：阻止您在短时间内连续使用 `hijk` 进行移动以敦促形成更好的习惯。阅读下面两篇文章以了解更多（需要注意的是，您可能需要在中文编辑环境下使用 `:HardTimeOff` 关闭这个插件，毕竟您没法用 `w`、`b`、`e`、`f`、`t` 等键位在中文中移动）：
-    - _[Habit breaking, habit making | vimcasts.org](http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/)_（[中文翻译](/zh/posts/habit-breaking-habit-making)）
-    - _[Moving around | Vim Tips Wiki](https://vim.fandom.com/wiki/Moving_around)_
+  - _[Habit breaking, habit making | vimcasts.org](http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/)_（[中文翻译](/zh/posts/habit-breaking-habit-making)）
+  - _[Moving around | Vim Tips Wiki](https://vim.fandom.com/wiki/Moving_around)_
 - [`tpope/vim-eunuch`](https://github.com/tpope/vim-eunuch)：提供了一些与 Unix 常用命令相关的 Vim 语法糖，其中我最常使用的是 `:SudoWrite`（更多用法请在 Vim 中键入 `:help eunuch` 查看）：
-    - 举例而言：您希望使用 `vim /etc/hosts` 来编辑您的 hosts 文件，但在要保存时才意识到您忘记添加 `sudo` 所以您无权保存！尽管您可以使用 `:w !sudo tee % > /dev/null` 这样一条命令来实现不退出 Vim 而以超级用户权限来保存，但显然 `:SudoWrite` 更便于输入。
+  - 举例而言：您希望使用 `vim /etc/hosts` 来编辑您的 hosts 文件，但在要保存时才意识到您忘记添加 `sudo` 所以您无权保存！尽管您可以使用 `:w !sudo tee % > /dev/null` 这样一条命令来实现不退出 Vim 而以超级用户权限来保存，但显然 `:SudoWrite` 更便于输入。
 - [`tpope/vim-unimpaired`](https://github.com/tpope/vim-unimpaired)：提供了一系列使用 `[` 和 `]` 开始的快捷键，包括（更多用法请在 Vim 中键入 `:help unimpaired` 查看）：
-    - `[q` 是 `:cprevious`，`]q` 是 `:cnext`，分别用于显示前一个和后一个错误或 **Q**uickfix 列表项。
-    - `[t` 是 `:tprev`，`]t` 是 `:tnext`，分别前往上一个和下一个标签。
+  - `[q` 是 `:cprevious`，`]q` 是 `:cnext`，分别用于显示前一个和后一个错误或 **Q**uickfix 列表项。
+  - `[t` 是 `:tprev`，`]t` 是 `:tnext`，分别前往上一个和下一个标签。
 
 如果您想知道我使用的插件的完整列表，可以查看我的 [`.vimrc`](https://raw.githubusercontent.com/BlockLune/dotfiles/refs/heads/main/vim/.vimrc)。
 

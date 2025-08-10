@@ -10,7 +10,7 @@ function getLLMsTxt(
   title: string,
   description: string,
   site: string,
-  posts: Post[],
+  posts: Post[]
 ) {
   return `
 # ${title}
@@ -41,13 +41,14 @@ Powered by 🚀 [Astro](https://astro.build/)& ❤️ [AstroDraculaBlog](https:/
 `;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function GET(context: any) {
   const posts = await getCollection("posts");
   const llmsTxt = getLLMsTxt(
     SITE.title[defaultLang],
     SITE.description[defaultLang],
     context.site,
-    posts,
+    posts
   );
   return new Response(llmsTxt);
 }

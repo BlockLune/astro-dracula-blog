@@ -1,9 +1,9 @@
 ---
 title: 如何在 Golang 中使用 Gin 创建 REST API
 tag:
-- programming-language
-- golang
-- gin
+  - programming-language
+  - golang
+  - gin
 ---
 
 本文介绍了 REST API 的基本概念，并使用 Golang 中的 Gin 框架创建一个简单的 REST API。

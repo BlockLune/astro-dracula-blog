@@ -1,11 +1,11 @@
 ---
 title: 简明 Git 教程：分支与合并
 tags:
-- git
-- software-engineering
-- version-control
-- branching
-- merging
+  - git
+  - software-engineering
+  - version-control
+  - branching
+  - merging
 date: 2024-11-25 14:58:00
 updated: 2024-11-25 15:49:00
 ---

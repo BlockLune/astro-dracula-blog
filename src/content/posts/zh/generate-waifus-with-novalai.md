@@ -1,14 +1,14 @@
 ---
 abbrlink: f17b3e8b
 categories:
-- CS
-- AI
+  - CS
+  - AI
 date: 2022-10-15 20:36:02
 tags:
-- ai
-- novelai
-- waifu-generation
-- image-generation
+  - ai
+  - novelai
+  - waifu-generation
+  - image-generation
 title: 挖老婆矿！—— NovelAI 初试
 toc: true
 ---

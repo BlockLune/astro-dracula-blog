@@ -1,13 +1,13 @@
 ---
 abbrlink: bb929dc9
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-01-13 10:30:04
 tags:
-- tool
-- vscode
-- configuration
+  - tool
+  - vscode
+  - configuration
 title: VS Code 中设置显示最大列数边界线
 ---
 

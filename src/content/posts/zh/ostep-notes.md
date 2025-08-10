@@ -1,9 +1,9 @@
 ---
 title: OSTEP 笔记
 tags:
-- operating-system
-- ostep
-- note
+  - operating-system
+  - ostep
+  - note
 date: 2024-09-13 21:15:51
 updated: 2024-12-25 18:44:00
 ---

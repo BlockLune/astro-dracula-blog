@@ -1,17 +1,17 @@
 ---
 abbrlink: cf2f01b2
 categories:
-- CS
-- Languages
-- Python
+  - CS
+  - Languages
+  - Python
 date: 2023-05-28 16:42:00
 tags:
-- python
-- algorithm
-- data-structure
-- itertools
-- permutations-combinations
-- programming-language
+  - python
+  - algorithm
+  - data-structure
+  - itertools
+  - permutations-combinations
+  - programming-language
 title: Permutations and Combinations in Python (itertools)
 ---
 

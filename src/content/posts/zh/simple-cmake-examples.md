@@ -1,15 +1,15 @@
 ---
 abbrlink: badca0d4
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-12-03 12:30:07
 tags:
-- c
-- data-structure
-- cmake
-- software-engineering
-- build-system
+  - c
+  - data-structure
+  - cmake
+  - software-engineering
+  - build-system
 title: 简单 CMake 例子
 ---
 

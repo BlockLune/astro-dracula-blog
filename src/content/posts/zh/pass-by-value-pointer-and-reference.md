@@ -1,16 +1,16 @@
 ---
 abbrlink: c8a20144
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-11-05 14:48:31
 tags:
-- c
-- cpp
-- programming-language
-- parameter-passing
-- function-arguments
+  - c
+  - cpp
+  - programming-language
+  - parameter-passing
+  - function-arguments
 title: 值传递、指针传递、引用传递
 ---
 

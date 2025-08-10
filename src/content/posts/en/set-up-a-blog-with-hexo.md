@@ -1,15 +1,15 @@
 ---
 abbrlink: 4ef0ac98
 categories:
-- CS
-- Web
+  - CS
+  - Web
 date: 2023-04-15 13:16:06
 tags:
-- hexo
-- blog-setup
-- web
-- github-pages
-- next-theme
+  - hexo
+  - blog-setup
+  - web
+  - github-pages
+  - next-theme
 title: Set up a blog with Hexo
 toc: true
 ---

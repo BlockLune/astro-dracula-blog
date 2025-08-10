@@ -2,7 +2,7 @@ import DateTag from "@/components/ui/tags/date-tag";
 import LabelTag from "@/components/ui/tags/label-tag";
 import type { Lang } from "@/utils/i18n";
 import type { PostSnapshot } from "@/schemas/post";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 
 export default function PostCard({
   lang,
@@ -13,7 +13,6 @@ export default function PostCard({
   snapshot: PostSnapshot;
   animate?: boolean;
 }) {
-  // const shouldReduceMotion = useReducedMotion();
   const shouldReduceMotion = false;
   const initialOpacity = shouldReduceMotion ? 1 : 0;
   const initialX = shouldReduceMotion ? 0 : 10;
@@ -21,16 +20,16 @@ export default function PostCard({
   const component = (
     <a
       href={snapshot.href}
-      className="card-hoverable p-8 text-pretty flex flex-col gap-4"
+      className="flex card-hoverable flex-col gap-4 p-8 text-pretty"
     >
-      <h2 className="font-bold text-3xl text-dracula-pink">{snapshot.title}</h2>
+      <h2 className="text-3xl font-bold text-dracula-pink">{snapshot.title}</h2>
       <div className="flex flex-wrap gap-2">
         <DateTag lang={lang} date={snapshot.date} />
         {snapshot.tags.sort().map((tag) => (
           <LabelTag lang={lang} label={tag} key={tag} />
         ))}
       </div>
-      <p className="text-ellipsis break-all line-clamp-3">
+      <p className="line-clamp-3 break-all text-ellipsis">
         {snapshot.description}
       </p>
     </a>

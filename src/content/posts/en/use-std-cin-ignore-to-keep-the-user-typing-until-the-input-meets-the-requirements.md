@@ -1,15 +1,15 @@
 ---
 abbrlink: f96b3358
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2023-03-25 20:12:40
 tags:
-- cpp
-- c
-- input-validation
-- std-cin
+  - cpp
+  - c
+  - input-validation
+  - std-cin
 title: Use std::cin.ignore() to keep the user typing until the input meets the requirements
 ---
 

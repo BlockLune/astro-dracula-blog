@@ -14,12 +14,12 @@ const fuseOptions = {
 
 async function fetchPostSnapshotByRank(
   rank: number,
-  lang: Lang,
+  lang: Lang
 ): Promise<PostSnapshot> {
   const response = await fetch(`/${lang}/posts/snapshots/${rank}.json`);
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch post snapshot with rank ${rank}. Status: ${response.status}`,
+      `Failed to fetch post snapshot with rank ${rank}. Status: ${response.status}`
     );
   }
   const data = await response.json();
@@ -30,7 +30,7 @@ async function fetchAllPostSnapshots(lang: Lang): Promise<PostSnapshot[]> {
   const response = await fetch(`/${lang}/posts/snapshots/index.json`);
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch post snapshots. Status: ${response.status}`,
+      `Failed to fetch post snapshots. Status: ${response.status}`
     );
   }
   const data = await response.json();
@@ -57,7 +57,7 @@ export default function PostStack({
   const [isLoadingSearch, setIsLoadingSearch] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasMorePosts, setHasMorePosts] = useState(
-    initialSnapshots.length < totalPostCount,
+    initialSnapshots.length < totalPostCount
   );
   const [searchResults, setSearchResults] = useState<PostSnapshot[]>([]);
 
@@ -139,7 +139,7 @@ export default function PostStack({
     const remainingPosts = totalPostCount - currentPostCount;
     const countToFetch = Math.min(
       MISC.postStack.limitIncrement,
-      remainingPosts,
+      remainingPosts
     );
 
     if (countToFetch <= 0) {
@@ -150,12 +150,12 @@ export default function PostStack({
 
     const ranksToFetch = Array.from(
       { length: countToFetch },
-      (_, i) => currentPostCount + i + 1,
+      (_, i) => currentPostCount + i + 1
     );
 
     try {
       const fetchPromises = ranksToFetch.map((rank) =>
-        fetchPostSnapshotByRank(rank, lang),
+        fetchPostSnapshotByRank(rank, lang)
       );
       const results = await Promise.allSettled(fetchPromises);
 
@@ -166,7 +166,7 @@ export default function PostStack({
         } else {
           console.error(
             `Error fetching post with rank ${ranksToFetch[index]}:`,
-            result.reason,
+            result.reason
           );
           setError(t("errorLoadingSomePosts"));
         }
@@ -230,14 +230,14 @@ export default function PostStack({
       )}
 
       {error && (
-        <div className="p-4 text-center text-dracula-red-600 bg-dracula-red-100 border border-dracula-red-300">
+        <div className="border border-dracula-red-300 bg-dracula-red-100 p-4 text-center text-dracula-red-600">
           {error}
         </div>
       )}
 
       {!isSearchMode && hasMorePosts && (
         <button
-          className="card-hoverable p-4 text-pretty text-center disabled:opacity-50 disabled:cursor-not-allowed"
+          className="card-hoverable p-4 text-center text-pretty disabled:cursor-not-allowed disabled:opacity-50"
           onClick={loadMorePosts}
           disabled={isLoadingMore}
         >

@@ -1,10 +1,10 @@
 ---
 title: 用 25 个例子带您入门 Linux Bash 脚本（翻译）
 tags:
-    - translation
-    - bash
-    - shell
-    - bash-script
+  - translation
+  - bash
+  - shell
+  - bash-script
 license: none
 date: 2024-12-09 10:15:00
 updated: 2024-12-09 14:34:00

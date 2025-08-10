@@ -1,16 +1,16 @@
 ---
 abbrlink: eab95d6e
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-12-08 21:41:18
 tags:
-- c
-- cpp
-- algorithm
-- programming-language
-- sorting
+  - c
+  - cpp
+  - algorithm
+  - programming-language
+  - sorting
 title: C 标准库中 qsort 和 C++ STL 中 sort 的用法
 toc: true
 ---

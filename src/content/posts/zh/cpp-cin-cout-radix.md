@@ -1,19 +1,20 @@
 ---
-abbrlink: '9e863176'
+abbrlink: "9e863176"
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-09-29 17:30:25
 tags:
-- cpp
-- programming-language
-- octal
-- decimal
+  - cpp
+  - programming-language
+  - octal
+  - decimal
 title: C++ 中 cin 与 cout 的转进制输入输出
 ---
 
 笔者的朋友有道输入八进制输出十进制的题目，他是使用数学方法实现的。笔者隐隐约约记得好像cin和cout有控制输入输出数字进制的方法，查找了一些资料，做一下笔记。
+
 <!--more-->
 
 | 进制     | 对应缩写 |

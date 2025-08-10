@@ -1,12 +1,12 @@
 ---
 title: CommonJS 和 ES Modules（翻译）
 tags:
- - commonjs
- - es-modules
- - javascript
- - nodejs
- - translation
- - web
+  - commonjs
+  - es-modules
+  - javascript
+  - nodejs
+  - translation
+  - web
 date: 2024-12-23 13:13:58
 license: none
 ---
@@ -23,17 +23,17 @@ CommonJS 是由 Mozilla 工程师 Kevin Dangoor 在 2009 年启动的一个项�
 
 ```js
 // 使用下面的语法（`module.exports = ...`）来导出模块
-const mod1Function = () => console.log('Mod1 is alive!')
-module.exports = mod1Function
+const mod1Function = () => console.log("Mod1 is alive!");
+module.exports = mod1Function;
 
 // 并在其他文件中使用 `require` 来导入
-mod1Function = require('./mod1.js')
+mod1Function = require("./mod1.js");
 
 // 如果希望从一个模块（一个文件）中导出多个内容
-module.exports = { mod1Function1, mod1Function2 }
-
-// 一次性导入多个内容
-({ mod1Function1, mod1Function2 } = require('./mod1.js'))
+module.exports = { mod1Function1, mod1Function2 }(
+  // 一次性导入多个内容
+  ({ mod1Function1, mod1Function2 } = require("./mod1.js"))
+);
 ```
 
 可以使用 `*.cjs` 的名字命名一个 CommonJS 模块。
@@ -66,7 +66,7 @@ SyntaxError: Cannot use import statement outside a module
 然后就可以用 `import` 和 `export` 进行导入和导出了。在导入时，可以使用 `as` 来设置别名：
 
 ```js
-import { mod1Function1 as func1, mod1Function2 as func2 } from './mod1.js';
+import { mod1Function1 as func1, mod1Function2 as func2 } from "./mod1.js";
 
 func1();
 ```
@@ -74,7 +74,7 @@ func1();
 此外，还可以将所有导出一次性导入并作为一个对象使用：
 
 ```js
-import * as mod1 from './mod1.js';
+import * as mod1 from "./mod1.js";
 
 mod1.mod1Function1();
 mod1.mod1Function2();
@@ -110,13 +110,13 @@ npm i --save-dev webpack webpack-cli
 
 ```js
 /* webpack.config.js */
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './main.js',
+  entry: "./main.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
 };
 ```
@@ -132,8 +132,8 @@ module.exports = {
 > 除了 `__dirname`，还有 `__filename`，它是当前模块的文件名。不过需要注意：`__dirname` 和 `__filename` 仅在 CommonJS 中可用，在 ES Modules 中，应该使用：
 >
 > ```js
-> import.meta.dirname  // The current module's directory name (__dirname)
-> import.meta.filename // The current module's file name (__filename)
+> import.meta.dirname; // The current module's directory name (__dirname)
+> import.meta.filename; // The current module's file name (__filename)
 > ```
 
 可以在 `package.json` 中的 `scripts` 中加上 `"build": "webpack"`，这样就可以通过运行 `npm run build` 来打包了。

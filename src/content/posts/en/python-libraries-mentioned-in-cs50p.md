@@ -1,16 +1,16 @@
 ---
 abbrlink: 22098b25
 categories:
-- CS
-- Languages
-- Python
+  - CS
+  - Languages
+  - Python
 date: 2023-07-07 11:27:54
 tags:
-- python
-- programming-language
-- software-engineering
-- tool
-- cs50p
+  - python
+  - programming-language
+  - software-engineering
+  - tool
+  - cs50p
 title: Python libraries mentioned in CS50P
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: 如何在 Golang 中连接数据库
 tags:
-- programming-language
-- golang
-- database
+  - programming-language
+  - golang
+  - database
 date: 2024-11-11 19:05:00
 updated: 2024-11-28 17:03:00
 ---

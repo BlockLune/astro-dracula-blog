@@ -1,12 +1,12 @@
 ---
 title: Arch Linux 安装笔记
 tags:
- - archlinux
- - hyprland
- - installation
- - linux
- - linux-setup
- - unix
+  - archlinux
+  - hyprland
+  - installation
+  - linux
+  - linux-setup
+  - unix
 date: 2024-12-22 19:01:16
 updated: 2025-02-01 00:40:00
 ---
@@ -39,7 +39,7 @@ fdisk -l
 
 按照指南中所说的：
 
-> 结果中以 rom、loop 或者airootfs结尾的设备可以被忽略。结果中以 rpbm、boot0 或者 boot1 结尾的 mmcblk* 设备也可以被忽略。
+> 结果中以 rom、loop 或者airootfs结尾的设备可以被忽略。结果中以 rpbm、boot0 或者 boot1 结尾的 mmcblk\* 设备也可以被忽略。
 
 下图展示了虚拟机安装时运行上述命令的结果，有效设备是 `/dev/sda`。
 
@@ -246,7 +246,7 @@ menuentry 'Microsoft Windows 11' {
 
 ### 添加新用户
 
-让我们来添加一个 sudo 用户。运行下面的命令创建一个名为 `username` 的用户并将其添加进 [`wheel`](https://en.wikipedia.org/wiki/Wheel_(computing)) 组：
+让我们来添加一个 sudo 用户。运行下面的命令创建一个名为 `username` 的用户并将其添加进 [`wheel`](<https://en.wikipedia.org/wiki/Wheel_(computing)>) 组：
 
 ```bash
 useradd -m -G wheel username
@@ -293,7 +293,7 @@ systemctl start vmware-vmblock-fuse
 
 ### AUR 助手
 
-[AUR](https://wiki.archlinuxcn.org/wiki/Arch_%E7%94%A8%E6%88%B7%E8%BD%AF%E4%BB%B6%E4%BB%93%E5%BA%93_(AUR)) 是 Arch Linux 的软件仓库。我在后续的步骤中大量使用它来下载和安装软件。
+[AUR](<https://wiki.archlinuxcn.org/wiki/Arch_%E7%94%A8%E6%88%B7%E8%BD%AF%E4%BB%B6%E4%BB%93%E5%BA%93_(AUR)>) 是 Arch Linux 的软件仓库。我在后续的步骤中大量使用它来下载和安装软件。
 
 为了更好地使用 AUR，可以安装一个 [AUR 助手](https://wiki.archlinuxcn.org/wiki/AUR_%E5%8A%A9%E6%89%8B) 程序。最经典的是 [`yay`](https://wiki.archlinuxcn.org/wiki/Yay)，而一个新的选择是 [`paru`](https://github.com/Morganamilo/paru)。
 

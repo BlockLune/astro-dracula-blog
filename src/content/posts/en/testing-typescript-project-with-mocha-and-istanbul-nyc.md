@@ -1,15 +1,15 @@
 ---
 abbrlink: 402d9408
 categories:
-- CS
-- Web
+  - CS
+  - Web
 date: 2024-02-08 12:00:07
 tags:
-- typescript
-- javascript
-- testing
-- mocha
-- nyc
+  - typescript
+  - javascript
+  - testing
+  - mocha
+  - nyc
 title: Testing Typescript project with Mocha and Istanbul NYC
 ---
 

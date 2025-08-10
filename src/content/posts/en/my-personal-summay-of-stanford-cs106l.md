@@ -1,17 +1,17 @@
 ---
 abbrlink: b16dfec9
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2023-06-01 23:09:45
 tags:
-- cpp
-- cs106l
-- modern-cpp
-- programming-language
-- software-engineering
-- stanford
+  - cpp
+  - cs106l
+  - modern-cpp
+  - programming-language
+  - software-engineering
+  - stanford
 title: My personal summary of Stanford CS106L
 ---
 

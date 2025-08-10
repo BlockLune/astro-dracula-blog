@@ -12,8 +12,8 @@ export const GET: APIRoute = async ({ params }) => {
 
   return new Response(
     JSON.stringify(
-      snapshots.map((snapshot, index) => ({ rank: index + 1, ...snapshot })),
-    ),
+      snapshots.map((snapshot, index) => ({ rank: index + 1, ...snapshot }))
+    )
   );
 };
 

@@ -1,15 +1,15 @@
 ---
 abbrlink: a7a0ce82
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2022-09-17 13:13:18
 tags:
-- vscode
-- cpp
-- windows
-- tool
-- configuration
+  - vscode
+  - cpp
+  - windows
+  - tool
+  - configuration
 title: VS Code 的安装与配置基础 C/C++ 开发环境
 toc: true
 updated: 2022-10-13

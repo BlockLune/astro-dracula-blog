@@ -1,18 +1,18 @@
 ---
 abbrlink: a4422da3
 categories:
-- CS
-- Computing System
-- Nand2Tetris
+  - CS
+  - Computing System
+  - Nand2Tetris
 date: 2023-07-11 16:49:01
 tags:
-- nand2tetris
-- programming-language
-- assembly
-- software-engineering
-- algorithm
-- note
-title: 'Notes for Nand2Tetris: Machine Language'
+  - nand2tetris
+  - programming-language
+  - assembly
+  - software-engineering
+  - algorithm
+  - note
+title: "Notes for Nand2Tetris: Machine Language"
 ---
 
 This is a note for Nand2Tetris unit 4.

@@ -1,19 +1,19 @@
 ---
 abbrlink: d3e12860
 categories:
-- CS
-- Algorithms & Data structures
+  - CS
+  - Algorithms & Data structures
 date: 2023-07-27 16:28:42
 katex: true
 mathjax: true
 tags:
-- algorithm
-- data-structure
-- java
-- coursera
-- graph-theory
-- note
-title: 'Notes for Algorithms, Part II: Undirected Graphs'
+  - algorithm
+  - data-structure
+  - java
+  - coursera
+  - graph-theory
+  - note
+title: "Notes for Algorithms, Part II: Undirected Graphs"
 ---
 
 This is a note for 4.1 Undirected Graphs, _[Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2/)_.

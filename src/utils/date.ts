@@ -1,7 +1,11 @@
 import { MISC } from "@/config";
 
-export function getDiffInDays(date1: number | string | Date, date2: number | string | Date) {
-  const diffInMilliseconds = new Date(date1).getTime() - new Date(date2).getTime();
+export function getDiffInDays(
+  date1: number | string | Date,
+  date2: number | string | Date
+) {
+  const diffInMilliseconds =
+    new Date(date1).getTime() - new Date(date2).getTime();
   const diffInDays = Math.round(diffInMilliseconds / (1000 * 60 * 60 * 24));
   return Math.abs(diffInDays);
 }

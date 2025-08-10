@@ -21,7 +21,9 @@ function limitText(text: string, length: number) {
   if (!isAscii) return `${truncated} "..."`;
 
   const lastSpaceIndex = truncated.lastIndexOf(" ");
-  return lastSpaceIndex === -1 ? `${truncated} "..."` : `${truncated.slice(0, lastSpaceIndex)} ...`;
+  return lastSpaceIndex === -1
+    ? `${truncated} "..."`
+    : `${truncated.slice(0, lastSpaceIndex)} ...`;
 }
 
 export async function generateOgImageForPost(lang: Lang, post: Post) {
@@ -113,8 +115,10 @@ export async function generateOgImageForPost(lang: Lang, post: Post) {
       width: 1200,
       height: 630,
       embedFont: true,
-      fonts: (await loadGoogleFonts(post.data.title + SITE.title[lang] + "by" + AUTHOR.name + ".")) as FontOptions[],
-    },
+      fonts: (await loadGoogleFonts(
+        post.data.title + SITE.title[lang] + "by" + AUTHOR.name + "."
+      )) as FontOptions[],
+    }
   );
   return svgBufferToPngBuffer(svg);
 }

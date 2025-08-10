@@ -1,18 +1,18 @@
 ---
 abbrlink: 28d92424
 categories:
-- CS
-- Computing System
-- Nand2Tetris
+  - CS
+  - Computing System
+  - Nand2Tetris
 date: 2023-07-09 19:44:36
 katex: true
 mathjax: true
 tags:
-- nand2tetris
-- note
-- computer-architecture
-- digital-logic
-title: 'Notes for Nand2Tetris: Memory'
+  - nand2tetris
+  - note
+  - computer-architecture
+  - digital-logic
+title: "Notes for Nand2Tetris: Memory"
 ---
 
 This is a note for Nand2Tetris unit 3.

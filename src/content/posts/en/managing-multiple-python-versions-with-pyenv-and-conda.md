@@ -1,15 +1,15 @@
 ---
 abbrlink: c7d1762
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2024-02-20 15:32:11
 tags:
-- python
-- tool
-- environment-management
-- pyenv
-- conda
+  - python
+  - tool
+  - environment-management
+  - pyenv
+  - conda
 title: Managing Multiple Python Versions with pyenv and conda
 updated: 2024-11-15 12:06:00
 ---

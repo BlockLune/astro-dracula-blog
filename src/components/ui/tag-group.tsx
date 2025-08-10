@@ -32,8 +32,8 @@ export default function TagGroup({
       />
 
       <div className="flex flex-wrap gap-2">
-        {debouncedQuery === ""
-          ? Array.from(tagMap.entries())
+        {debouncedQuery === "" ? (
+          Array.from(tagMap.entries())
             .sort((a, b) => b[1] - a[1])
             .map(([tag, count]) => (
               <LabelTag
@@ -45,20 +45,20 @@ export default function TagGroup({
                 animate={true}
               />
             ))
-          : (
-            results.length > 0 ?
-              results.map((tag) => (
-                <LabelTag
-                  lang={lang}
-                  label={tag}
-                  count={tagMap.get(tag)}
-                  type="link"
-                  key={tag}
-                  animate={true}
-                />
-              ))
-              : <p className="text-center">{t("search.noResults")}</p>
-          )}
+        ) : results.length > 0 ? (
+          results.map((tag) => (
+            <LabelTag
+              lang={lang}
+              label={tag}
+              count={tagMap.get(tag)}
+              type="link"
+              key={tag}
+              animate={true}
+            />
+          ))
+        ) : (
+          <p className="text-center">{t("search.noResults")}</p>
+        )}
       </div>
     </div>
   );

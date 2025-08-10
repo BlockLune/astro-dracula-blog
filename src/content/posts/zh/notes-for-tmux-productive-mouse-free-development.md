@@ -1,12 +1,12 @@
 ---
 title: 《tmux Productive Mouse-Free Development》阅读笔记
 tags:
-- tmux
-- terminal
-- unix
-- productivity
-- shell
-- note
+  - tmux
+  - terminal
+  - unix
+  - productivity
+  - shell
+  - note
 date: 2023-08-05 11:47:53
 ---
 

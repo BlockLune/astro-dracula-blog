@@ -1,17 +1,17 @@
 ---
 abbrlink: bff11795
 categories:
-- CS
-- Algorithms & Data structures
+  - CS
+  - Algorithms & Data structures
 date: 2024-02-10 13:12:59
 tags:
-- algorithm
-- data-structure
-- coursera
-- graph-theory
-- spanning-tree
-- note
-title: 'Notes for Algorithms, Part II: Shortest Paths'
+  - algorithm
+  - data-structure
+  - coursera
+  - graph-theory
+  - spanning-tree
+  - note
+title: "Notes for Algorithms, Part II: Shortest Paths"
 ---
 
 This is a note for 4.4 Shortest Paths, _[Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2/)_.

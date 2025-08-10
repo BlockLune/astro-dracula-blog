@@ -1,14 +1,14 @@
 ---
 abbrlink: 3c91f84e
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2022-08-25 21:06:12
 tags:
-- tool
-- chrome-extension
-- edge-browser
-- browser
+  - tool
+  - chrome-extension
+  - edge-browser
+  - browser
 title: Edge 扩展推荐
 toc: true
 ---

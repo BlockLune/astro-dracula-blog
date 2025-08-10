@@ -1,18 +1,18 @@
 ---
 abbrlink: 8ca4a3fd
 categories:
-- CS
-- Algorithms & Data structures
+  - CS
+  - Algorithms & Data structures
 date: 2023-08-03 21:17:06
 mathjax: true
 tags:
-- algorithm
-- data-structure
-- java
-- coursera
-- minimum-spanning-tree
-- note
-title: 'Notes for Algorithms, Part II: Minimum Spanning Trees'
+  - algorithm
+  - data-structure
+  - java
+  - coursera
+  - minimum-spanning-tree
+  - note
+title: "Notes for Algorithms, Part II: Minimum Spanning Trees"
 ---
 
 This is a note for 4.3 Minimum Spanning Trees, _[Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2/)_.
@@ -353,7 +353,6 @@ Eager 实现使用优先队列存储与生成树相连的顶点，每个顶点�
 >
 > 1. **懒惰实现（Lazy Implementation）**：
 >    在懒惰实现中，使用优先队列存储至少一个端点在生成树中的边。具体实现步骤包括：
->
 >    - 每次从优先队列中删除最小边（权重最小）。
 >    - 检查该边的两个端点是否已经都在生成树中（标记过）。
 >    - 如果两个端点都已标记，则忽略该边，继续下一轮删除操作。
@@ -363,7 +362,6 @@ Eager 实现使用优先队列存储与生成树相连的顶点，每个顶点�
 >
 > 2. **积极实现（Eager Implementation）**：
 >    在积极实现中，使用优先队列存储与生成树相连的顶点，每个顶点的优先级表示连接该顶点与生成树的最短边的权重。具体实现步骤包括：
->
 >    - 每次从优先队列中删除最小顶点（优先级最小）。
 >    - 将与该顶点相连的所有边考虑在内。
 >    - 如果边的另一个端点已经在生成树中，则忽略该边。

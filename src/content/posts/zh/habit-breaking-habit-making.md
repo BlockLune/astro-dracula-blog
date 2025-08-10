@@ -1,8 +1,8 @@
 ---
 title: 打破坏习惯，养成好习惯（翻译）
 tags:
-- vim
-- translation
+  - vim
+  - translation
 date: 2024-11-29 11:52:43
 license: none
 ---
@@ -51,7 +51,7 @@ noremap l <NOP>
 
 ## 在一行内移动时，字符搜索是近乎即时的
 
-`f`、`F`、`t`、`T`、`;` 和 `,` 命令组成了一整套字符搜索动作。按 `f{char}` 时，Vim 会从光标位置向前查找当前行中出现的下一个 `{char}`。如果找到匹配，光标会直接移动到该处。 如果没有找到匹配项，则什么也不会发生。（Vim 可能会向您发出提示音，但您可以通过[设置 `visualbell`](http://vimdoc.sourceforge.net/htmldoc/options.html#&#x27;vb&#x27;) 使其静音）。
+`f`、`F`、`t`、`T`、`;` 和 `,` 命令组成了一整套字符搜索动作。按 `f{char}` 时，Vim 会从光标位置向前查找当前行中出现的下一个 `{char}`。如果找到匹配，光标会直接移动到该处。 如果没有找到匹配项，则什么也不会发生。（Vim 可能会向您发出提示音，但您可以通过[设置 `visualbell`](http://vimdoc.sourceforge.net/htmldoc/options.html#'vb') 使其静音）。
 
 试试这个方法：在 Vim 中，将光标移到一行有大量文字的开头。寻找一个出现频率较低的字符，如标点符号或大写字母。按下 `f`，然后按下所选字符。这是两个按键。您跳转到那个位置了吗？
 

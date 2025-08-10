@@ -6,7 +6,9 @@ import { getUniqueLowerCaseTagMap, makeUniqueByLang } from "@/utils/post";
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
   const uniquePosts = makeUniqueByLang(posts, defaultLang);
-  const tags = getUniqueLowerCaseTagMap(uniquePosts.flatMap((uniquePost) => uniquePost.data.tags));
+  const tags = getUniqueLowerCaseTagMap(
+    uniquePosts.flatMap((uniquePost) => uniquePost.data.tags)
+  );
   return Array.from(tags.keys()).map((tag) => ({ params: { tag } }));
 };
 

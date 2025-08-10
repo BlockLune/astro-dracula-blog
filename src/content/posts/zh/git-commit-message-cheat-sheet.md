@@ -1,15 +1,15 @@
 ---
 abbrlink: 8a5a50bb
 categories:
-- CS
-- Tools
-- vcs
+  - CS
+  - Tools
+  - vcs
 date: 2024-01-27 18:09:10
 tags:
-- git
-- software-engineering
-- commit-message
-- cheat-sheet
+  - git
+  - software-engineering
+  - commit-message
+  - cheat-sheet
 title: Git Commit 信息速查表
 ---
 

@@ -14,8 +14,8 @@ const translatePath = useTranslatedPath(activeLang);
           href={translatePath(`/${urlWithoutLang}`, lang)}
           class={
             lang === activeLang
-              ? "underline underline-offset-4 text-dracula-purple"
-              : "underline underline-offset-4 text-dracula-purple/80 hover:text-dracula-purple transition"
+              ? "text-dracula-purple underline underline-offset-4"
+              : "text-dracula-purple/80 underline underline-offset-4 transition hover:text-dracula-purple"
           }
         >
           {label}

@@ -1,17 +1,17 @@
 ---
 abbrlink: 703bb2b0
 categories:
-    - CS
-    - Software Engineering
+  - CS
+  - Software Engineering
 date: 2024-09-11 15:00:00
 mathjax: true
 tags:
-    - code-hygiene
-    - code-review
-    - dry
-    - java
-    - mit-6-005
-    - software-engineering
+  - code-hygiene
+  - code-review
+  - dry
+  - java
+  - mit-6-005
+  - software-engineering
 title: 阅读材料 4 - 代码审查 | MIT 6.005 学习笔记
 ---
 

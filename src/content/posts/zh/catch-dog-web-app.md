@@ -1,14 +1,14 @@
 ---
 abbrlink: 6a8a1633
 categories:
-- CS
-- Web
+  - CS
+  - Web
 date: 2022-08-26 14:58:40
 tags:
-- web
-- vue
-- javascript
-- element-ui
+  - web
+  - vue
+  - javascript
+  - element-ui
 title: 补记一个用 Vue.js 和 ElementUI 实现的在线抽奖网页
 ---
 

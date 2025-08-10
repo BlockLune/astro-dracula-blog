@@ -1,11 +1,11 @@
 ---
 title: 简明 GitHub 教程
 tags:
-- git
-- software-engineering
-- ssh
-- github
-- version-control
+  - git
+  - software-engineering
+  - ssh
+  - github
+  - version-control
 date: 2024-11-12 08:58:00
 updated: 2024-11-25 15:49:00
 ---

@@ -1,5 +1,5 @@
 import type { Lang } from "@/utils/i18n";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import BaseTag from "./base-tag";
 
 export default function LabelTag({

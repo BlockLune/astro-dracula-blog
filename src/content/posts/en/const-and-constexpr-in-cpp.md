@@ -2,13 +2,13 @@
 title: const and constexpr in C++
 abbrlink: 3358bcc1
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 tags:
-- cpp
-- programming-language
-- const
+  - cpp
+  - programming-language
+  - const
 date: 2023-03-24 21:21:42
 ---
 

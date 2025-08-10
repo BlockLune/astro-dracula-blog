@@ -7,6 +7,7 @@ import { getDescFromMdString } from "@/utils/markdown";
 import { getLangFromId, getSlugFromId } from "@/utils/post";
 import rss from "@astrojs/rss";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function GET(context: any) {
   const posts = await getCollection("posts");
   return rss({

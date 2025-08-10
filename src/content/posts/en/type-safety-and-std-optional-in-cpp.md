@@ -1,19 +1,19 @@
 ---
 abbrlink: ab76f233
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2023-05-31 11:35:00
 tags:
-- const
-- cpp
-- cs106l
-- note
-- programming-language
-- software-engineering
-- stanford
-- type-safety
+  - const
+  - cpp
+  - cs106l
+  - note
+  - programming-language
+  - software-engineering
+  - stanford
+  - type-safety
 title: Type Safety and std::optional in C++
 ---
 

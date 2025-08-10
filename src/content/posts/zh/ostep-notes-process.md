@@ -1,10 +1,10 @@
 ---
 title: 进程的基本概念 - OSTEP 笔记
 tags:
-- note
-- operating-system
-- ostep
-- process
+  - note
+  - operating-system
+  - ostep
+  - process
 date: 2024-09-13 21:15:51
 updated: 2024-12-25 18:55:00
 ---

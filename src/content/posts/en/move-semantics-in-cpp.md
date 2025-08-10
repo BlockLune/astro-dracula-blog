@@ -1,19 +1,19 @@
 ---
 abbrlink: d5786049
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2023-05-30 22:14:00
 tags:
-- cpp
-- cs106l
-- move-semantics
-- note
-- programming-language
-- r-value-reference
-- special-member-functions
-- stanford
+  - cpp
+  - cs106l
+  - move-semantics
+  - note
+  - programming-language
+  - r-value-reference
+  - special-member-functions
+  - stanford
 title: Move Semantics in C++
 ---
 

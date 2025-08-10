@@ -3,9 +3,9 @@ title: 阅读材料 5 - 规格说明 | MIT 6.005 学习笔记
 date: 2025-06-29 10:49:00
 mathjax: true
 tags:
-    - software-engineering
-    - java
-    - mit-6-005
+  - software-engineering
+  - java
+  - mit-6-005
 ---
 
 MIT 6.005 Spring 2016 的 [OCW](https://ocw.mit.edu/courses/6-005-software-construction-spring-2016/) 版本的学习笔记。此篇笔记涉及的内容为 Reading 5 Specifications。

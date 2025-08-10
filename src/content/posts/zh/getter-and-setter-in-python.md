@@ -1,16 +1,16 @@
 ---
 abbrlink: 9b4ad8c6
 categories:
-- CS
-- Languages
-- Python
+  - CS
+  - Languages
+  - Python
 date: 2023-10-17 16:01:54
 tags:
-- python
-- oop
-- getter-setter
-- property-decorator
-- translation
+  - python
+  - oop
+  - getter-setter
+  - property-decorator
+  - translation
 title: Python 中的 Getter 和 Setter（翻译）
 license: none
 ---

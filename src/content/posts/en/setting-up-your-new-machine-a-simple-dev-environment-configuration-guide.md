@@ -2,16 +2,16 @@
 title: Setting up your new machine - A simple dev environment configuration guide
 abbrlink: 183d7426
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 tags:
-- unix
-- windows
-- terminal
-- productivity
-- software-engineering
-- configuration
-- tool
+  - unix
+  - windows
+  - terminal
+  - productivity
+  - software-engineering
+  - configuration
+  - tool
 date: 2024-09-02 15:53:08
 updated: 2024-12-20 10:23:00
 ---
@@ -104,7 +104,7 @@ usermod -a -G sudo username
 ```
 
 > [!Tip]
-> Depending on your distribution, the name of the default sudo user group is not the same. The `sudo` group mentioned above is Debian-based, while in Arch Linux the name of this user group is [`wheel`](https://en.wikipedia.org/wiki/Wheel_(computing)).
+> Depending on your distribution, the name of the default sudo user group is not the same. The `sudo` group mentioned above is Debian-based, while in Arch Linux the name of this user group is [`wheel`](<https://en.wikipedia.org/wiki/Wheel_(computing)>).
 
 Or you can edit the sudoers file manually by running `visudo`.
 

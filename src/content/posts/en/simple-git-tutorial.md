@@ -1,16 +1,16 @@
 ---
-abbrlink: '9363e311'
+abbrlink: "9363e311"
 categories:
-- CS
-- Tools
-- vcs
+  - CS
+  - Tools
+  - vcs
 date: 2023-03-11 17:55:55
 tags:
-- git
-- version-control
-- software-engineering
-- tool
-- collaboration
+  - git
+  - version-control
+  - software-engineering
+  - tool
+  - collaboration
 title: Simple Git Tutorial
 updated: 2024-11-27 11:07:00
 ---

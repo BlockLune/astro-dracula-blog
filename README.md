@@ -157,7 +157,7 @@ To switch it to Chinese:
 - Edit `src/utils/i18n.ts`:
 
 ```ts
-export const defaultLang : Lang = "zh";
+export const defaultLang: Lang = "zh";
 ```
 
 - Edit `public/_redirects` (Make sure these are at the end of the file):

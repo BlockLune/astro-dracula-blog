@@ -1,20 +1,20 @@
 ---
 abbrlink: 869cdee6
 categories:
-- CS
-- Computing System
-- Nand2Tetris
+  - CS
+  - Computing System
+  - Nand2Tetris
 date: 2023-07-17 20:28:42
 katex: true
 mathjax: true
 tags:
-- nand2tetris
-- python
-- assembler
-- programming-language
-- software-engineering
-- note
-title: 'Notes for Nand2Tetris: Assembler'
+  - nand2tetris
+  - python
+  - assembler
+  - programming-language
+  - software-engineering
+  - note
+title: "Notes for Nand2Tetris: Assembler"
 ---
 
 This is a note for Nand2Tetris Unit 6.

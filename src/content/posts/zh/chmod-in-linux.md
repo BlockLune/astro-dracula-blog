@@ -2,13 +2,13 @@
 title: Linux 中的权限管理
 abbrlink: a9dc5c1e
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 tags:
-- terminal
-- linux
-- chmod
-- permission-management
+  - terminal
+  - linux
+  - chmod
+  - permission-management
 date: 2023-03-23 22:27:08
 updated: 2024-12-21 14:14:00
 ---

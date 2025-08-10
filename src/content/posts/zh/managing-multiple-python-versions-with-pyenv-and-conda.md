@@ -1,11 +1,11 @@
 ---
 title: 使用 pyenv 和 conda 管理多个 Python 版本
 tags:
-- python
-- tool
-- environment-management
-- pyenv
-- conda
+  - python
+  - tool
+  - environment-management
+  - pyenv
+  - conda
 date: 2024-11-15 11:46:00
 ---
 

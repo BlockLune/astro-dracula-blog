@@ -1,16 +1,16 @@
 ---
 abbrlink: 9693ba6
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-10-27 19:52:56
 tags:
-- c
-- cpp
-- programming-language
-- assignment-operator
-- loop-control
+  - c
+  - cpp
+  - programming-language
+  - assignment-operator
+  - loop-control
 title: C/C++ 中赋值语句的返回值问题
 ---
 

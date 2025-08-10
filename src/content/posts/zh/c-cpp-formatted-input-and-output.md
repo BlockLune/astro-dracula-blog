@@ -1,15 +1,15 @@
 ---
 abbrlink: b4e7acd7
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-10-19 20:19:14
 tags:
-- c
-- cpp
-- programming-language
-- io
+  - c
+  - cpp
+  - programming-language
+  - io
 title: C/C++ 格式化输入输出汇总
 toc: true
 ---

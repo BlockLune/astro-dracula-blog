@@ -1,18 +1,18 @@
 ---
 abbrlink: 266471d7
 categories:
-- CS
-- AI
+  - CS
+  - AI
 date: 2023-08-09 10:56:35
 mathjax: true
 tags:
-- ai
-- machine-learning
-- python
-- vectorization
-- linear-algebra
-- note
-title: 'Notes for Machine Learning Specialization: Vectorization'
+  - ai
+  - machine-learning
+  - python
+  - vectorization
+  - linear-algebra
+  - note
+title: "Notes for Machine Learning Specialization: Vectorization"
 ---
 
 This is a note for the [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction).

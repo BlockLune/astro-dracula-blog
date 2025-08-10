@@ -19,7 +19,7 @@ export default function BaseTag({
       title={title}
       className={clsx(
         "inline-block",
-        large ? "text-4xl px-4 py-2" : "px-2 py-1",
+        large ? "px-4 py-2 text-4xl" : "px-2 py-1",
         hoverable ? "card-hoverable" : "card-static",
         containerClass
       )}

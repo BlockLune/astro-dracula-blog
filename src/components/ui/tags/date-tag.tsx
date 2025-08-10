@@ -21,8 +21,8 @@ export default function DateTag({
     color === "green"
       ? t("post.newlyUpdatedMsg")
       : color === "red"
-      ? t("post.oldPostWarningMsg")
-      : undefined;
+        ? t("post.oldPostWarningMsg")
+        : undefined;
 
   /**
    * If type is given, it will display the type and the date.

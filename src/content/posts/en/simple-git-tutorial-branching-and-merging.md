@@ -1,17 +1,17 @@
 ---
 abbrlink: aa010e90
 categories:
-- CS
-- Tools
-- vcs
+  - CS
+  - Tools
+  - vcs
 date: 2024-01-29 13:37:07
 tags:
-- git
-- software-engineering
-- version-control
-- branching
-- merging
-title: 'Simple Git Tutorial: Branching and Merging'
+  - git
+  - software-engineering
+  - version-control
+  - branching
+  - merging
+title: "Simple Git Tutorial: Branching and Merging"
 updated: 2024-11-25 15:49:00
 ---
 

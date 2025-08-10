@@ -2,14 +2,14 @@
 title: Makefile 简单笔记
 abbrlink: b5f1b38d
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 tags:
-- c
-- cpp
-- makefile
-- software-engineering
-- build-tool
+  - c
+  - cpp
+  - makefile
+  - software-engineering
+  - build-tool
 date: 2023-01-08 10:52:48
 updated: 2024-12-06 14:50:00
 ---

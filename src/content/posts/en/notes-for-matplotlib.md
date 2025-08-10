@@ -1,16 +1,16 @@
 ---
 abbrlink: 113e4ae1
 categories:
-- CS
-- Languages
-- Python
+  - CS
+  - Languages
+  - Python
 date: 2023-06-29 20:00:50
 tags:
-- python
-- matplotlib
-- data-visualization
-- note
-- tool
+  - python
+  - matplotlib
+  - data-visualization
+  - note
+  - tool
 title: Notes for Matplotlib
 ---
 

@@ -1,16 +1,16 @@
 ---
 abbrlink: cca59e58
 categories:
-- CS
-- Web
+  - CS
+  - Web
 date: 2024-09-06 11:35:57
 tags:
-- nextjs
-- react
-- full-stack
-- web-development
-- server-components
-- note
+  - nextjs
+  - react
+  - full-stack
+  - web-development
+  - server-components
+  - note
 title: NextJS 笔记
 ---
 

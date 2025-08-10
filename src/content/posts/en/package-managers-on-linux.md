@@ -2,15 +2,15 @@
 title: "Package Managers on Linux: A Simple Cheat Sheet"
 abbrlink: 4ee6ac78
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 tags:
-- apt
-- linux
-- package-manager
-- pacman
-- tool
-- unix
+  - apt
+  - linux
+  - package-manager
+  - pacman
+  - tool
+  - unix
 date: 2023-03-11 14:23:18
 updated: 2025-02-09 23:15:00
 ---
@@ -21,7 +21,7 @@ What are package managers? For beginners, you can think of them as "app stores f
 
 ## Understanding Package Managers
 
-[APT (Advanced Package Tool)](https://en.wikipedia.org/wiki/APT_(software)) and [Pacman](https://wiki.archlinux.org/title/Pacman) are two of the most widely used package managers in the Linux ecosystem:
+[APT (Advanced Package Tool)](<https://en.wikipedia.org/wiki/APT_(software)>) and [Pacman](https://wiki.archlinux.org/title/Pacman) are two of the most widely used package managers in the Linux ecosystem:
 
 - **APT**: The default package manager for Debian-based distributions (Ubuntu, Linux Mint, etc.). Known for its stability and extensive package repository.
 - **Pacman**: Arch Linux's package manager, celebrated for its speed, simplicity, and rolling-release model.

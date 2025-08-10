@@ -47,8 +47,12 @@ export const makeUniqueByLang = (posts: Post[], expectedLang: Lang) => {
   return Array.from(classified.keys()).map((slug) => {
     const signlePostMultipleLangs = classified.get(slug)!;
     return (
-      signlePostMultipleLangs.find((version) => getLangFromId(version.id) === expectedLang) ||
-      signlePostMultipleLangs.find((version) => getLangFromId(version.id) === defaultLang) ||
+      signlePostMultipleLangs.find(
+        (version) => getLangFromId(version.id) === expectedLang
+      ) ||
+      signlePostMultipleLangs.find(
+        (version) => getLangFromId(version.id) === defaultLang
+      ) ||
       signlePostMultipleLangs[0]
     );
   });
@@ -57,7 +61,10 @@ export const makeUniqueByLang = (posts: Post[], expectedLang: Lang) => {
 /**
  * Gets the snapshots of posts. They are unique to languages, and sorted by date.
  */
-export const getSnapshots = async (posts: Post[], expectedLang: Lang): Promise<PostSnapshot[]> => {
+export const getSnapshots = async (
+  posts: Post[],
+  expectedLang: Lang
+): Promise<PostSnapshot[]> => {
   const uniquePosts = makeUniqueByLang(posts, expectedLang);
   const sorted = uniquePosts.sort((a, b) => {
     const dateA = a.data.updated || a.data.date;
@@ -70,7 +77,10 @@ export const getSnapshots = async (posts: Post[], expectedLang: Lang): Promise<P
     return {
       href: `/${expectedLang}/posts/${slug}`,
       title: post.data.title,
-      date: getCloserFormattedDate(post.data.updated?.toISOString(), post.data.date.toISOString())!,
+      date: getCloserFormattedDate(
+        post.data.updated?.toISOString(),
+        post.data.date.toISOString()
+      )!,
       description: getDescFromMdString(post.body),
       slug,
       tags: Array.from(getUniqueLowerCaseTagMap(post.data.tags).keys()),
@@ -83,7 +93,9 @@ export const getSnapshots = async (posts: Post[], expectedLang: Lang): Promise<P
  * @param tags - An array of tags.
  * @returns A Map of tags with their lowercase versions as keys and counts as values.
  */
-export const getUniqueLowerCaseTagMap = (tags: string[]): Map<string, number> => {
+export const getUniqueLowerCaseTagMap = (
+  tags: string[]
+): Map<string, number> => {
   const tagCounts = new Map<string, number>();
   for (const tag of tags) {
     const lowercaseTag = tag.toLowerCase();
@@ -98,7 +110,10 @@ export const getUniqueLowerCaseTagMap = (tags: string[]): Map<string, number> =>
  * @param dateStringB - The second date string.
  * @returns The closest date to the current date.
  */
-export const getCloserFormattedDate = (dateStringA?: string, dateStringB?: string) => {
+export const getCloserFormattedDate = (
+  dateStringA?: string,
+  dateStringB?: string
+) => {
   if (!dateStringA && !dateStringB) return undefined;
   if (!dateStringA) return dateStringB;
   if (!dateStringB) return dateStringA;

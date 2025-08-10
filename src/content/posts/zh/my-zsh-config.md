@@ -1,14 +1,14 @@
 ---
 abbrlink: 3e5630f
 categories:
-    - CS
-    - Tools
+  - CS
+  - Tools
 date: 2024-01-26 12:14:40
 tags:
-    - terminal
-    - zsh
-    - oh-my-zsh
-    - configuration
+  - terminal
+  - zsh
+  - oh-my-zsh
+  - configuration
 title: Zsh 简明配置指南
 updated: 2024-11-28 16:42:00
 ---

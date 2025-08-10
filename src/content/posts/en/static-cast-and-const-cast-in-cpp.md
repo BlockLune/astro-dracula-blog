@@ -1,18 +1,18 @@
 ---
 abbrlink: f5746381
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2023-05-30 15:44:00
 tags:
-- const
-- cpp
-- cs106l
-- note
-- programming-language
-- software-engineering
-- stanford
+  - const
+  - cpp
+  - cs106l
+  - note
+  - programming-language
+  - software-engineering
+  - stanford
 title: static_cast and const_cast in C++
 ---
 

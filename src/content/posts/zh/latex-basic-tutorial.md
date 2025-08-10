@@ -1,15 +1,15 @@
 ---
 abbrlink: 848a7d31
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2022-09-15 14:11:07
 mathjax: true
 tags:
-- latex
-- math
-- note
-- programming-language
+  - latex
+  - math
+  - note
+  - programming-language
 title: LaTeX 公式基础
 toc: true
 ---

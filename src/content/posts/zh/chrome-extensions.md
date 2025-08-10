@@ -1,15 +1,15 @@
 ---
 abbrlink: 72a59031
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2019-07-13 22:00:00
 tags:
-- chrome-extension
-- tool
-- bilibili
-- web
-- chrome
+  - chrome-extension
+  - tool
+  - bilibili
+  - web
+  - chrome
 title: Chrome 插件推荐
 toc: true
 ---

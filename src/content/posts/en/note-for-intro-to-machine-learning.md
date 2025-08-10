@@ -1,16 +1,16 @@
 ---
 abbrlink: d1584ae1
 categories:
-- CS
-- AI
+  - CS
+  - AI
 date: 2023-11-12 19:20:26
 tags:
-- python
-- machine-learning
-- decision-tree
-- random-forest
-- mean-absolute-error
-- note
+  - python
+  - machine-learning
+  - decision-tree
+  - random-forest
+  - mean-absolute-error
+  - note
 title: Note for Intro to Machine Learning
 ---
 

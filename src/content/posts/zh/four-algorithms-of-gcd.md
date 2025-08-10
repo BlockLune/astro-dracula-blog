@@ -1,17 +1,17 @@
 ---
 abbrlink: 504f038d
 categories:
-- CS
-- Algorithms & Data structures
+  - CS
+  - Algorithms & Data structures
 date: 2022-12-04 19:37:17
 katex: true
 mathjax: true
 tags:
-- algorithm
-- data-structure
-- cpp
-- gcd-algorithm
-- euclidean-algorithm
+  - algorithm
+  - data-structure
+  - cpp
+  - gcd-algorithm
+  - euclidean-algorithm
 title: 求解最大公约数的四种算法
 toc: true
 ---

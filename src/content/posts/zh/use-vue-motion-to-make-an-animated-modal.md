@@ -1,15 +1,15 @@
 ---
 abbrlink: 6633c011
 categories:
-- CS
-- Web
+  - CS
+  - Web
 date: 2024-10-17 17:06:23
 tags:
-- vue
-- typescript
-- javascript
-- web
-- modal-animation
+  - vue
+  - typescript
+  - javascript
+  - web
+  - modal-animation
 title: 使用 Vue 和 @vueuse/motion 制作带动画的模态框
 ---
 
@@ -22,25 +22,25 @@ title: 使用 Vue 和 @vueuse/motion 制作带动画的模态框
 ```vue
 <!-- Modal.vue -->
 <script setup lang="ts">
-  import { ref, onMounted, onUnmounted } from "vue";
-  const isOpen = ref(false);
-  const openModal = () => {
-    isOpen.value = true;
-  };
-  const closeModal = () => {
-    isOpen.value = false;
-  };
-  const handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === "Escape") {
-      closeModal();
-    }
-  };
-  onMounted(() => {
-    document.addEventListener("keydown", handleKeydown);
-  });
-  onUnmounted(() => {
-    document.removeEventListener("keydown", handleKeydown);
-  });
+import { ref, onMounted, onUnmounted } from "vue";
+const isOpen = ref(false);
+const openModal = () => {
+  isOpen.value = true;
+};
+const closeModal = () => {
+  isOpen.value = false;
+};
+const handleKeydown = (event: KeyboardEvent) => {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+};
+onMounted(() => {
+  document.addEventListener("keydown", handleKeydown);
+});
+onUnmounted(() => {
+  document.removeEventListener("keydown", handleKeydown);
+});
 </script>
 
 <template>
@@ -77,15 +77,15 @@ title: 使用 Vue 和 @vueuse/motion 制作带动画的模态框
 </template>
 
 <style>
-  /* ... */
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
+/* ... */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
 ```
 
@@ -140,9 +140,9 @@ OK，可以开始使用了。但是简单地为 `modal-container` 添加 `v-moti
 
 ```vue
 <script setup lang="ts">
-  import { useMotions } from "@vueuse/motion";
-  const motions = useMotions();
-  // ...
+import { useMotions } from "@vueuse/motion";
+const motions = useMotions();
+// ...
 </script>
 
 <template>

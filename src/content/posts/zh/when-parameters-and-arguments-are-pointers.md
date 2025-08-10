@@ -1,15 +1,15 @@
 ---
 abbrlink: 1ef1e20b
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-11-16 14:46:44
 tags:
-- c
-- cpp
-- pointer-passing
-- function-parameters
+  - c
+  - cpp
+  - pointer-passing
+  - function-parameters
 title: 当形参、实参是指针变量...
 ---
 

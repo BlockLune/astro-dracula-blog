@@ -1,20 +1,20 @@
 ---
 abbrlink: a6f57fef
 categories:
-- CS
-- AI
+  - CS
+  - AI
 date: 2023-07-14 11:59:14
 katex: true
 mathjax: true
 tags:
-- ai
-- machine-learning
-- coursera
-- note
-- python
-- octave
-- linear-regression
-- logistic-regression
+  - ai
+  - machine-learning
+  - coursera
+  - note
+  - python
+  - octave
+  - linear-regression
+  - logistic-regression
 title: Notes for Machine Learning
 ---
 

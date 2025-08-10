@@ -1,11 +1,11 @@
 ---
 title: 2025 年的图床解决方案
 tags:
-- cloudflare
-- image-hosting
-- s3
-- s3-image-port
-- webp-cloud-services
+  - cloudflare
+  - image-hosting
+  - s3
+  - s3-image-port
+  - webp-cloud-services
 date: 2024-12-03 14:45:43
 ---
 

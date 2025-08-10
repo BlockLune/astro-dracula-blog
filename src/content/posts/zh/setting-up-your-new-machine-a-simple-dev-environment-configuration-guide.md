@@ -1,13 +1,13 @@
 ---
 title: 简明开发环境配置指南
 tags:
-- unix
-- windows
-- terminal
-- productivity
-- software-engineering
-- configuration
-- tool
+  - unix
+  - windows
+  - terminal
+  - productivity
+  - software-engineering
+  - configuration
+  - tool
 date: 2024-11-09 16:23:00
 updated: 2024-12-20 10:23:00
 ---
@@ -100,7 +100,7 @@ usermod -a -G sudo username
 ```
 
 > [!Tip]
-> 取决于发行版，默认的 sudo 用户组的名称并不相同。上文提到的 `sudo` 组是 Debian 系，而在 Arch Linux 中，这个用户组的名称是 [`wheel`](https://en.wikipedia.org/wiki/Wheel_(computing))。
+> 取决于发行版，默认的 sudo 用户组的名称并不相同。上文提到的 `sudo` 组是 Debian 系，而在 Arch Linux 中，这个用户组的名称是 [`wheel`](<https://en.wikipedia.org/wiki/Wheel_(computing)>)。
 
 或者您可以通过运行 `visudo` 手动编辑 sudoers 文件。
 

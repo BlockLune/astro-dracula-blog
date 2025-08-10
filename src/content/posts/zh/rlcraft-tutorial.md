@@ -1,9 +1,9 @@
 ---
 title: RLCraft 新手教程
 tags:
- - game
- - minecraft
- - rlcraft
+  - game
+  - minecraft
+  - rlcraft
 date: 2022-08-26 19:40:18
 updated: 2023-07-19 15:18:38
 ---

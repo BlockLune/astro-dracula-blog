@@ -1,15 +1,15 @@
 ---
 abbrlink: ca05bed5
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2022-10-13 19:33:49
 tags:
-- windows
-- terminal
-- encoding
-- vscode
-- cmd
+  - windows
+  - terminal
+  - encoding
+  - vscode
+  - cmd
 title: VS Code 中文乱码问题
 toc: true
 updated: 2023-01-12

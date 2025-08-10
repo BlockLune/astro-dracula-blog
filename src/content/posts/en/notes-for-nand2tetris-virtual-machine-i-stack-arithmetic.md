@@ -1,20 +1,20 @@
 ---
 abbrlink: d8b14680
 categories:
-- CS
-- Computing System
-- Nand2Tetris
+  - CS
+  - Computing System
+  - Nand2Tetris
 date: 2023-07-19 11:25:49
 katex: true
 mathjax: true
 tags:
-- nand2tetris
-- programming-language
-- software-engineering
-- vm-abstraction
-- stack-machine
-- note
-title: 'Notes for Nand2Tetris: Virtual Machine I: Stack Arithmetic'
+  - nand2tetris
+  - programming-language
+  - software-engineering
+  - vm-abstraction
+  - stack-machine
+  - note
+title: "Notes for Nand2Tetris: Virtual Machine I: Stack Arithmetic"
 ---
 
 This is a note for Nand2Tetris unit 7 (Part II, Unit 1).

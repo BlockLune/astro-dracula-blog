@@ -1,15 +1,15 @@
 ---
 abbrlink: d64ccd8c
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-10-09 18:10:26
 tags:
-- unix
-- terminal
-- tool
-- cli
-- command-line
+  - unix
+  - terminal
+  - tool
+  - cli
+  - command-line
 title: Awesome CLI Apps
 ---
 

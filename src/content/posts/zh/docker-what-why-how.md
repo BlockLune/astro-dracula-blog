@@ -1,15 +1,15 @@
 ---
-title: 'Docker: 是什么? 为什么? 怎么用?'
+title: "Docker: 是什么? 为什么? 怎么用?"
 abbrlink: 86a70735
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 tags:
-- docker
-- containerization
-- software-engineering
-- tool
-- devops
+  - docker
+  - containerization
+  - software-engineering
+  - tool
+  - devops
 date: 2024-09-03 16:35:32
 updated: 2024-12-06 14:46:00
 ---

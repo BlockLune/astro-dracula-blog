@@ -1,17 +1,17 @@
 ---
 title: 借助面向学生的 Azure 开始您的自托管之旅
 tags:
-- azure
-- caddy
-- docker
-- memos
-- miniflux
-- rclone
-- self-hosting
+  - azure
+  - caddy
+  - docker
+  - memos
+  - miniflux
+  - rclone
+  - self-hosting
 date: 2024-12-05 19:41:00
 ---
 
-近年来，云服务领域经历了迅猛的增长。虽然云服务最初主要面向企业用户设计，但现在各大云服务提供商也推出了针对个人用户的经济实惠方案。对于学生用户来说，更是有多种免费额度和服务优惠可供利用。伴随着以 Docker 为代表的容器化技术的迅速崛起，[自托管（Self-hosting）]((https://en.wikipedia.org/wiki/Self-hosting_(web_services)))这一曾经复杂且耗时的任务变得前所未有的简便和轻松。在本文中，我将借助面向学生的 Azure 为例，带您踏入自部署的世界。
+近年来，云服务领域经历了迅猛的增长。虽然云服务最初主要面向企业用户设计，但现在各大云服务提供商也推出了针对个人用户的经济实惠方案。对于学生用户来说，更是有多种免费额度和服务优惠可供利用。伴随着以 Docker 为代表的容器化技术的迅速崛起，[自托管（Self-hosting）](<(https://en.wikipedia.org/wiki/Self-hosting_(web_services))>)这一曾经复杂且耗时的任务变得前所未有的简便和轻松。在本文中，我将借助面向学生的 Azure 为例，带您踏入自部署的世界。
 
 <!--more-->
 
@@ -155,45 +155,45 @@ docker compose up -d
 
 ```yaml
 services:
-    miniflux:
-      image: miniflux/miniflux:latest
-      container_name: miniflux
-      depends_on:
-          - db
-      environment:
-          - DATABASE_URL=postgres://miniflux:secret@db/miniflux?sslmode=disable
-          - RUN_MIGRATIONS=1
-          - FETCH_YOUTUBE_WATCH_TIME=1
-          - CREATE_ADMIN=1
-          - ADMIN_USERNAME=<YOUR_ADMIN_USERNAME> # 需要替换
-          - ADMIN_PASSWORD=<YOUR_ADMIN_PASSWORD> # 需要替换
-          - BASE_URL=<YOUR_BASE_URL> # 需要替换
-          - POLLING_FREQUENCY=60 #每个 feed 的刷新间隔
-          - POLLING_PARSING_ERROR_LIMIT=0 #拉取出错后不会停止拉去，还是会按计划继续拉
-          - BATCH_SIZE=100 #每次拉取的 feed 数量
-          - POLLING_SCHEDULER=entry_frequency #拉取类型，根据上周的平均更新周期来拉取
-          - SCHEDULER_ENTRY_FREQUENCY_MAX_INTERVAL=180 #接上条，但也不会大于 30 分钟，建议和 POLLING_FREQUENCY 参数一起来看
-          # - PROXY_OPTION=all #图片代理功能，Miniflux 先把源端的图片缓存到服务器上来，后续就不用客户端去源服务器拉了
-          - PROXY_PRIVATE_KEY=password #使用客户端缓存过文章，然后某个时间重启了 docker 实例，那么会导致图片无法显示的情况，这是因为每次重启会随机生成 PROXY_PRIVATE_KEY,所以可以增加参数 PROXY_PRIVATE_KEY 固化 key ，便于解决更新、重启等场景下的图片显示问题。
-          - DATABASE_MAX_CONNS=50 #增加数据库连接数，对于多图片的 feed 非常有效，可以大幅提升加载和访问速度
-          - DATABASE_MIN_CONNS=5  # 同上
-          - WORKER_POOL_SIZE=10  #默认，或适当加大
-      restart: unless-stopped
-      ports:
-          - "8080:8080"
-    db:
-      image: postgres:17.2-alpine
-      container_name: postgres
-      environment:
-          - POSTGRES_USER=miniflux
-          - POSTGRES_PASSWORD=secret
-      volumes:
-          - ./db:/var/lib/postgresql/data
-      healthcheck:
-          test: ["CMD", "pg_isready", "-U", "miniflux"]
-          interval: 10s
-          start_period: 30s
-      restart: unless-stopped
+  miniflux:
+    image: miniflux/miniflux:latest
+    container_name: miniflux
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://miniflux:secret@db/miniflux?sslmode=disable
+      - RUN_MIGRATIONS=1
+      - FETCH_YOUTUBE_WATCH_TIME=1
+      - CREATE_ADMIN=1
+      - ADMIN_USERNAME=<YOUR_ADMIN_USERNAME> # 需要替换
+      - ADMIN_PASSWORD=<YOUR_ADMIN_PASSWORD> # 需要替换
+      - BASE_URL=<YOUR_BASE_URL> # 需要替换
+      - POLLING_FREQUENCY=60 #每个 feed 的刷新间隔
+      - POLLING_PARSING_ERROR_LIMIT=0 #拉取出错后不会停止拉去，还是会按计划继续拉
+      - BATCH_SIZE=100 #每次拉取的 feed 数量
+      - POLLING_SCHEDULER=entry_frequency #拉取类型，根据上周的平均更新周期来拉取
+      - SCHEDULER_ENTRY_FREQUENCY_MAX_INTERVAL=180 #接上条，但也不会大于 30 分钟，建议和 POLLING_FREQUENCY 参数一起来看
+      # - PROXY_OPTION=all #图片代理功能，Miniflux 先把源端的图片缓存到服务器上来，后续就不用客户端去源服务器拉了
+      - PROXY_PRIVATE_KEY=password #使用客户端缓存过文章，然后某个时间重启了 docker 实例，那么会导致图片无法显示的情况，这是因为每次重启会随机生成 PROXY_PRIVATE_KEY,所以可以增加参数 PROXY_PRIVATE_KEY 固化 key ，便于解决更新、重启等场景下的图片显示问题。
+      - DATABASE_MAX_CONNS=50 #增加数据库连接数，对于多图片的 feed 非常有效，可以大幅提升加载和访问速度
+      - DATABASE_MIN_CONNS=5 # 同上
+      - WORKER_POOL_SIZE=10 #默认，或适当加大
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres:17.2-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=miniflux
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "miniflux"]
+      interval: 10s
+      start_period: 30s
+    restart: unless-stopped
 ```
 
 这份文件相对就比较复杂了，其中有三个字段的内容需要替换为您自己的内容：

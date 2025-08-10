@@ -63,9 +63,9 @@ export default function TocCard({
   if (filtered.length <= MISC.toc.minHeadings) return null;
 
   return (
-    <div className="flex p-8 bg-dracula-dark/20 flex-col gap-4">
+    <div className="flex flex-col gap-4 bg-dracula-dark/20 p-8">
       <h2 className="text-2xl font-bold">{t("toc")}</h2>
-      <ul ref={tocRef} className="space-y-2 max-h-96 overflow-y-auto">
+      <ul ref={tocRef} className="max-h-96 space-y-2 overflow-y-auto">
         {filtered.map((heading) => (
           <li
             key={heading.slug}

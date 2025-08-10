@@ -1,16 +1,16 @@
 ---
 abbrlink: 53957db4
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-08-05 11:47:53
 tags:
-- tmux
-- terminal
-- unix
-- productivity
-- shell
-- note
+  - tmux
+  - terminal
+  - unix
+  - productivity
+  - shell
+  - note
 title: Notes for 《tmux Productive Mouse-Free Development》
 ---
 

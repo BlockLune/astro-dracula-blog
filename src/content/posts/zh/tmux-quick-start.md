@@ -1,15 +1,15 @@
 ---
 abbrlink: c99a1d40
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-08-04 23:05:19
 tags:
-- terminal
-- tool
-- unix
-- productivity
-- translation
+  - terminal
+  - tool
+  - unix
+  - productivity
+  - translation
 title: Tmux 快速入门（翻译）
 license: none
 ---

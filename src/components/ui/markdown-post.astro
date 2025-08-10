@@ -28,8 +28,8 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
 ---
 
 <article>
-  <h1 class="text-dracula-pink font-black text-4xl">{title}</h1>
-  <div class="flex flex-wrap gap-2 mt-4">
+  <h1 class="text-4xl font-black text-dracula-pink">{title}</h1>
+  <div class="mt-4 flex flex-wrap gap-2">
     <!-- date tags -->
     <DateTag lang={lang} date={publishedAt} type="published" client:load />
     {
@@ -64,7 +64,7 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
 
   {
     headings && headings.length > 0 && (
-      <div class="block 2xl:hidden mt-10">
+      <div class="mt-10 block 2xl:hidden">
         <TocCard headings={headings} lang={lang} client:load />
       </div>
     )
@@ -78,13 +78,13 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
 </article>
 
 <script>
-  let copyButtonLabel = "Copy";
-  let codeBlocks = Array.from(document.querySelectorAll("pre"));
+  const copyButtonLabel = "Copy";
+  const codeBlocks = Array.from(document.querySelectorAll("pre"));
 
-  for (let codeBlock of codeBlocks) {
-    let wrapper = document.createElement("div");
+  for (const codeBlock of codeBlocks) {
+    const wrapper = document.createElement("div");
     wrapper.style.position = "relative";
-    let copyButton = document.createElement("button");
+    const copyButton = document.createElement("button");
     copyButton.className = "copy-code";
     copyButton.innerHTML = copyButtonLabel;
 
@@ -100,8 +100,8 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
   }
 
   async function copyCode(block: HTMLElement, button: HTMLElement) {
-    let code = block.querySelector("code");
-    let text = code?.innerText || "";
+    const code = block.querySelector("code");
+    const text = code?.innerText || "";
 
     await navigator.clipboard.writeText(text);
 

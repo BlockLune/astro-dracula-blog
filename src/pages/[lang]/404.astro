@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "@/layouts/base-layout.astro";
-import { supportedLangs, useTranslatedPath, useTranslations } from "@/utils/i18n";
+import {
+  supportedLangs,
+  useTranslatedPath,
+  useTranslations,
+} from "@/utils/i18n";
 
 export function getStaticPaths() {
   return supportedLangs.map((lang) => ({
@@ -14,13 +18,12 @@ const translatedPath = useTranslatedPath(lang);
 ---
 
 <BaseLayout title="404" description={t("pageNotFoundDescription")}>
-  <div class="w-full flex flex-col items-center justify-center mt-32">
-    <h1 class="text-9xl mb-5 font-black text-dracula-pink font-mono">404</h1>
+  <div class="mt-32 flex w-full flex-col items-center justify-center">
+    <h1 class="mb-5 font-mono text-9xl font-black text-dracula-pink">404</h1>
     <p class="text-4xl font-bold">{t("pageNotFound")}</p>
     <a
       href={translatedPath("/")}
-      class="text-lg underline underline-offset-4 text-dracula-cyan mt-10
-                hover:text-dracula-purple transition-colors"
+      class="mt-10 text-lg text-dracula-cyan underline underline-offset-4 transition-colors hover:text-dracula-purple"
     >
       {t("goBackHome")}
     </a>

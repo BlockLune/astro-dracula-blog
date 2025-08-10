@@ -1,16 +1,16 @@
 ---
 abbrlink: e87455d1
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2024-03-09 14:16:24
 tags:
-- c
-- cpp
-- tool
-- gdb
-- debugging
-- cheat-sheet
+  - c
+  - cpp
+  - tool
+  - gdb
+  - debugging
+  - cheat-sheet
 title: My GDB Cheat Sheet
 ---
 
@@ -132,7 +132,6 @@ gdb.Breakpoint('...')
 ### Inspecting Variable Values
 
 - `print a` or `p a`: print value of variable `a` (which must be in the current function)
-
   - `print/x a`: print value of a as a hexadecimal number
   - `print/o a`: print value of a as a octal number
   - `print/t a`: print value of a as a binary number (show all bits)

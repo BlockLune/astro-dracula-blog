@@ -1,15 +1,15 @@
 ---
 abbrlink: 45e2d42
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-11-05 16:15:25
 tags:
-- c
-- programming-language
-- printf-formatting
-- dynamic-array
+  - c
+  - programming-language
+  - printf-formatting
+  - dynamic-array
 title: C 语言中使用变量输出小数点位数
 ---
 

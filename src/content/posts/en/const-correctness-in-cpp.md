@@ -1,18 +1,18 @@
 ---
 abbrlink: 4eb7504e
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2023-06-01 14:57:37
 tags:
-- const
-- cpp
-- cs106l
-- note
-- programming-language
-- software-engineering
-- stanford
+  - const
+  - cpp
+  - cs106l
+  - note
+  - programming-language
+  - software-engineering
+  - stanford
 title: Const Correctness in C++
 ---
 
@@ -268,10 +268,10 @@ This is tricky!
 
 | Iterator Type        | Increment Iterator? | Change underlying value? |
 | -------------------- | ------------------- | ------------------------ |
-| iterator             | ✅                   | ✅                        |
-| const_iterator       | ✅                   | ❌                        |
-| const iterator       | ❌                   | ✅                        |
-| const const_iterator | ❌                   | ❌                        |
+| iterator             | ✅                  | ✅                       |
+| const_iterator       | ✅                  | ❌                       |
+| const iterator       | ❌                  | ✅                       |
+| const const_iterator | ❌                  | ❌                       |
 
 ```cpp
 using iterator = std::string*;

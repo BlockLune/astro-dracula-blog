@@ -1,16 +1,16 @@
 ---
 abbrlink: 13d09bbb
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-10-11 21:23:55
 tags:
-- c
-- cpp
-- programming-language
-- short-circuit-evaluation
-- logical-operators
+  - c
+  - cpp
+  - programming-language
+  - short-circuit-evaluation
+  - logical-operators
 title: C 语言中与(&&)和或(||)运算符的短路运算
 ---
 

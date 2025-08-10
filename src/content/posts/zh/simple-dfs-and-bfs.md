@@ -1,16 +1,16 @@
 ---
 abbrlink: a336c1b8
 categories:
-- CS
-- Algorithms & Data structures
+  - CS
+  - Algorithms & Data structures
 date: 2022-11-22 14:25:21
 katex: true
 mathjax: true
 tags:
-- algorithm
-- data-structure
-- graph-traversal
-- stack-queue
+  - algorithm
+  - data-structure
+  - graph-traversal
+  - stack-queue
 title: 初探深度优先搜索（DFS）和广度优先搜索（BFS）
 toc: true
 ---

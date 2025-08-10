@@ -1,11 +1,11 @@
 ---
 title: 简明 Git 教程
 tags:
-- git
-- version-control
-- software-engineering
-- tool
-- collaboration
+  - git
+  - version-control
+  - software-engineering
+  - tool
+  - collaboration
 date: 2024-11-12 08:20:00
 updated: 2024-11-27 11:13:00
 ---

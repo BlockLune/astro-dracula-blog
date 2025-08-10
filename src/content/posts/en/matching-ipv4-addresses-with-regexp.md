@@ -1,17 +1,17 @@
 ---
 abbrlink: 1d74bec6
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-07-04 16:03:46
 katex: true
 mathjax: true
 tags:
-- python
-- regex
-- software-engineering
-- programming-language
-- ipv4
+  - python
+  - regex
+  - software-engineering
+  - programming-language
+  - ipv4
 title: Matching IPv4 addresses with RegExp
 ---
 

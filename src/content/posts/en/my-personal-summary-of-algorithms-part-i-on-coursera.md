@@ -1,15 +1,15 @@
 ---
 abbrlink: 94efd546
 categories:
-- CS
-- Algorithms & Data structures
+  - CS
+  - Algorithms & Data structures
 date: 2023-05-12 18:27:12
 tags:
-- algorithm
-- data-structure
-- coursera
-- princeton
-- online-course
+  - algorithm
+  - data-structure
+  - coursera
+  - princeton
+  - online-course
 title: My personal summary of Algorithms, Part I on Coursera
 ---
 

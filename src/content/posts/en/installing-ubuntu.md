@@ -1,15 +1,15 @@
 ---
 abbrlink: ca281680
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2023-04-27 23:41:50
 tags:
-- installation
-- linux
-- linux-setup
-- ubuntu
-- unix
+  - installation
+  - linux
+  - linux-setup
+  - ubuntu
+  - unix
 title: Ubuntu Installation Notes
 ---
 

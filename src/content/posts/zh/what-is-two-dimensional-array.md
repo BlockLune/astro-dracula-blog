@@ -1,15 +1,15 @@
 ---
 abbrlink: 57fd79a
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-11-16 20:28:15
 tags:
-- cpp
-- data-structure
-- multidimensional-array
-- programming-language
+  - cpp
+  - data-structure
+  - multidimensional-array
+  - programming-language
 title: 二维数组到底是啥啊...
 toc: true
 ---

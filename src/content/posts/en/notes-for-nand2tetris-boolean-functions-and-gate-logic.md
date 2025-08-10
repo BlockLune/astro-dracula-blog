@@ -1,17 +1,17 @@
 ---
 abbrlink: 53a0b5ef
 categories:
-- CS
-- Computing System
-- Nand2Tetris
+  - CS
+  - Computing System
+  - Nand2Tetris
 date: 2023-07-08 15:06:35
 tags:
-- nand2tetris
-- note
-- hardware-description
-- boolean-logic
-- digital-circuits
-title: 'Notes for Nand2Tetris: Boolean Functions and Gate Logic'
+  - nand2tetris
+  - note
+  - hardware-description
+  - boolean-logic
+  - digital-circuits
+title: "Notes for Nand2Tetris: Boolean Functions and Gate Logic"
 ---
 
 This is a note for Nand2Tetris Unit 1.

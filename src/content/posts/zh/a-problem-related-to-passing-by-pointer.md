@@ -1,16 +1,16 @@
 ---
 abbrlink: 50c16b14
 categories:
-- CS
-- Languages
-- C & Cpp
+  - CS
+  - Languages
+  - C & Cpp
 date: 2022-11-03 20:52:38
 tags:
-- c
-- cpp
-- pointer-manipulation
-- memory-management
-- programming-language
+  - c
+  - cpp
+  - pointer-manipulation
+  - memory-management
+  - programming-language
 title: 一个有关指针传参的问题
 toc: true
 ---

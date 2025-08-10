@@ -1,11 +1,11 @@
 ---
 title: cURL 和 httpie 常用命令速查表
 tags:
-- cheat-sheet
-- curl
-- httpie
-- terminal
-- tool
+  - cheat-sheet
+  - curl
+  - httpie
+  - terminal
+  - tool
 date: 2024-12-03 13:29:17
 updated: 2024-12-08 20:42:00
 ---
@@ -178,20 +178,17 @@ http PUT pie.dev/put \
 
 ```json
 {
-    "age": 29,
-    "hobbies": [
-        "http",
-        "pies"
-    ],
-    "description": "John is a nice guy who likes pies.",
-    "married": false,
-    "name": "John",
-    "favorite": {
-        "tool": "HTTPie"
-    },
-    "bookmarks": {
-        "HTTPie": "https://httpie.org",
-    }
+  "age": 29,
+  "hobbies": ["http", "pies"],
+  "description": "John is a nice guy who likes pies.",
+  "married": false,
+  "name": "John",
+  "favorite": {
+    "tool": "HTTPie"
+  },
+  "bookmarks": {
+    "HTTPie": "https://httpie.org"
+  }
 }
 ```
 
@@ -212,20 +209,15 @@ http pie.dev/post \
 
 ```json
 {
-    "platform": {
-        "name": "HTTPie",
-        "about": {
-            "mission": "Make APIs simple and intuitive",
-            "homepage": "httpie.io",
-            "stars": 54000
-        },
-        "apps": [
-            "Terminal",
-            "Desktop",
-            "Web",
-            "Mobile"
-        ]
-    }
+  "platform": {
+    "name": "HTTPie",
+    "about": {
+      "mission": "Make APIs simple and intuitive",
+      "homepage": "httpie.io",
+      "stars": 54000
+    },
+    "apps": ["Terminal", "Desktop", "Web", "Mobile"]
+  }
 }
 ```
 

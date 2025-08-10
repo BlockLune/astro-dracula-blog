@@ -1,9 +1,9 @@
 ---
 title: Sass 笔记
 tags:
- - css
- - sass
- - web
+  - css
+  - sass
+  - web
 date: 2024-12-23 12:48:09
 ---
 
@@ -16,8 +16,7 @@ date: 2024-12-23 12:48:09
 Sass 有两种[语法风格](https://sass-lang.com/documentation/syntax)：缩进风格（Indented Syntax）和 SCSS（Sassy CSS）。前者使用 `.sass` 扩展名，后者使用 `.scss` 扩展名。SCSS 语法类似于 CSS，几乎就是 CSS 的超集，所以更容易学习和使用。在本文中，我们主要使用 SCSS 语法。
 
 ```html
-<style type="text/scss">
-</style>
+<style type="text/scss"></style>
 ```
 
 ## 变量
@@ -148,14 +147,11 @@ nav a {
 @mixin text-effect($val) {
   @if $val == danger {
     color: red;
-  }
-  @else if $val == alert {
+  } @else if $val == alert {
     color: yellow;
-  }
-  @else if $val == success {
+  } @else if $val == success {
     color: green;
-  }
-  @else {
+  } @else {
     color: black;
   }
 }
@@ -174,7 +170,9 @@ Sass 中可以使用 `@for` 来进行 for 循环。
 
 ```scss
 @for $i from 1 through 12 {
-  .col-#{$i} { width: 100%/12 * $i; }
+  .col-#{$i} {
+    width: 100%/12 * $i;
+  }
 }
 ```
 
@@ -189,9 +187,7 @@ Sass 中可以使用 `@for` 来进行 for 循环。
   width: 16.66667%;
 }
 
-...
-
-.col-12 {
+... .col-12 {
   width: 100%;
 }
 ```
@@ -214,17 +210,25 @@ Sass 中另一种循环是 `@each`，用于对列表（List）或映射（Map）
 
 ```scss
 @each $color in blue, red, green {
-  .#{$color}-text {color: $color;}
+  .#{$color}-text {
+    color: $color;
+  }
 }
 ```
 
 映射：
 
 ```scss
-$colors: (color1: blue, color2: red, color3: green);
+$colors: (
+  color1: blue,
+  color2: red,
+  color3: green,
+);
 
 @each $key, $color in $colors {
-  .#{$color}-text {color: $color;}
+  .#{$color}-text {
+    color: $color;
+  }
 }
 ```
 
@@ -235,7 +239,9 @@ Sass 中也有 while 循环：
 ```scss
 $x: 1;
 @while $x < 13 {
-  .col-#{$x} { width: 100%/12 * $x;}
+  .col-#{$x} {
+    width: 100%/12 * $x;
+  }
   $x: $x + 1;
 }
 ```
@@ -251,13 +257,13 @@ Sass 中的 _Partials_ 是存放 CSS 代码段的独立文件。
 Sass 的 `extend` 特性，允许您基于一个元素的 CSS 规则构建其他规则。用法如下：
 
 ```scss
-.panel{
+.panel {
   background-color: red;
   height: 70px;
   border: 2px solid green;
 }
 
-.big-panel{
+.big-panel {
   @extend .panel;
   width: 150px;
   font-size: 2em;

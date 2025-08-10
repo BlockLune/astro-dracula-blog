@@ -1,17 +1,17 @@
 ---
 abbrlink: 118aec2d
 categories:
-- CS
-- Languages
-- Rust
+  - CS
+  - Languages
+  - Rust
 date: 2024-10-17 13:03:29
 tags:
-- rust
-- concurrency
-- thread-pool
-- web-server
-- software-engineering
-- programming-language
+  - rust
+  - concurrency
+  - thread-pool
+  - web-server
+  - software-engineering
+  - programming-language
 title: 使用 Rust 写一个简单的线程池
 ---
 

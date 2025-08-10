@@ -1,9 +1,9 @@
 ---
 title: JWT 与 Paseto - 基于令牌的身份验证的新时代（翻译）
 tags:
-- jwt
-- paseto
-- translation
+  - jwt
+  - paseto
+  - translation
 license: none
 date: 2024-11-28 08:44:27
 updated: 2024-12-2 12:33:00
@@ -70,10 +70,7 @@ JWT 通常用于验证用户身份和授权访问私人资源。此外，通过 
 **签名**：这一部分确保了验证令牌的真实性和完整性。它是由经过编码的令牌头、经过编码的载荷、密钥和指定的签名算法组合而成的。例如（使用 HMAC SHA256）：
 
 ```js
-HMACSHA256(
-  base64UrlEncode(header) + "." +
-  base64UrlEncode(payload),
-  secret)
+HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret);
 ```
 
 > [!Tip]

@@ -1,17 +1,17 @@
 ---
 abbrlink: 4457dd63
 categories:
-    - CS
-    - Software Engineering
+  - CS
+  - Software Engineering
 date: 2024-09-11 14:56:57
 mathjax: true
 tags:
-    - mit-6-005
-    - regression-testing
-    - software-engineering
-    - test-coverage
-    - testing
-    - unit-testing
+  - mit-6-005
+  - regression-testing
+  - software-engineering
+  - test-coverage
+  - testing
+  - unit-testing
 title: 阅读材料 3 - 测试 | MIT 6.005 学习笔记
 ---
 
@@ -199,21 +199,21 @@ Bugs 通常发生在子域的 _边界_。例如：
 重新对 $max : int \times int \rightarrow int$ 进行分区：
 
 - 考虑 $a$ 与 $b$ 的关系
-    - $a < b$
-    - $a = b$
-    - $a > b$
+  - $a < b$
+  - $a = b$
+  - $a > b$
 - 考虑 $a$ 的值
-    - $a = 0$
-    - $a < 0$
-    - $a > 0$
-    - $a$ 为最小整数
-    - $a$ 为最大整数
+  - $a = 0$
+  - $a < 0$
+  - $a > 0$
+  - $a$ 为最小整数
+  - $a$ 为最大整数
 - 考虑 $b$ 的值
-    - $b = 0$
-    - $b < 0$
-    - $b > 0$
-    - $b$ 为最小整数
-    - $b$ 为最大整数
+  - $b = 0$
+  - $b < 0$
+  - $b > 0$
+  - $b$ 为最小整数
+  - $b$ 为最大整数
 
 现在，我们可以选择覆盖这些类别的测试数据了：
 

@@ -1,10 +1,9 @@
 // https://dev.to/silviaespanagil/how-to-create-a-scroll-to-top-button-with-react-17do
 import UpIcon from "@/components/icons/up";
 import { useState, useEffect } from "react";
-import { motion, useReducedMotion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function GoTop() {
-  // const shouldReduceMotion = useReducedMotion();
   const shouldReduceMotion = false;
   const initialOpacity = shouldReduceMotion ? 1 : 0;
 
@@ -30,7 +29,7 @@ export default function GoTop() {
           animate={{ opacity: 1 }}
           exit={{ opacity: initialOpacity }}
           whileHover={{ scale: 1.1 }}
-          className="card-hoverable size-8 flex items-center justify-center fixed bottom-5 right-5"
+          className="fixed right-5 bottom-5 flex size-8 card-hoverable items-center justify-center"
           onClick={handleScrollUp}
         >
           <UpIcon />

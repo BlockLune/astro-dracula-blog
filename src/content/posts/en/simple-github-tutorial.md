@@ -1,16 +1,16 @@
 ---
 abbrlink: 1cce885f
 categories:
-- CS
-- Tools
-- vcs
+  - CS
+  - Tools
+  - vcs
 date: 2024-01-27 12:50:29
 tags:
-- git
-- software-engineering
-- ssh
-- github
-- version-control
+  - git
+  - software-engineering
+  - ssh
+  - github
+  - version-control
 title: Simple GitHub Tutorial
 updated: 2024-11-25 15:49:00
 ---

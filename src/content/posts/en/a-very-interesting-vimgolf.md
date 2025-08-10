@@ -1,14 +1,14 @@
 ---
 abbrlink: 6023bfa0
 categories:
-- CS
-- Tools
+  - CS
+  - Tools
 date: 2024-01-28 12:32:52
 tags:
-- vim
-- tool
-- quicksort
-- vimgolf
+  - vim
+  - tool
+  - quicksort
+  - vimgolf
 title: A very interesting VimGolf
 ---
 
