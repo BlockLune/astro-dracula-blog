@@ -66,7 +66,7 @@ export const MISC = {
     minHeadings: 3,
   },
   postStack: {
-    initialLimit: 5,
+    initialLimit: 10,
     limitIncrement: 10,
     searchResultsLimit: 5,
   },
