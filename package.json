@@ -57,8 +57,8 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,jsx,ts,tsx,astro}": [
-      "pnpm lint",
-      "pnpm format"
+      "prettier --write",
+      "eslint --fix"
     ]
   }
 }
