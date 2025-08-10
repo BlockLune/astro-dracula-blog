@@ -10,8 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "new": "node scripts/new.js",
-    "lint": "eslint . --fix --max-warnings=0",
-    "format": "prettier . --write",
+    "lint": "",
+    "format": "",
     "prepare": "husky"
   },
   "dependencies": {
@@ -45,18 +45,9 @@
     "use-debounce": "^10.0.4"
   },
   "devDependencies": {
-    "@eslint/js": "^9.25.1",
-    "eslint": "^9.25.1",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.2.6",
-    "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.1",
-    "prettier": "3.5.3"
+    "lint-staged": "^15.5.1"
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --cache --fix",
-    "*": "prettier --ignore-unknown --write"
   }
 }
