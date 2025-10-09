@@ -1,13 +1,15 @@
 export const SITE = {
   title: {
-    en: "BlockLune's Blog",
-    zh: "BlockLune's Blog",
+    en: "Romiafan's Blog",
+    zh: "Romiafan's Blog",
+    id: "Blog Romiafan",
   },
   description: {
     en: "A blog about development and life, powered by Astro.",
     zh: "一个关于开发和生活的博客，由 Astro 驱动。",
+    id: "Blog tentang Developer dan kehidupan, diberdayakan oleh Astro.",
   },
-  url: "https://blocklune.cc",
+  url: "https://romiafan.com",
   og: {
     imageUrl: "/ogimage.jpg",
   },
@@ -25,19 +27,20 @@ export const SITE = {
 };
 
 export const AUTHOR = {
-  name: "BlockLune",
-  link: "https://github.com/BlockLune",
-  email: "i@blocklune.cc",
+  name: "Romiafan",
+  link: "https://github.com/romiafan",
+  email: "romiafan@gmail.com",
   bio: {
-    en: "A student majoring in computer science and technology.",
-    zh: "一名计算机科学与技术专业的学生。",
+    en: "A Freelancer and IT Enthusiast.",
+    zh: "一名自由职业者和IT爱好者。",
+    id: "Seorang Freelancer dan Penggemar IT.",
   },
 };
 
 export const SOCIALS = [
   {
     name: "Github",
-    href: "https://github.com/BlockLune",
+    href: "https://github.com/romiafan",
     linkTitle: `${AUTHOR.name} on Github`,
   },
   {

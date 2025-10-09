@@ -1,4 +1,5 @@
 import { MISC } from "@/config";
+import type { Lang } from "./i18n";
 
 export function getDiffInDays(
   date1: number | string | Date,
@@ -10,8 +11,23 @@ export function getDiffInDays(
   return Math.abs(diffInDays);
 }
 
-export function getFormattedDate(date: number | string | Date) {
-  return new Date(date).toISOString().slice(0, 10);
+const localeMap: Record<Lang, string> = {
+  en: "en-US",
+  zh: "zh-CN",
+  id: "id-ID",
+};
+
+export function getFormattedDate(date: number | string | Date, lang?: Lang) {
+  if (!lang) {
+    return new Date(date).toISOString().slice(0, 10);
+  }
+
+  const locale = localeMap[lang] || "en-US";
+  return new Date(date).toLocaleDateString(locale, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 }
 
 export function getColor(diffInDays: number) {
