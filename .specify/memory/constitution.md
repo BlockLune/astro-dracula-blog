@@ -90,7 +90,7 @@ The blog MUST be accessible and truly multilingual:
 - **Keyboard Navigation**: All interactive elements MUST be keyboard accessible. Focus states MUST be visible.
 - **ARIA Labels**: Use ARIA labels for icon-only buttons and dynamic content regions (search results, infinite scroll).
 - **Color Contrast**: All text MUST meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text). Dracula theme colors are pre-validated.
-- **I18n Completeness**: All UI strings MUST be translated in `src/utils/i18n.ts`. New features MUST support both en/zh languages.
+- **I18n Completeness**: All UI strings MUST be translated in `src/utils/i18n.ts`. New features MUST support all supported languages (en/zh/id).
 - **Fallback Logic**: Posts MUST gracefully fall back to available language if translation missing. No broken links.
 - **Language Metadata**: All pages MUST include proper lang attribute and hreflang tags for SEO.
 
