@@ -1,13 +1,15 @@
-# Astro Dracula Blog
+# Romiafan's Blog
 
 <p>
-    <a href="https://blocklune.cc"><strong>🛑 Live Demo</strong></a>&nbsp;&nbsp;/&nbsp;&nbsp;
+    <a href="https://romiafan.com"><strong>🛑 Live Site</strong></a>&nbsp;&nbsp;/&nbsp;&nbsp;
     <a href="doc/gallery.md"><strong>🖼️Gallery</strong></a>&nbsp;&nbsp;/&nbsp;&nbsp;
     <strong>🌏 English</strong>&nbsp;&nbsp;/&nbsp;&nbsp;
     <a href="doc/readme_zh.md"><strong>🌏 简体中文</strong></a>
 </p>
 
-🌟 A fast and simple blog system with dracula theme built with Astro v5.
+🌟 Personal blog of Romiafan - A Freelancer and IT Enthusiast. Built with Astro v5, featuring trilingual support (English, Chinese, Indonesian).
+
+_Based on [Astro Dracula Blog](https://github.com/BlockLune/astro-dracula-blog) by [BlockLune](https://github.com/BlockLune)_
 
 [![Astro Dracula Blog](doc/img/hero.webp)](doc/gallery.md)
 
@@ -22,20 +24,16 @@
 - [x] :world_map: Sitemap & RSS Feed
 - [x] :spider_web: SEO-Friendly
 - [x] :robot: Auto [llms.txt](https://llmstxt.org/) generation (LLMs-Friendly)
-- [x] :earth_asia: I18n-Supported (`zh` & `en`)
+- [x] :earth_asia: I18n-Supported (`en`, `zh` & `id` - Indonesian)
 - [x] :triangular_ruler: Mathjax
 - [x] :octocat: [GitHub Alerts](https://github.com/chrisweb/rehype-github-alerts)
 - [x] :book: TOC (Table of Contents)
 - [x] :framed_picture: Dynamic Open Graph Generation for Posts
 - [x] :copyright: Project under MIT License & Support License customization for each post
 
-## :white_check_mark: Lighthouse Score
+## :white_check_mark: Performance
 
-<p aligh="center">
-    <a href="https://pagespeed.web.dev/analysis/https-blocklune-cc/72o0c25cxa?form_factor=desktop">
-        <img alt="Astro Dracula Blog Lighthouse Score" src="doc/img/lighthouse-score.png" />
-    </a>
-</p>
+This blog is built with performance in mind, leveraging Astro's static site generation for optimal speed and efficiency.
 
 ## :rocket: How To Use
 
@@ -78,8 +76,8 @@ To use this theme, follow these steps:
 
 1. Edit `src/config.ts` to configure the basic information for your site. You can also configure your [umami](https://umami.is/) analytics and search engine verifications here.
 2. Replace `src/assets/avatar.webp` with your own avatar.
-3. Rewrite your own about page text in `src/content/info/en/about.md` & `src/info/zh/about.md` (**📌Note: Please retain the license information contained therein and, if possible, the url for this project❤️.**).
-4. Delete my posts in `src/content/posts` and write your own. Currently the theme supports both Chinese and English languages, for different language versions of the same post, you need to make sure they are located in the `en` and `zh` directories and use the same filename.
+3. Rewrite your own about page text in `src/content/info/en/about.md`, `src/content/info/zh/about.md` & `src/content/info/id/about.md` (**📌Note: Please retain the license information contained therein and, if possible, the url for this project❤️.**).
+4. Delete my posts in `src/content/posts` and write your own. This blog supports English, Chinese, and Indonesian languages. For different language versions of the same post, make sure they are located in the `en`, `zh`, or `id` directories and use the same filename.
 5. Remove `public/_redirects` and use your own Netlify redirect configuration.
 6. Remove the icons in `public` and use your own. The commands below may be helpful:
 
@@ -150,21 +148,30 @@ To customize the color scheme of this theme, edit the following files:
 
 ### I18n Configuration
 
-Currently this theme supports both Chinese and English, and uses English as its default language.
+This blog supports English, Chinese, and Indonesian languages, with English as the default.
 
-To switch it to Chinese:
-
-- Edit `src/utils/i18n.ts`:
+To switch the default language, edit `src/utils/i18n.ts`:
 
 ```ts
+// For Chinese:
 export const defaultLang: Lang = "zh";
+
+// For Indonesian:
+export const defaultLang: Lang = "id";
 ```
 
-- Edit `public/_redirects` (Make sure these are at the end of the file):
+And update `public/_redirects` accordingly (make sure these are at the end of the file):
 
 ```text
+# For Chinese default:
 / /en 302! Language=en
+/ /id 302! Language=id
 / /zh 302!
+
+# For Indonesian default:
+/ /en 302! Language=en
+/ /zh 302! Language=zh
+/ /id 302!
 ```
 
 ### Useful Commands
@@ -192,32 +199,36 @@ More detailed usage of `pnpm new` (The output of `pnpm new --help`):
 Usage: pnpm new [options] <post-title>
 
 Options:
-  -l, --lang <en|zh>   Set the language (default: en)
-  -d, --draft          Create a draft post (default: false)
-  -m, --mdx            Use MDX format (default: false)
-  -h, --help           Show this help message
+  -l, --lang <en|zh|id>  Set the language (default: en)
+  -d, --draft            Create a draft post (default: false)
+  -m, --mdx              Use MDX format (default: false)
+  -h, --help             Show this help message
 
 Example:
   pnpm new "Hello World"
   pnpm new -l zh "你好，世界"
+  pnpm new -l id "Halo Dunia"
 ```
 
 > [!Caution]
 > Due to [the slug generation library used](https://www.npmjs.com/package/slugify), an empty slug will be generated for a full Chinese title like “你好，世界”, which will result in a file called `Untitled.md`.
 
-## :books: The Story
+## :memo: About This Blog
 
-This is my fourth attempt at building a blog system. My journey began at the tender age of 14, when I first dabbled in creating a blog. I learned the basics of HTML in a junior high computer class, and furthered my knowledge through resources such as [doyoudo](https://www.bilibili.com/video/BV1gp411f7j6). My first attempt at blogging was a simple static site created with HTML & CSS, no JavaScript, and hosted on GitHub Pages.
+This is Romiafan's personal blog, built to share insights on software development, technology, and life experiences. As a freelancer and IT enthusiast, I wanted a platform that is:
 
-As I approached college, I experimented with [Hexo](https://hexo.io/) and the [Icarus](https://ppoffice.github.io/hexo-theme-icarus/) theme for my second blog. For the third iteration, I continued using Hexo, but this time with the [NexT](https://theme-next.js.org/) theme. Using a framework like Hexo greatly streamlines the blogging process, allowing me to focus on content creation. However, I have always felt the "weight" of using a framework.
+- **Fast & Modern**: Built with Astro v5 for optimal performance
+- **Multilingual**: Supports English, Chinese, and Indonesian to reach a wider audience
+- **Clean & Focused**: Minimalist design that puts content first
+- **Customizable**: Easy to personalize and extend
 
-Determined to create a blog that was truly my own, I decided to build one from the ground up. And here it is!
+## :link: Credits & References
 
-The blog is mainly built with [Astro](https://astro.build/) with [React](https://react.dev/) components. I chose Astro because it is super fast. The color scheme is inspired by [Dracula](https://draculatheme.com/). I use [Tailwind CSS](https://tailwindcss.com/) for styling and [Tailwind Typography](https://github.com/tailwindlabs/tailwindcss-typography) for typography. And I do some animations with [Motion](https://motion.dev) (the original Framer Motion).
+This blog is based on the excellent [Astro Dracula Blog](https://github.com/BlockLune/astro-dracula-blog) template by [BlockLune](https://github.com/BlockLune).
 
-## :link: References
+Additional references:
 
 - [Dracula Theme](https://draculatheme.com/contribute)
-- [overreacted.io - Dan's blog](https://overreacted.io/)
-- [bearblog.dev](https://bearblog.dev/)
 - [Astro Docs](https://docs.astro.build/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Motion](https://motion.dev)

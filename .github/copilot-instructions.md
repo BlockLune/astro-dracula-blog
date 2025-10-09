@@ -1,6 +1,6 @@
-# Astro Dracula Blog - AI Coding Instructions
+# Romiafan's Blog - AI Coding Instructions
 
-This is a multilingual blog built with Astro v5, React, and Tailwind CSS using the Dracula theme.
+This is Romiafan's personal blog - a trilingual blog built with Astro v5, React, and Tailwind CSS using the Dracula theme.
 
 ## Architecture Overview
 
@@ -8,6 +8,7 @@ This is a multilingual blog built with Astro v5, React, and Tailwind CSS using t
 - **Content System**: Astro Content Collections with frontmatter validation via Zod schemas
 - **Styling**: Dracula theme with custom CSS variables, using Tailwind CSS classes
 - **Build**: Static site generation with optional background processes for dev server
+- **Languages**: English (en), Chinese (zh), Indonesian (id)
 
 ## Content System Patterns
 
@@ -26,8 +27,8 @@ ogImageUrl?: string
 ```
 
 ### Language Routing
-- **File Pattern**: `src/content/posts/en/post-name.md` and `src/content/posts/zh/post-name.md`
-- **URL Pattern**: `/en/posts/post-name` and `/zh/posts/post-name` 
+- **File Pattern**: `src/content/posts/en/post-name.md`, `src/content/posts/zh/post-name.md`, and `src/content/posts/id/post-name.md`
+- **URL Pattern**: `/en/posts/post-name`, `/zh/posts/post-name`, and `/id/posts/post-name`
 - **Fallback Logic**: If post doesn't exist in requested language, falls back to other available languages
 - **Configuration**: Default language set in `src/utils/i18n.ts` (`defaultLang`)
 
@@ -82,7 +83,8 @@ loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/posts" })
 Use `pnpm new` script for new posts:
 ```bash
 pnpm new "Post Title"           # English post
-pnpm new -l zh "文章标题"        # Chinese post  
+pnpm new -l zh "文章标题"        # Chinese post
+pnpm new -l id "Judul Pos"      # Indonesian post  
 pnpm new -d "Draft Title"       # Create draft
 ```
 
