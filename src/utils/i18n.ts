@@ -3,6 +3,7 @@ import { MISC } from "@/config";
 export const languages = {
   en: "EN",
   zh: "中",
+  id: "ID",
 };
 
 export const defaultLang: Lang = "en";
@@ -77,6 +78,44 @@ export const ui = {
     "post.license": "许可证",
     "post.notSupportedLang": "语言暂不支持",
     "post.notSupportedLangDescription": "抱歉，此文章暂不支持您的语言。",
+  },
+  id: {
+    loadMore: "Muat Lebih Banyak",
+    loading: "Memuat...",
+    errorLoadingSomePosts:
+      "Beberapa pos gagal dimuat. Hasil mungkin tidak lengkap.",
+    errorLoadingPosts:
+      "Gagal memuat lebih banyak pos. Silakan coba lagi nanti.",
+    errorLoadingSearchData:
+      "Gagal memuat data pencarian. Silakan coba lagi nanti.",
+    noMorePosts: "Tidak ada lagi pos untuk dimuat.",
+    noPostsFound: "Tidak ditemukan pos.",
+    "nav.home": "Beranda",
+    "nav.tags": "Tag",
+    "nav.tags.description":
+      "Ini adalah indeks tag situs ini, di mana Anda dapat menjelajah dan dengan cepat menemukan pos dan konten terkait topik yang Anda minati.",
+    "nav.about": "Tentang",
+    "search.placeholder.firstPart": "Cari di ",
+    "search.placeholder.secondPart.post": " pos...",
+    "search.placeholder.secondPart.tag": " tag...",
+    "search.noResults": "Tidak ditemukan hasil",
+    "postsWithTag.firstPart": "Pos dengan tag",
+    "postsWithTag.secondPart": "",
+    "postsWithTag.description.firstPart": "Berikut adalah semua pos dengan tag",
+    "postsWithTag.description.secondPart": ".",
+    toc: "Daftar Isi",
+    pageNotFound: "HALAMAN TIDAK DITEMUKAN",
+    pageNotFoundDescription:
+      "Maaf, halaman yang Anda cari tidak ada. Silakan periksa URL atau kembali ke beranda.",
+    goBackHome: "Kembali ke Beranda",
+    publishedAt: "Diterbitkan pada",
+    updatedAt: "Diperbarui pada",
+    "post.newlyUpdatedMsg": `Diperbarui dalam ${MISC.dateTag.daysToBeGreen} hari`,
+    "post.oldPostWarningMsg": `Pembaruan terakhir lebih dari ${MISC.dateTag.daysToBeRed} hari yang lalu`,
+    "post.license": "Dilisensikan di bawah",
+    "post.notSupportedLang": "Bahasa tidak didukung",
+    "post.notSupportedLangDescription":
+      "Maaf, bahasa Anda tidak tersedia untuk pos ini.",
   },
 } as const;
 
