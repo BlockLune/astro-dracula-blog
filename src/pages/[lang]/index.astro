@@ -1,19 +1,17 @@
 ---
-import { getCollection } from "astro:content";
 import PostStack from "@/components/ui/post-stack";
 import BaseLayout from "@/layouts/base-layout.astro";
 import { supportedLangs } from "@/utils/i18n";
-import { getSnapshots } from "@/utils/post";
+import { getRankedSnapshotsForLang } from "@/utils/post-cache";
 import { MISC } from "@/config";
 
-const posts = await getCollection("posts");
-
-const { lang } = Astro.params;
-const snapshots = await getSnapshots(posts, lang);
+const { lang } = Astro.props;
+const snapshots = await getRankedSnapshotsForLang(lang);
 
 export function getStaticPaths() {
   return supportedLangs.map((lang) => ({
     params: { lang },
+    props: { lang },
   }));
 }
 ---

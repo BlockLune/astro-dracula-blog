@@ -1,20 +1,34 @@
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { toString as mdastToString } from "mdast-util-to-string";
 
+import { MISC } from "../config";
+
+function getFirstMoreMarkIndex(mdString: string) {
+  const indexes = MISC.more.marks
+    .map((mark) => mdString.indexOf(mark))
+    .filter((index) => index >= 0);
+
+  return indexes.length > 0 ? Math.min(...indexes) : -1;
+}
+
+function sliceAtFirstMoreMark(mdString: string) {
+  const moreMarkIndex = getFirstMoreMarkIndex(mdString);
+  return moreMarkIndex >= 0 ? mdString.slice(0, moreMarkIndex) : mdString;
+}
+
 export function getDescFromMdString(mdString: string | undefined) {
   if (!mdString) {
     return "";
   }
-  const mdast = fromMarkdown(mdString);
-  const desc = mdastToString(mdast);
-  const pos = desc.indexOf("<!--more-->");
-  return desc.slice(0, pos);
+
+  const mdast = fromMarkdown(sliceAtFirstMoreMark(mdString));
+  return mdastToString(mdast);
 }
 
 export function remarkDescPlugin() {
   // oxlint-disable-next-line @typescript-eslint/no-explicit-any
   return (tree: any, { data }: any) => {
     const textOnPage = mdastToString(tree);
-    data.astro.frontmatter.desc = getDescFromMdString(textOnPage);
+    data.astro.frontmatter.desc = sliceAtFirstMoreMark(textOnPage);
   };
 }

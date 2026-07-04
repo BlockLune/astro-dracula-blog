@@ -1,41 +1,25 @@
 import type { APIRoute } from "astro";
 
-import { getCollection } from "astro:content";
-import { getSnapshots } from "@/utils/post";
-import { type Lang, supportedLangs } from "@/utils/i18n";
+import { supportedLangs } from "@/utils/i18n";
+import { getRankedSnapshotsForLang } from "@/utils/post-cache";
 
-export const GET: APIRoute = async ({ params }) => {
-  const lang = params.lang as Lang;
-  const rank = Number(params.rank);
-
-  const posts = await getCollection("posts");
-  const snapshots = await getSnapshots(posts, lang);
-
-  return new Response(
-    JSON.stringify(
-      snapshots.map((snapshot, index) => ({ rank: index + 1, ...snapshot }))[
-        rank - 1
-      ]
-    )
-  );
+export const GET: APIRoute = async ({ props }) => {
+  return new Response(JSON.stringify(props.snapshot));
 };
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-
-  const paths: { params: { lang: Lang; rank: string } }[] = [];
-
-  for (const lang of supportedLangs) {
-    const snapshots = await getSnapshots(posts, lang);
-    snapshots.forEach((_, index) => {
-      paths.push({
+  const paths = await Promise.all(
+    supportedLangs.map(async (lang) => {
+      const snapshots = await getRankedSnapshotsForLang(lang);
+      return snapshots.map((snapshot) => ({
         params: {
           lang,
-          rank: String(index + 1),
+          rank: String(snapshot.rank),
         },
-      });
-    });
-  }
+        props: { snapshot },
+      }));
+    })
+  );
 
-  return paths;
+  return paths.flat();
 }

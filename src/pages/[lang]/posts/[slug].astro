@@ -2,43 +2,36 @@
 import BaseLayout from "@/layouts/base-layout.astro";
 import MarkdownPost from "@/components/ui/markdown-post.astro";
 import TocCard from "@/components/ui/cards/toc-card";
-import { classifyByLangs, getLangFromId } from "@/utils/post";
-import { getCollection, getEntry } from "astro:content";
-import { getDescFromMdString } from "@/utils/markdown";
-import { render } from "astro:content";
-import { type Lang, supportedLangs } from "@/utils/i18n";
+import { classifyByLangs, getLangFromId, makeUniqueByLang } from "@/utils/post";
+import {
+  getPostDescription,
+  getPostHeadings,
+  getPosts,
+} from "@/utils/post-cache";
+import { supportedLangs } from "@/utils/i18n";
 
 export async function getStaticPaths() {
-  async function getPost(currentLang: Lang, slug: string) {
-    let post = await getEntry("posts", `${currentLang}/${slug}`);
-    if (!post) {
-      for (const possibleLang of supportedLangs) {
-        if (currentLang === possibleLang) continue;
-        post = await getEntry("posts", `${possibleLang}/${slug}`);
-        if (post) break;
-      }
-    }
-    return post!; // there should be a post at this point
-  }
-
-  const posts = await getCollection("posts");
+  const posts = await getPosts();
   const classified = classifyByLangs(posts);
   const paths = [];
 
-  for (const slug of classified.keys()) {
+  for (const [slug, postsWithSameSlug] of classified) {
     for (const lang of supportedLangs) {
-      const post = await getPost(lang, slug);
-      const headings = post ? (await render(post)).headings : [];
+      const post = makeUniqueByLang(postsWithSameSlug, lang)[0];
+      const [headings, description] = await Promise.all([
+        getPostHeadings(post),
+        getPostDescription(post),
+      ]);
       paths.push({
         params: { lang, slug },
-        props: { post, headings },
+        props: { post, headings, description },
       });
     }
   }
   return paths;
 }
 
-const { post, headings } = Astro.props;
+const { post, headings, description } = Astro.props;
 const { lang, slug } = Astro.params;
 const actualLangOfPost = getLangFromId(post.id);
 const ogImageUrlToUse =
@@ -47,7 +40,7 @@ const ogImageUrlToUse =
 
 <BaseLayout
   title={post!.data.title}
-  description={getDescFromMdString(post.body)}
+  description={description}
   ogImageUrl={ogImageUrlToUse}
   headerAsH1={false}
 >

@@ -1,37 +1,29 @@
 ---
-import { getCollection } from "astro:content";
 import LabelTag from "@/components/ui/tags/label-tag";
 import PostStack from "@/components/ui/post-stack";
 import BaseLayout from "@/layouts/base-layout.astro";
 import { supportedLangs } from "@/utils/i18n";
 import { useTranslations } from "@/utils/i18n";
 import {
-  getSnapshots,
-  getUniqueLowerCaseTagMap,
-  makeUniqueByLang,
-} from "@/utils/post";
+  getRankedSnapshotsForTag,
+  getTagMapForLang,
+} from "@/utils/post-cache";
 
 export const getStaticPaths = async () => {
   const paths = await Promise.all(
     supportedLangs.map(async (lang) => {
-      const posts = await getCollection("posts");
-      const uniquePosts = makeUniqueByLang(posts, lang);
-      const tags = getUniqueLowerCaseTagMap(
-        uniquePosts.flatMap((uniquePost) => uniquePost.data.tags)
-      );
+      const tags = await getTagMapForLang(lang);
       return Array.from(tags.keys()).map((tag) => ({
         params: { lang, tag },
+        props: { lang, tag },
       }));
     })
   );
   return paths.flat();
 };
 
-const { lang, tag } = Astro.params;
-const filteredPosts = await getCollection("posts", (post) =>
-  getUniqueLowerCaseTagMap(post.data.tags).get(tag)
-);
-const filteredSnapshots = await getSnapshots(filteredPosts, lang);
+const { lang, tag } = Astro.props;
+const filteredSnapshots = await getRankedSnapshotsForTag(lang, tag);
 const t = useTranslations(lang);
 ---
 

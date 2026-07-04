@@ -8,11 +8,11 @@ import Prose from "@/components/style/prose.astro";
 import TocCard from "./cards/toc-card.tsx";
 import { MISC } from "@/config";
 import { getUniqueLowerCaseTagMap } from "@/utils/post";
-import { render } from "astro:content";
 import { getDiffInDays } from "@/utils/date";
+import { getRenderedPost } from "@/utils/post-cache";
 
 const { lang, actualLang, post, headings } = Astro.props;
-const { Content } = await render(post);
+const { Content } = await getRenderedPost(post);
 
 let licenseEnabled = MISC.license?.enabled;
 if (post.data.license && post.data.license === "none") {
