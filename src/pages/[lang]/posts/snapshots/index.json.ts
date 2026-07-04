@@ -1,22 +1,17 @@
 import type { APIRoute } from "astro";
 
-import { getCollection } from "astro:content";
-import { getSnapshots } from "@/utils/post";
-import { type Lang, supportedLangs } from "@/utils/i18n";
+import { supportedLangs } from "@/utils/i18n";
+import { getRankedSnapshotsForLang } from "@/utils/post-cache";
 
-export const GET: APIRoute = async ({ params }) => {
-  const lang = params.lang as Lang;
-
-  const posts = await getCollection("posts");
-  const snapshots = await getSnapshots(posts, lang);
-
-  return new Response(
-    JSON.stringify(
-      snapshots.map((snapshot, index) => ({ rank: index + 1, ...snapshot }))
-    )
-  );
+export const GET: APIRoute = async ({ props }) => {
+  return new Response(JSON.stringify(props.snapshots));
 };
 
 export async function getStaticPaths() {
-  return supportedLangs.map((lang) => ({ params: { lang } }));
+  return Promise.all(
+    supportedLangs.map(async (lang) => ({
+      params: { lang },
+      props: { snapshots: await getRankedSnapshotsForLang(lang) },
+    }))
+  );
 }

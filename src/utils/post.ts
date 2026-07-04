@@ -61,31 +61,37 @@ export const makeUniqueByLang = (posts: Post[], expectedLang: Lang) => {
 /**
  * Gets the snapshots of posts. They are unique to languages, and sorted by date.
  */
+type PostDescriptionGetter = (post: Post) => string | Promise<string>;
+
 export const getSnapshots = async (
   posts: Post[],
-  expectedLang: Lang
+  expectedLang: Lang,
+  getPostDescription: PostDescriptionGetter = (post) =>
+    getDescFromMdString(post.body)
 ): Promise<PostSnapshot[]> => {
   const uniquePosts = makeUniqueByLang(posts, expectedLang);
-  const sorted = uniquePosts.sort((a, b) => {
+  const sorted = [...uniquePosts].sort((a, b) => {
     const dateA = a.data.updated || a.data.date;
     const dateB = b.data.updated || b.data.date;
     return dateB.getTime() - dateA.getTime();
   });
-  return sorted.map((post) => {
-    const slug = getSlugFromId(post.id);
+  return Promise.all(
+    sorted.map(async (post) => {
+      const slug = getSlugFromId(post.id);
 
-    return {
-      href: `/${expectedLang}/posts/${slug}`,
-      title: post.data.title,
-      date: getCloserFormattedDate(
-        post.data.updated?.toISOString(),
-        post.data.date.toISOString()
-      )!,
-      description: getDescFromMdString(post.body),
-      slug,
-      tags: Array.from(getUniqueLowerCaseTagMap(post.data.tags).keys()),
-    };
-  });
+      return {
+        href: `/${expectedLang}/posts/${slug}`,
+        title: post.data.title,
+        date: getCloserFormattedDate(
+          post.data.updated?.toISOString(),
+          post.data.date.toISOString()
+        )!,
+        description: await getPostDescription(post),
+        slug,
+        tags: Array.from(getUniqueLowerCaseTagMap(post.data.tags).keys()),
+      };
+    })
+  );
 };
 
 /**

@@ -25,7 +25,7 @@ export default function PostCard({
       <h2 className="text-3xl font-bold text-dracula-pink">{snapshot.title}</h2>
       <div className="flex flex-wrap gap-2">
         <DateTag lang={lang} date={snapshot.date} />
-        {snapshot.tags.sort().map((tag) => (
+        {[...snapshot.tags].sort().map((tag) => (
           <LabelTag lang={lang} label={tag} key={tag} />
         ))}
       </div>

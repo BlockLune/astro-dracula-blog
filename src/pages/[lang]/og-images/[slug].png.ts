@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
 import { generateOgImageForPost } from "@/utils/og";
 import { getLangFromId, getSlugFromId } from "@/utils/post";
-import { getCollection } from "astro:content";
+import { getPosts } from "@/utils/post-cache";
 import type { Lang } from "@/utils/i18n";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = await getPosts();
 
   return posts.map((post) => ({
     params: {

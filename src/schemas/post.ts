@@ -27,6 +27,11 @@ export const PostSnapshotSchema = z.object({
   date: z.string(),
 });
 
+export const RankedPostSnapshotSchema = PostSnapshotSchema.extend({
+  rank: z.number(),
+});
+
 export type PostFrontmatter = z.infer<typeof PostFrontmatterSchema>;
 export type PostSnapshot = z.infer<typeof PostSnapshotSchema>;
+export type RankedPostSnapshot = z.infer<typeof RankedPostSnapshotSchema>;
 export type Post = CollectionEntry<"posts">;
