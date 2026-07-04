@@ -4,8 +4,6 @@ categories:
   - CS
   - Algorithms & Data structures
 date: 2023-07-27 16:28:42
-katex: true
-mathjax: true
 tags:
   - algorithm
   - data-structure

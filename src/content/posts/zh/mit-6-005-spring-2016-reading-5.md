@@ -1,7 +1,6 @@
 ---
 title: 阅读材料 5 - 规格说明 | MIT 6.005 学习笔记
 date: 2025-06-29 10:49:00
-mathjax: true
 tags:
   - software-engineering
   - java

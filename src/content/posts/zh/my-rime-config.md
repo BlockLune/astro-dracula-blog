@@ -32,7 +32,8 @@ cd plum
 bash rime-install iDvel/rime-ice:others/recipes/full # 安装 「雾凇拼音」
 ```
 
-> [!Tip] > **在「添加输入法」中找不到 Rime？** 安装完成后，你可能需要登出（Log Out）你的当前 macOS 用户并重新登入后，才能在添加输入法中找到 Rime。
+> [!Tip]
+> **在「添加输入法」中找不到 Rime？** 安装完成后，你可能需要登出（Log Out）你的当前 macOS 用户并重新登入后，才能在添加输入法中找到 Rime。
 
 在 Arch Linux 上的安装命令如下：
 

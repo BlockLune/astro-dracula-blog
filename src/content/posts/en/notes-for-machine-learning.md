@@ -4,8 +4,6 @@ categories:
   - CS
   - AI
 date: 2023-07-14 11:59:14
-katex: true
-mathjax: true
 tags:
   - ai
   - machine-learning

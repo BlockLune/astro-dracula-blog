@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./dracula.css";
+@import "satteri-callouts/theme/github";
 @import "@fontsource/fira-code" layer(base);
 @plugin "@tailwindcss/typography";
 @config '../../tailwind.config.mjs';

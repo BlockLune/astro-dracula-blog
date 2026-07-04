@@ -4,8 +4,6 @@ categories:
   - CS
   - Tools
 date: 2023-07-04 16:03:46
-katex: true
-mathjax: true
 tags:
   - python
   - regex

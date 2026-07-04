@@ -51,7 +51,7 @@ while (i = 1)
 
 C 代码：
 
-```C
+```c
 #include <stdio.h>
 
 int main()

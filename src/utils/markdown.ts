@@ -24,11 +24,3 @@ export function getDescFromMdString(mdString: string | undefined) {
   const mdast = fromMarkdown(sliceAtFirstMoreMark(mdString));
   return mdastToString(mdast);
 }
-
-export function remarkDescPlugin() {
-  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
-  return (tree: any, { data }: any) => {
-    const textOnPage = mdastToString(tree);
-    data.astro.frontmatter.desc = sliceAtFirstMoreMark(textOnPage);
-  };
-}

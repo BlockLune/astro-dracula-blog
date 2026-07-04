@@ -4,7 +4,6 @@ categories:
   - CS
   - Tools
 date: 2022-09-15 14:11:07
-mathjax: true
 tags:
   - latex
   - math
@@ -17,8 +16,6 @@ toc: true
 用 LaTeX 写数学公式的时候，总记不住一些写法，故在此记录学习笔记。
 
 <!--more-->
-
-**注意：由于我博客的一些问题（博客使用 MathJax 渲染，但有些 LaTeX 符号 MathJax 并不支持），这篇文章里有些符号没有被正确渲染出来，请见谅。**
 
 ## 常见符号
 

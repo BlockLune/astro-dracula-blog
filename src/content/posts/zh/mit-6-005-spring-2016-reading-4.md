@@ -4,7 +4,6 @@ categories:
   - CS
   - Software Engineering
 date: 2024-09-11 15:00:00
-mathjax: true
 tags:
   - code-hygiene
   - code-review

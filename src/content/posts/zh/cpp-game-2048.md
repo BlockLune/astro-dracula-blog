@@ -29,7 +29,7 @@ toc: true
 
 ## C++ 源代码
 
-```C++
+```cpp
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -336,7 +336,7 @@ int main()
 
 我创建了 `box_c` 这个二维数组来构建了下面这样一个棋盘来存放数据。数据值为 0 表示这个格子空着，非零则是对应数字。
 
-```C++
+```cpp
 /*
 
 ([0][0])  ([0][1])  ([0][2])  ([0][3])
@@ -358,7 +358,7 @@ int main()
 
 首先引入两个库：
 
-```C++
+```cpp
 #include <cstdlib>
 #include <ctime>
 ```
@@ -384,7 +384,7 @@ int main()
 > [!Tip]
 > 注意！`srand()`用于初始化，**只需要初始化一次**。所以，你的获取随机数函数应该长得像这样：
 >
-> ```C++
+> ```cpp
 > int getRandomNum(int min, int max)
 > {
 >     return (rand() % (max - min + 1)) + min;
@@ -399,7 +399,7 @@ int main()
 >
 > 而不是这样：
 >
-> ```C++
+> ```cpp
 > int getRandomNum(int min, int max)
 > {
 >     srand(time(0));
@@ -416,7 +416,7 @@ int main()
 
 接着我定义了 `getTwoOrFour()` 和 `generateNewNum()` 函数。前者用于随机生成 2/4，不必多说。后者用于在 4\*4 方格内随机放上一个数字，首先生成行列坐标，如果检查到这个格子空的，可以生成在这，那就生成，结束该函数的运行，否则进行下一次尝试。
 
-```C++
+```cpp
 int getTwoOrFour()
 {
     if (getRandomNum(1, 2) == 1)
@@ -445,7 +445,7 @@ void generateNewNum()
 
 初始化主要就是两方面：一方面是初始化随机数种子；另一方面是清空棋盘（其实还有清空 map 标记），然后随机找两个位置放上 2 或者 4。
 
-```C++
+```cpp
 void init() // 初始化
 {
     // 初始化随机数种子
@@ -472,7 +472,7 @@ void init() // 初始化
 
 移动无非就是上下左右，彼此之间比较类似。这里以向上移动为例：
 
-```C++
+```cpp
 void moveUp()
 {
     for (int j = 0; j < 4; j++)

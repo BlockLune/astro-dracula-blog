@@ -90,7 +90,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 然后打开 `~/.zshrc` 这个文件，找到 `ZSH_THEME` 开头的这一行并修改为：
 
-```zshrc
+```zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 
@@ -144,7 +144,7 @@ git clone https://github.com/sukkaw/zsh-osx-autoproxy ${ZSH_CUSTOM:-~/.oh-my-zsh
 
 为了启用这些插件，您需要再次打开并编辑 `~/.zshrc` 文件（如果您安装了 zsh-osx-autoproxy 插件，记得把对应的那一行取消注释）：
 
-```zshrc
+```zsh
 plugins=(
     fast-syntax-highlighting
     history-substring-search
@@ -173,7 +173,7 @@ alias l="ll -a"
 
 您可以将这些内容写入您的 `~/.zshrc` 配置文件中，这样每次您打开终端它们都会被自动配置好。而我的习惯是创建一个 `~/.aliases` 文件专门存储这些别名，并在 `~/.zshrc` 中添加下面这一行来包含它：
 
-```zshrc
+```zsh
 [[ -f ~/.aliases ]] && source ~/.aliases
 ```
 
@@ -189,7 +189,7 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 
 我在 `~/.zshrc` 中创建了如下函数来让我快速配置终端代理（不带参数为设置代理，使用 `-d`, `--disable`, `-c` 或 `--clear` 来清除代理，使用 `--check` 来检查代理是否生效）：
 
-```zshrc
+```zsh
 proxy() {
   if [[ "$1" == "-d" || "$1" == "--disable" || "$1" == "-c" || "$1" == "--clear" ]]; then
     unset https_proxy http_proxy all_proxy

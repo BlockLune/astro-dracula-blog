@@ -2,14 +2,14 @@
 
 <p>
     <a href="https://blocklune.cc"><strong>🛑 Live Demo</strong></a>&nbsp;&nbsp;/&nbsp;&nbsp;
-    <a href="doc/gallery.md"><strong>🖼️Gallery</strong></a>&nbsp;&nbsp;/&nbsp;&nbsp;
+    <a href="docs/gallery.md"><strong>🖼️Gallery</strong></a>&nbsp;&nbsp;/&nbsp;&nbsp;
     <strong>🌏 English</strong>&nbsp;&nbsp;/&nbsp;&nbsp;
-    <a href="doc/readme_zh.md"><strong>🌏 简体中文</strong></a>
+    <a href="docs/readme_zh.md"><strong>🌏 简体中文</strong></a>
 </p>
 
 🌟 A fast and simple blog system with dracula theme built with Astro v5.
 
-[![Astro Dracula Blog](doc/img/hero.webp)](doc/gallery.md)
+[![Astro Dracula Blog](docs/img/hero.webp)](docs/gallery.md)
 
 ## :fire: Features
 
@@ -23,8 +23,8 @@
 - [x] :spider_web: SEO-Friendly
 - [x] :robot: Auto [llms.txt](https://llmstxt.org/) generation (LLMs-Friendly)
 - [x] :earth_asia: I18n-Supported (`zh` & `en`)
-- [x] :triangular_ruler: Mathjax
-- [x] :octocat: [GitHub Alerts](https://github.com/chrisweb/rehype-github-alerts)
+- [x] :triangular_ruler: Katex-based mathematical formula rendering
+- [x] :octocat: [Callouts](https://github.com/lin-stephanie/satteri-callouts)
 - [x] :book: TOC (Table of Contents)
 - [x] :framed_picture: Dynamic Open Graph Generation for Posts
 - [x] :copyright: Project under MIT License & Support License customization for each post
@@ -33,7 +33,7 @@
 
 <p aligh="center">
     <a href="https://pagespeed.web.dev/analysis/https-blocklune-cc/72o0c25cxa?form_factor=desktop">
-        <img alt="Astro Dracula Blog Lighthouse Score" src="doc/img/lighthouse-score.png" />
+        <img alt="Astro Dracula Blog Lighthouse Score" src="docs/img/lighthouse-score.png" />
     </a>
 </p>
 
@@ -145,7 +145,6 @@ To customize the color scheme of this theme, edit the following files:
 
 - `src/components/style/prose.astro`
 - `src/styles/global.css`
-- `src/styles/rehype-github-alerts.css`
 - `tailwind.config.mjs`
 
 ### I18n Configuration

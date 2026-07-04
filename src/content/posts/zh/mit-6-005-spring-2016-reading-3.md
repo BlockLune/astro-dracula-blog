@@ -4,7 +4,6 @@ categories:
   - CS
   - Software Engineering
 date: 2024-09-11 14:56:57
-mathjax: true
 tags:
   - mit-6-005
   - regression-testing

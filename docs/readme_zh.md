@@ -22,8 +22,8 @@
 - [x] :world_map: Sitemap & RSS 订阅
 - [x] :spider_web: SEO 友好
 - [x] :earth_asia: 支持国际化 (`zh` & `en`)
-- [x] :triangular_ruler: 支持 Mathjax
-- [x] :octocat: [GitHub Alerts](https://github.com/chrisweb/rehype-github-alerts)
+- [x] :triangular_ruler: 支持 Katex 数学公式渲染
+- [x] :octocat: [Callouts](https://github.com/lin-stephanie/satteri-callouts)
 - [x] :book: 目录
 - [x] :framed_picture: 为文章自动生成 Open Graph 图像
 - [x] :copyright: 项目使用 MIT 许可证，并支持为博文定制许可证
@@ -144,7 +144,6 @@ I'm writing my first post!
 
 - `src/components/style/prose.astro`
 - `src/styles/global.css`
-- `src/styles/rehype-github-alerts.css`
 - `tailwind.config.mjs`
 
 ### 语言配置
@@ -156,7 +155,7 @@ I'm writing my first post!
 - 编辑 `src/utils/i18n.ts`：
 
 ```ts
-export const defaultLang : Lang = "zh";
+export const defaultLang: Lang = "zh";
 ```
 
 - 编辑 `public/_redirects`（确保位于文件末尾）：

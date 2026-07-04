@@ -5,8 +5,6 @@ categories:
   - Computing System
   - Nand2Tetris
 date: 2023-07-09 19:44:36
-katex: true
-mathjax: true
 tags:
   - nand2tetris
   - note
