@@ -15,8 +15,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "new": "node scripts/new.js",
-    "format:check": "oxfmt --check src public scripts astro.config.mjs package.json README.md tailwind.config.mjs tsconfig.json",
-    "format": "oxfmt src public scripts astro.config.mjs package.json README.md tailwind.config.mjs tsconfig.json",
+    "format:check": "oxfmt --check src public scripts astro.config.mjs package.json README.md tsconfig.json",
+    "format": "oxfmt src public scripts astro.config.mjs package.json README.md tsconfig.json",
     "lint": "oxlint .",
     "prepare": "simple-git-hooks"
   },

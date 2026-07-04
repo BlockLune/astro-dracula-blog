@@ -1,28 +1,162 @@
 @import "tailwindcss";
-@import "./dracula.css";
 @import "satteri-callouts/theme/github";
 @import "@fontsource/fira-code" layer(base);
 @plugin "@tailwindcss/typography";
-@config '../../tailwind.config.mjs';
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* ── Dracula Color Palette ── */
+@theme {
+  --font-code: "Fira Code", monospace;
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+  /* Darker */
+  --color-dracula-darker-50: #cdd0e4;
+  --color-dracula-darker-100: #b5bad6;
+  --color-dracula-darker-200: #9ea4c8;
+  --color-dracula-darker-300: #888fb8;
+  --color-dracula-darker-400: #727aa8;
+  --color-dracula-darker-500: #5f6795;
+  --color-dracula-darker-600: #53597c;
+  --color-dracula-darker-700: #454a64;
+  --color-dracula-darker-800: #373a4d;
+  --color-dracula-darker-900: #282a36;
+  --color-dracula-darker: #282a36;
+
+  /* Dark */
+  --color-dracula-dark-50: #f7f7fb;
+  --color-dracula-dark-100: #dfe1ed;
+  --color-dracula-dark-200: #c7cadf;
+  --color-dracula-dark-300: #b1b5d0;
+  --color-dracula-dark-400: #9ba0c0;
+  --color-dracula-dark-500: #858bb0;
+  --color-dracula-dark-600: #71779f;
+  --color-dracula-dark-700: #606689;
+  --color-dracula-dark-800: #525771;
+  --color-dracula-dark-900: #44475a;
+  --color-dracula-dark: #44475a;
+
+  /* Light */
+  --color-dracula-light-50: #f8f8f2;
+  --color-dracula-light-100: #eaeada;
+  --color-dracula-light-200: #dcdcc3;
+  --color-dracula-light-300: #cdcdac;
+  --color-dracula-light-400: #bdbd96;
+  --color-dracula-light-500: #adad81;
+  --color-dracula-light-600: #9c9c6c;
+  --color-dracula-light-700: #85855d;
+  --color-dracula-light-800: #6d6d4f;
+  --color-dracula-light-900: #565641;
+  --color-dracula-light: #f8f8f2;
+
+  /* Blue */
+  --color-dracula-blue-50: #f0f2f8;
+  --color-dracula-blue-100: #d7dcec;
+  --color-dracula-blue-200: #bec6df;
+  --color-dracula-blue-300: #a6b0d1;
+  --color-dracula-blue-400: #8f9bc3;
+  --color-dracula-blue-500: #7886b4;
+  --color-dracula-blue-600: #6272a4;
+  --color-dracula-blue-700: #54628c;
+  --color-dracula-blue-800: #485273;
+  --color-dracula-blue-900: #3b425a;
+  --color-dracula-blue: #6272a4;
+
+  /* Cyan */
+  --color-dracula-cyan-50: #fafeff;
+  --color-dracula-cyan-100: #d4f8ff;
+  --color-dracula-cyan-200: #aff0fe;
+  --color-dracula-cyan-300: #8be9fd;
+  --color-dracula-cyan-400: #67e1fb;
+  --color-dracula-cyan-500: #44d9f8;
+  --color-dracula-cyan-600: #22d0f5;
+  --color-dracula-cyan-700: #0dbfe5;
+  --color-dracula-cyan-800: #0ca0bf;
+  --color-dracula-cyan-900: #0c819a;
+  --color-dracula-cyan: #8be9fd;
+
+  /* Green */
+  --color-dracula-green-50: #e2ffe9;
+  --color-dracula-green-100: #bcffcd;
+  --color-dracula-green-200: #97feb1;
+  --color-dracula-green-300: #73fc96;
+  --color-dracula-green-400: #50fa7b;
+  --color-dracula-green-500: #2df760;
+  --color-dracula-green-600: #0cf346;
+  --color-dracula-green-700: #0ccd3d;
+  --color-dracula-green-800: #0ba833;
+  --color-dracula-green-900: #0a8329;
+  --color-dracula-green: #50fa7b;
+
+  /* Orange */
+  --color-dracula-orange-50: #ffefdd;
+  --color-dracula-orange-100: #ffdcb7;
+  --color-dracula-orange-200: #ffca92;
+  --color-dracula-orange-300: #ffb86c;
+  --color-dracula-orange-400: #fda648;
+  --color-dracula-orange-500: #fb9325;
+  --color-dracula-orange-600: #f38107;
+  --color-dracula-orange-700: #cd6d08;
+  --color-dracula-orange-800: #a75a08;
+  --color-dracula-orange-900: #824707;
+  --color-dracula-orange: #ffb86c;
+
+  /* Pink */
+  --color-dracula-pink-50: #ffeaf6;
+  --color-dracula-pink-100: #ffc4e6;
+  --color-dracula-pink-200: #ff9fd6;
+  --color-dracula-pink-300: #ff79c6;
+  --color-dracula-pink-400: #fd55b6;
+  --color-dracula-pink-500: #fb31a5;
+  --color-dracula-pink-600: #f80e95;
+  --color-dracula-pink-700: #d90880;
+  --color-dracula-pink-800: #b3086b;
+  --color-dracula-pink-900: #8e0855;
+  --color-dracula-pink: #ff79c6;
+
+  /* Purple */
+  --color-dracula-purple-50: #fefeff;
+  --color-dracula-purple-100: #e9dafe;
+  --color-dracula-purple-200: #d3b6fc;
+  --color-dracula-purple-300: #bd93f9;
+  --color-dracula-purple-400: #a771f6;
+  --color-dracula-purple-500: #924ff2;
+  --color-dracula-purple-600: #7d2eed;
+  --color-dracula-purple-700: #6916e0;
+  --color-dracula-purple-800: #5914bb;
+  --color-dracula-purple-900: #491298;
+  --color-dracula-purple: #bd93f9;
+
+  /* Red */
+  --color-dracula-red-50: #ffecec;
+  --color-dracula-red-100: #ffc6c6;
+  --color-dracula-red-200: #ffa0a0;
+  --color-dracula-red-300: #ff7b7b;
+  --color-dracula-red-400: #ff5555;
+  --color-dracula-red-500: #fd3131;
+  --color-dracula-red-600: #fb0e0e;
+  --color-dracula-red-700: #dd0606;
+  --color-dracula-red-800: #b70707;
+  --color-dracula-red-900: #910707;
+  --color-dracula-red: #ff5555;
 }
 
+/* ── prose-dracula Theme ── */
+.prose-dracula {
+  --tw-prose-body: var(--color-dracula-light);
+  --tw-prose-headings: var(--color-dracula-pink);
+  --tw-prose-lead: var(--color-dracula-pink);
+  --tw-prose-links: var(--color-dracula-cyan);
+  --tw-prose-bold: var(--color-dracula-purple);
+  --tw-prose-counters: var(--color-dracula-pink);
+  --tw-prose-bullets: var(--color-dracula-pink);
+  --tw-prose-hr: var(--color-dracula-pink);
+  --tw-prose-quotes: var(--color-dracula-light);
+  --tw-prose-quote-borders: var(--color-dracula-pink);
+  --tw-prose-captions: var(--color-dracula-pink);
+  --tw-prose-code: var(--color-dracula-purple);
+  --tw-prose-th-borders: var(--color-dracula-purple);
+  --tw-prose-td-borders: var(--color-dracula-purple);
+}
+
+/* ── Custom Utilities ── */
 @utility copy-code {
   @apply absolute top-0 right-0 bg-dracula-dark/80 px-2 py-1 text-xs text-dracula-light hover:bg-dracula-dark;
 }
@@ -47,6 +181,7 @@
   @apply card-hoverable cursor-text px-8 py-4 text-dracula-light placeholder-dracula-blue focus:bg-dracula-dark focus:outline-hidden;
 }
 
+/* ── Base Styles ── */
 @layer base {
   del {
     @apply text-dracula-blue;
