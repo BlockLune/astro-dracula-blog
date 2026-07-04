@@ -11,6 +11,21 @@ import tailwindcss from "@tailwindcss/vite";
 import { SITE } from "./src/config.ts";
 import { remarkDescPlugin } from "./src/utils/markdown.ts";
 
+// See https://yfi.moe/post/import-font-as-buffer-in-vite
+function fileSystemPath() {
+  return {
+    name: "vite-plugin-file-system-path",
+    transform(_code, id) {
+      if (!id.endsWith("?filepath")) return null;
+
+      return {
+        code: `export default ${JSON.stringify(id.slice(0, -9))}`,
+        map: null,
+      };
+    },
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.url,
@@ -37,6 +52,6 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
-    plugins: [tailwindcss()],
+    plugins: [fileSystemPath(), tailwindcss()],
   },
 });

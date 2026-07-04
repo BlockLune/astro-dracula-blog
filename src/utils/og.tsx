@@ -6,7 +6,7 @@ import type { Post } from "@/schemas/post";
 import type { Lang } from "@/utils/i18n";
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-import loadGoogleFonts, { type FontOptions } from "./load-google-font";
+import loadLocalFonts, { type FontOptions } from "./load-local-font";
 
 function svgBufferToPngBuffer(svg: string) {
   const resvg = new Resvg(svg);
@@ -36,6 +36,7 @@ export async function generateOgImageForPost(lang: Lang, post: Post) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        fontFamily: "Noto Sans SC",
       }}
     >
       <div
@@ -115,9 +116,7 @@ export async function generateOgImageForPost(lang: Lang, post: Post) {
       width: 1200,
       height: 630,
       embedFont: true,
-      fonts: (await loadGoogleFonts(
-        post.data.title + SITE.title[lang] + "by" + AUTHOR.name + "."
-      )) as FontOptions[],
+      fonts: (await loadLocalFonts()) as FontOptions[],
     }
   );
   return svgBufferToPngBuffer(svg);
