@@ -16,7 +16,7 @@ import GoTop from "@/components/ui/go-top.tsx";
 import { SITE } from "@/config";
 import { getLangFromUrl } from "@/utils/i18n";
 
-const { title, description, ogImageUrl, headerAsH1 = true } = Astro.props;
+const { title, headerAsH1 = true, ...metaProps } = Astro.props;
 const [lang] = getLangFromUrl(Astro.url.pathname);
 const pageTitle = title
   ? `${title} | ${SITE.title[lang]}`
@@ -25,12 +25,7 @@ const pageTitle = title
 
 <html lang={lang} class="scroll-smooth">
   <head>
-    <Meta
-      lang={lang}
-      description={description}
-      pageTitle={pageTitle}
-      ogImageUrl={ogImageUrl}
-    />
+    <Meta {...metaProps} lang={lang} pageTitle={pageTitle} />
     <Favicon />
     <RssLink lang={lang} />
     <Sitemap />

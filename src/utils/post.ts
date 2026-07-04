@@ -1,5 +1,4 @@
-import type { Post, Slug } from "@/schemas/post";
-import type { PostSnapshot } from "@/schemas/post";
+import type { Post, PostSnapshot, Slug } from "@/schemas/post";
 import { type Lang, defaultLang } from "@/utils/i18n";
 import { getDescFromMdString } from "@/utils/markdown";
 
@@ -9,11 +8,8 @@ export const getLangFromId = (id: string): Lang => {
 };
 
 export const getSlugFromId = (id: string): Slug => {
-  if (!id.includes("/")) {
-    return id;
-  }
-  const [, ...rest] = id.split("/");
-  return rest.join("/");
+  const separatorIndex = id.indexOf("/");
+  return separatorIndex === -1 ? id : id.slice(separatorIndex + 1);
 };
 
 /**
@@ -25,38 +21,76 @@ export const classifyByLangs = (posts: Post[]) => {
   const map = new Map<Slug, Post[]>();
   for (const post of posts) {
     const slug = getSlugFromId(post.id);
-    map.set(slug, [...(map.get(slug) || []), post]);
+    const postsWithSlug = map.get(slug);
+
+    if (postsWithSlug) {
+      postsWithSlug.push(post);
+    } else {
+      map.set(slug, [post]);
+    }
   }
   return map;
 };
 
-/**
- * Returns a list of unique posts by language, in the order of:
- *
- * 1. The post with the expected language.
- * 2. The post with the default language.
- * 3. The post with the first language in the supported languages list.
- *
- * @param posts - A list of posts.
- * @param expectedLang - The expected language.
- * @returns The list of unique posts.
- */
-export const makeUniqueByLang = (posts: Post[], expectedLang: Lang) => {
-  const classified = classifyByLangs(posts);
-
-  return Array.from(classified.keys()).map((slug) => {
-    const signlePostMultipleLangs = classified.get(slug)!;
-    return (
-      signlePostMultipleLangs.find(
-        (version) => getLangFromId(version.id) === expectedLang
-      ) ||
-      signlePostMultipleLangs.find(
-        (version) => getLangFromId(version.id) === defaultLang
-      ) ||
-      signlePostMultipleLangs[0]
-    );
-  });
+export type ResolvedPost = {
+  post: Post;
+  requestedLang: Lang;
+  actualLang: Lang;
+  slug: Slug;
+  isFallback: boolean;
+  availableLangs: Lang[];
 };
+
+/**
+ * Resolves one logical post for the requested language, in the order of:
+ *
+ * 1. The post with the requested language.
+ * 2. The post with the default language.
+ * 3. The first available post version.
+ */
+export const resolvePostForLang = (
+  postsWithSameSlug: Post[],
+  requestedLang: Lang
+): ResolvedPost => {
+  if (postsWithSameSlug.length === 0) {
+    throw new Error("Cannot resolve post from an empty post list");
+  }
+
+  const findPostByLang = (lang: Lang) =>
+    postsWithSameSlug.find((version) => getLangFromId(version.id) === lang);
+  const post =
+    findPostByLang(requestedLang) ??
+    findPostByLang(defaultLang) ??
+    postsWithSameSlug[0];
+  const actualLang = getLangFromId(post.id);
+
+  return {
+    post,
+    requestedLang,
+    actualLang,
+    slug: getSlugFromId(post.id),
+    isFallback: actualLang !== requestedLang,
+    availableLangs: postsWithSameSlug.map((version) =>
+      getLangFromId(version.id)
+    ),
+  };
+};
+
+export const resolveUniquePostsByLang = (
+  posts: Post[],
+  requestedLang: Lang
+): ResolvedPost[] => {
+  const classified = classifyByLangs(posts);
+  return Array.from(classified.values()).map((postsWithSameSlug) =>
+    resolvePostForLang(postsWithSameSlug, requestedLang)
+  );
+};
+
+/** Compatibility layer returning only resolved post entries. */
+export const makeUniqueByLang = (posts: Post[], expectedLang: Lang) =>
+  resolveUniquePostsByLang(posts, expectedLang).map(
+    (resolved) => resolved.post
+  );
 
 /**
  * Gets the snapshots of posts. They are unique to languages, and sorted by date.
@@ -69,18 +103,25 @@ export const getSnapshots = async (
   getPostDescription: PostDescriptionGetter = (post) =>
     getDescFromMdString(post.body)
 ): Promise<PostSnapshot[]> => {
-  const uniquePosts = makeUniqueByLang(posts, expectedLang);
-  const sorted = [...uniquePosts].sort((a, b) => {
-    const dateA = a.data.updated || a.data.date;
-    const dateB = b.data.updated || b.data.date;
+  const resolvedPosts = resolveUniquePostsByLang(posts, expectedLang);
+  const sorted = [...resolvedPosts].sort((a, b) => {
+    const dateA = a.post.data.updated || a.post.data.date;
+    const dateB = b.post.data.updated || b.post.data.date;
     return dateB.getTime() - dateA.getTime();
   });
   return Promise.all(
-    sorted.map(async (post) => {
-      const slug = getSlugFromId(post.id);
+    sorted.map(async (resolved) => {
+      const {
+        post,
+        requestedLang,
+        actualLang,
+        slug,
+        isFallback,
+        availableLangs,
+      } = resolved;
 
       return {
-        href: `/${expectedLang}/posts/${slug}`,
+        href: `/${requestedLang}/posts/${slug}`,
         title: post.data.title,
         date: getCloserFormattedDate(
           post.data.updated?.toISOString(),
@@ -89,6 +130,10 @@ export const getSnapshots = async (
         description: await getPostDescription(post),
         slug,
         tags: Array.from(getUniqueLowerCaseTagMap(post.data.tags).keys()),
+        requestedLang,
+        actualLang,
+        isFallback,
+        availableLangs,
       };
     })
   );
@@ -111,10 +156,7 @@ export const getUniqueLowerCaseTagMap = (
 };
 
 /**
- * Returns the closer date from two date strings.
- * @param dateStringA - The first date string.
- * @param dateStringB - The second date string.
- * @returns The closest date to the current date.
+ * Returns the later of two date strings formatted as YYYY-MM-DD.
  */
 export const getCloserFormattedDate = (
   dateStringA?: string,

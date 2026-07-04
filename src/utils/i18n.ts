@@ -3,7 +3,7 @@ import { MISC } from "@/config";
 export const languages = {
   en: "EN",
   zh: "中",
-};
+} as const;
 
 export const defaultLang: Lang = "en";
 
@@ -41,9 +41,8 @@ export const ui = {
     "post.newlyUpdatedMsg": `Updated within ${MISC.dateTag.daysToBeGreen} days`,
     "post.oldPostWarningMsg": `Last update over ${MISC.dateTag.daysToBeRed} days ago`,
     "post.license": "Licensed under",
-    "post.notSupportedLang": "Language not supported",
-    "post.notSupportedLangDescription":
-      "Sorry, your language is unavailable for this post.",
+    "post.fallbackLabel": "No English version",
+    "post.fallbackDescription": "Showing Chinese content instead",
   },
   zh: {
     loadMore: "加载更多",
@@ -75,29 +74,45 @@ export const ui = {
     "post.newlyUpdatedMsg": `更新于 ${MISC.dateTag.daysToBeGreen} 日内`,
     "post.oldPostWarningMsg": `更新于 ${MISC.dateTag.daysToBeRed} 日前`,
     "post.license": "许可证",
-    "post.notSupportedLang": "语言暂不支持",
-    "post.notSupportedLangDescription": "抱歉，此文章暂不支持您的语言。",
+    "post.fallbackLabel": "暂无中文版本",
+    "post.fallbackDescription": "正在显示英文内容",
   },
 } as const;
 
 export type Lang = keyof typeof languages;
 export const supportedLangs = Object.keys(languages) as Lang[];
 
-export function useTranslatedPath(lang: keyof typeof ui) {
-  return function translatePath(path: string, l: string = lang) {
-    return `/${l}${path}`;
+export function isLang(lang: unknown): lang is Lang {
+  return typeof lang === "string" && lang in languages;
+}
+
+function normalizePath(path: string) {
+  return path.startsWith("/") ? path : `/${path}`;
+}
+
+export function getLocalizedPath(path: string, lang: Lang) {
+  return `/${lang}${normalizePath(path)}`;
+}
+
+export function useTranslatedPath(lang: Lang) {
+  return function translatePath(path: string, l: Lang = lang) {
+    return getLocalizedPath(path, l);
   };
 }
 
-export function getLangFromUrl(url: string): [Lang, string] {
-  const [, lang, ...rest] = url.split("/");
-  const urlWithoutLang = rest.join("/");
-  if (lang in ui) return [lang as Lang, urlWithoutLang];
-  return [defaultLang as Lang, urlWithoutLang];
+export function getLangFromUrl(pathname: string): [Lang, string] {
+  const segments = pathname.split("/").filter(Boolean);
+  const [firstSegment, ...restSegments] = segments;
+
+  if (isLang(firstSegment)) {
+    return [firstSegment, restSegments.join("/")];
+  }
+
+  return [defaultLang, segments.join("/")];
 }
 
 export function useTranslations(lang: Lang) {
   return function t(key: keyof (typeof ui)[typeof lang]) {
-    return ui[lang][key] || ui[defaultLang][key];
+    return ui[lang][key] ?? ui[defaultLang][key];
   };
 }
