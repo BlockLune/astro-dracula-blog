@@ -14,6 +14,8 @@ updated: 2024-12-09 14:34:00
 
 <!--more-->
 
+---
+
 > 译注：我稍微修改了展示脚本的方式。原文包含了使用 `nano hello.sh` 等使用 `nano` 编辑器打开某个文件进行编辑的步骤，我省略了这些部分。同时，我会直接用文本（而非图像）展示脚本的运行结果。在做出了如上改变的前提下，为了保持文章的通顺，我的翻译会与原文略有出入。
 
 对于 Linux VPS 爱好者来说，Bash (Bourne-again shell) 是最流行的 Shell 之一，Bash 脚本也是最流行的命令语言之一。自它首次于 1989 年发布以来，它就被大部分 [Linux 发行版](https://www.hostinger.in/tutorials/best-linux-distro)用作默认 Shell。

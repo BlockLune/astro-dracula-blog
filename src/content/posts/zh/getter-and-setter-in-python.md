@@ -19,7 +19,7 @@ _[Getter and Setter in Python](https://www.geeksforgeeks.org/getter-and-setter-i
 
 <!--more-->
 
-> 注意：翻译时间为 2023 年 10 月 17 日，一切以源网站最新版本文章为准。
+---
 
 Python 中访问器 (getters) 更改器 (setters) 与其他面向对象语言中的不太一样。基本上，在面向对象程序中使用 getters 和 setters 的主要目的是确保数据封装。[Python 中的私有变量](https://www.geeksforgeeks.org/private-variables-python/)实际上并不像在其他面向对象语言中那样隐藏字段。Python 中的 getters 和 setters 通常在以下情况中使用：
 
