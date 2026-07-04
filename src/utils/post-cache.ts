@@ -4,7 +4,7 @@ import { getCollection, render } from "astro:content";
 import type { Lang } from "@/utils/i18n";
 import { getDescFromMdString } from "@/utils/markdown";
 import { getSnapshots, getUniqueLowerCaseTagMap } from "@/utils/post";
-import type { Post, RankedPostSnapshot } from "@/schemas/post";
+import type { Post, PostSnapshot, RankedPostSnapshot } from "@/schemas/post";
 
 type RenderedPost = Awaited<ReturnType<typeof render>>;
 
@@ -35,7 +35,7 @@ function getOrCreatePromise<K, V>(
   return promise;
 }
 
-function rankSnapshots(snapshots: Omit<RankedPostSnapshot, "rank">[]) {
+function rankSnapshots(snapshots: PostSnapshot[]): RankedPostSnapshot[] {
   return snapshots.map((snapshot, index) => ({
     rank: index + 1,
     ...snapshot,
