@@ -34,7 +34,10 @@ export const GET: APIRoute = async ({ props, params }) => {
     }
   }
 
-  return new Response(await generateOgImageForPost(lang as Lang, post!), {
-    headers: { "Content-Type": "image/png" },
-  });
+  return new Response(
+    new Uint8Array(await generateOgImageForPost(lang as Lang, post!)),
+    {
+      headers: { "Content-Type": "image/png" },
+    }
+  );
 };
