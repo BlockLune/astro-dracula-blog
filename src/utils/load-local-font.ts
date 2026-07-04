@@ -10,15 +10,17 @@ export type FontOptions = {
   style: FontStyle | undefined;
 };
 
+export const localFontPaths = [regularFontPath, boldFontPath];
+
 const fontConfigs = [
   {
-    name: "Noto Sans SC",
+    name: "Noto Sans CJK SC",
     path: regularFontPath,
     weight: 400,
     style: "normal",
   },
   {
-    name: "Noto Sans SC",
+    name: "Noto Sans CJK SC",
     path: boldFontPath,
     weight: 700,
     style: "normal",

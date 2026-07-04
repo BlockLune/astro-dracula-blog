@@ -6,10 +6,19 @@ import type { Post } from "@/schemas/post";
 import type { Lang } from "@/utils/i18n";
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-import loadLocalFonts, { type FontOptions } from "./load-local-font";
+import loadLocalFonts, {
+  localFontPaths,
+  type FontOptions,
+} from "./load-local-font";
 
 function svgBufferToPngBuffer(svg: string) {
-  const resvg = new Resvg(svg);
+  const resvg = new Resvg(svg, {
+    font: {
+      fontFiles: localFontPaths,
+      loadSystemFonts: false,
+      defaultFontFamily: "Noto Sans CJK SC",
+    },
+  });
   const pngData = resvg.render();
   return pngData.asPng();
 }
@@ -36,7 +45,7 @@ export async function generateOgImageForPost(lang: Lang, post: Post) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "Noto Sans SC",
+        fontFamily: "Noto Sans CJK SC",
       }}
     >
       <div
@@ -115,7 +124,7 @@ export async function generateOgImageForPost(lang: Lang, post: Post) {
     {
       width: 1200,
       height: 630,
-      embedFont: true,
+      embedFont: false,
       fonts: (await loadLocalFonts()) as FontOptions[],
     }
   );
