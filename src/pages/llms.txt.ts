@@ -41,7 +41,7 @@ Powered by 🚀 [Astro](https://astro.build/)& ❤️ [AstroDraculaBlog](https:/
 `;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line @typescript-eslint/no-explicit-any
 export async function GET(context: any) {
   const posts = await getCollection("posts");
   const llmsTxt = getLLMsTxt(

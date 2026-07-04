@@ -119,12 +119,10 @@ export default async (request: Request, context: Context) => {
   };
 
   return new ImageResponse(
-    (
-      <div style={STYLES.wrapper}>
-        <div>{page.title}</div>
-        <div>{page.description}</div>
-      </div>
-    ),
+    <div style={STYLES.wrapper}>
+      <div>{page.title}</div>
+      <div>{page.description}</div>
+    </div>,
     { width: 1200, height: 630 }
   );
 };
@@ -176,12 +174,10 @@ export default async (request: Request, context: Context) => {
   // page data ...
 
   return new ImageResponse(
-    (
-      <div style={STYLES.wrapper}>
-        <div style={STYLES.title}>{page.title}</div>
-        <div style={STYLES.description}>{page.description}</div>
-      </div>
-    ),
+    <div style={STYLES.wrapper}>
+      <div style={STYLES.title}>{page.title}</div>
+      <div style={STYLES.description}>{page.description}</div>
+    </div>,
     { width: 1200, height: 630 }
   );
 };
@@ -234,14 +230,12 @@ export default async (request: Request, context: Context) => {
   // page data ...
 
   return new ImageResponse(
-    (
-      <div style={STYLES.wrapper}>
-        <BackgroundImage />
-        <Logo />
-        <div style={STYLES.title}>{page.title}</div>
-        <div style={STYLES.description}>{page.description}</div>
-      </div>
-    ),
+    <div style={STYLES.wrapper}>
+      <BackgroundImage />
+      <Logo />
+      <div style={STYLES.title}>{page.title}</div>
+      <div style={STYLES.description}>{page.description}</div>
+    </div>,
     { width: 1200, height: 630 }
   );
 };
@@ -315,14 +309,12 @@ export default async (request: Request, context: Context) => {
   const fonts = await loadFonts(origin);
 
   return new ImageResponse(
-    (
-      <div style={STYLES.wrapper}>
-        <BackgroundImage />
-        <Logo />
-        <div style={STYLES.title}>{page.title}</div>
-        <div style={STYLES.description}>{page.description}</div>
-      </div>
-    ),
+    <div style={STYLES.wrapper}>
+      <BackgroundImage />
+      <Logo />
+      <div style={STYLES.title}>{page.title}</div>
+      <div style={STYLES.description}>{page.description}</div>
+    </div>,
     // NEW: include font data
     { width: 1200, height: 630, fonts }
   );
