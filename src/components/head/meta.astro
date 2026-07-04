@@ -2,33 +2,73 @@
 import { SITE } from "@/config";
 import type { Lang } from "@/utils/i18n";
 
-const { lang, description, pageTitle, ogImageUrl } = Astro.props;
+const {
+  lang,
+  description,
+  pageTitle,
+  ogImageUrl,
+  canonicalPath,
+  noindex = false,
+  ogLocaleLang,
+  alternateLangs = [],
+  alternatePath,
+} = Astro.props;
 const pageDescription = description || SITE.description[lang as Lang];
 const pageOgDomain = Astro.url.hostname;
-const pageOgUrl = Astro.url.href;
+const canonicalUrl = new URL(canonicalPath || Astro.url.pathname, SITE.url);
+const canonicalHref = canonicalUrl.href;
 const pageOgImageUrl = new URL(ogImageUrl || SITE.og.imageUrl, Astro.url);
+const ogLocaleMap: Record<Lang, string> = {
+  en: "en_US",
+  zh: "zh_CN",
+};
+const localeLang = (ogLocaleLang || lang) as Lang;
+type AlternateLink = { lang: Lang; href: string };
+
+const alternateLinks: AlternateLink[] = alternateLangs.map((alternateLang: Lang) => ({
+  lang: alternateLang,
+  href: new URL(alternatePath(alternateLang), SITE.url).href,
+}));
+const xDefaultHref = alternateLinks[0]?.href;
+const alternateLocales = alternateLangs.filter(
+  (alternateLang: Lang) => alternateLang !== localeLang
+);
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 <meta name="description" content={pageDescription} />
+<link rel="canonical" href={canonicalHref} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+{
+  alternateLinks.map(({ lang, href }: AlternateLink) => (
+    <link rel="alternate" hreflang={lang} href={href} />
+  ))
+}
+{xDefaultHref && <link rel="alternate" hreflang="x-default" href={xDefaultHref} />}
 <meta name="msvalidate.01" content={SITE.searchEngine.bing} />
 <meta name="baidu-site-verification" content={SITE.searchEngine.baidu} />
 <meta name="sogou_site_verification" content={SITE.searchEngine.sogou} />
 <meta name="360-site-verification" content={SITE.searchEngine.threeSixZero} />
 
 <!-- Facebook Meta Tags -->
-<meta property="og:url" content={pageOgUrl} />
+<meta property="og:url" content={canonicalHref} />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={pageDescription} />
 <meta property="og:image" content={pageOgImageUrl} />
+<meta property="og:locale" content={ogLocaleMap[localeLang]} />
+{
+  alternateLocales.map((alternateLang: Lang) => (
+    <meta property="og:locale:alternate" content={ogLocaleMap[alternateLang]} />
+  ))
+}
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:domain" content={pageOgDomain} />
-<meta property="twitter:url" content={pageOgUrl} />
+<meta property="twitter:url" content={canonicalHref} />
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={pageDescription} />
 <meta name="twitter:image" content={pageOgImageUrl} />

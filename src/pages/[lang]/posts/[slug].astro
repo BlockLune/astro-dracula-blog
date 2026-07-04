@@ -2,56 +2,61 @@
 import BaseLayout from "@/layouts/base-layout.astro";
 import MarkdownPost from "@/components/ui/markdown-post.astro";
 import TocCard from "@/components/ui/cards/toc-card";
-import { classifyByLangs, getLangFromId, makeUniqueByLang } from "@/utils/post";
+import { classifyByLangs, resolvePostForLang } from "@/utils/post";
 import {
   getPostDescription,
   getPostHeadings,
   getPosts,
 } from "@/utils/post-cache";
-import { supportedLangs } from "@/utils/i18n";
+import { type Lang, supportedLangs } from "@/utils/i18n";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
   const classified = classifyByLangs(posts);
   const paths = [];
 
-  for (const [slug, postsWithSameSlug] of classified) {
+  for (const [postSlug, postsWithSameSlug] of classified) {
     for (const lang of supportedLangs) {
-      const post = makeUniqueByLang(postsWithSameSlug, lang)[0];
+      const resolved = resolvePostForLang(postsWithSameSlug, lang);
       const [headings, description] = await Promise.all([
-        getPostHeadings(post),
-        getPostDescription(post),
+        getPostHeadings(resolved.post),
+        getPostDescription(resolved.post),
       ]);
       paths.push({
-        params: { lang, slug },
-        props: { post, headings, description },
+        params: { lang, slug: postSlug },
+        props: { resolved, headings, description },
       });
     }
   }
   return paths;
 }
 
-const { post, headings, description } = Astro.props;
-const { lang, slug } = Astro.params;
-const actualLangOfPost = getLangFromId(post.id);
-const ogImageUrlToUse =
-  post?.data.ogImageUrl || `/${actualLangOfPost}/og-images/${slug}.png`;
+const { resolved, headings, description } = Astro.props;
+const { post, requestedLang, actualLang, isFallback, availableLangs, slug } =
+  resolved;
+const canonicalLang = isFallback ? actualLang : requestedLang;
+const ogImageUrl = post.data.ogImageUrl || `/${actualLang}/og-images/${slug}.png`;
 ---
 
 <BaseLayout
-  title={post!.data.title}
+  title={post.data.title}
   description={description}
-  ogImageUrl={ogImageUrlToUse}
+  ogImageUrl={ogImageUrl}
   headerAsH1={false}
+  canonicalPath={`/${canonicalLang}/posts/${slug}`}
+  noindex={isFallback}
+  ogLocaleLang={actualLang}
+  alternateLangs={availableLangs}
+  alternatePath={(lang: Lang) => `/${lang}/posts/${slug}`}
 >
   <div class="relative">
     <div class="fixed top-10 right-10 hidden w-72 2xl:block">
-      <TocCard headings={headings} lang={lang} client:load />
+      <TocCard headings={headings} lang={requestedLang} client:load />
     </div>
     <MarkdownPost
       post={post}
-      lang={lang}
-      actualLang={actualLangOfPost}
+      lang={requestedLang}
+      actualLang={actualLang}
       headings={headings}
     />
   </div>

@@ -26,6 +26,10 @@ export const PostSnapshotSchema = z.object({
   slug: z.string(),
   href: z.string(),
   date: z.string(),
+  requestedLang: z.string(),
+  actualLang: z.string(),
+  isFallback: z.boolean(),
+  availableLangs: z.array(z.string()),
 });
 
 export const RankedPostSnapshotSchema = PostSnapshotSchema.extend({

@@ -14,10 +14,7 @@ import { getRenderedPost } from "@/utils/post-cache";
 const { lang, actualLang, post, headings } = Astro.props;
 const { Content } = await getRenderedPost(post);
 
-let licenseEnabled = MISC.license?.enabled;
-if (post.data.license && post.data.license === "none") {
-  licenseEnabled = false;
-}
+const licenseEnabled = MISC.license?.enabled && post.data.license !== "none";
 const license = post.data.license || MISC.license.default.name;
 const licenseLink = post.data.licenseLink || MISC.license.default.link;
 const title = post.data.title;
@@ -27,10 +24,9 @@ const latestDate = updatedAt || publishedAt;
 const diffInDays = getDiffInDays(new Date(), latestDate);
 ---
 
-<article>
+<article lang={actualLang}>
   <h1 class="text-4xl font-black text-dracula-pink">{title}</h1>
   <div class="mt-4 flex flex-wrap gap-2">
-    <!-- date tags -->
     <DateTag lang={lang} date={publishedAt} type="published" client:load />
     {
       updatedAt && (
@@ -39,10 +35,8 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
     }
     <DateStatusTag lang={lang} diffInDays={diffInDays} client:load />
 
-    <!-- language tag -->
     {lang !== actualLang && <NotSupportedLangTag lang={lang} client:load />}
 
-    <!-- license tag -->
     {
       licenseEnabled && (
         <LicenseTag
@@ -54,7 +48,6 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
       )
     }
 
-    <!-- label tags -->
     {
       Array.from(getUniqueLowerCaseTagMap(post.data.tags).keys()).map((tag) => (
         <LabelTag lang={lang} label={tag} type="link" client:load />
@@ -79,14 +72,14 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
 
 <script>
   const copyButtonLabel = "Copy";
-  const codeBlocks = Array.from(document.querySelectorAll("pre"));
+  const codeBlocks = document.querySelectorAll<HTMLElement>("pre");
 
   for (const codeBlock of codeBlocks) {
     const wrapper = document.createElement("div");
     wrapper.style.position = "relative";
     const copyButton = document.createElement("button");
     copyButton.className = "copy-code";
-    copyButton.innerHTML = copyButtonLabel;
+    copyButton.textContent = copyButtonLabel;
 
     codeBlock.setAttribute("tabindex", "0");
     codeBlock.appendChild(copyButton);
@@ -94,21 +87,21 @@ const diffInDays = getDiffInDays(new Date(), latestDate);
     codeBlock.parentNode!.insertBefore(wrapper, codeBlock);
     wrapper.appendChild(codeBlock);
 
-    copyButton.addEventListener("click", async () => {
-      await copyCode(codeBlock, copyButton);
+    copyButton.addEventListener("click", () => {
+      copyCode(codeBlock, copyButton);
     });
   }
 
   async function copyCode(block: HTMLElement, button: HTMLElement) {
     const code = block.querySelector("code");
-    const text = code?.innerText || "";
+    const text = code?.innerText ?? "";
 
     await navigator.clipboard.writeText(text);
 
-    button.innerText = "Copied";
+    button.textContent = "Copied";
 
     setTimeout(() => {
-      button.innerText = copyButtonLabel;
+      button.textContent = copyButtonLabel;
     }, 1000);
   }
 </script>

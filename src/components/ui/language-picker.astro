@@ -1,6 +1,10 @@
 ---
-import { languages } from "@/utils/i18n";
-import { getLangFromUrl, useTranslatedPath } from "@/utils/i18n";
+import {
+  getLangFromUrl,
+  languages,
+  supportedLangs,
+  useTranslatedPath,
+} from "@/utils/i18n";
 
 const [activeLang, urlWithoutLang] = getLangFromUrl(Astro.url.pathname);
 const translatePath = useTranslatedPath(activeLang);
@@ -8,17 +12,17 @@ const translatePath = useTranslatedPath(activeLang);
 
 <ul class="flex gap-2">
   {
-    Object.entries(languages).map(([lang, label]) => (
+    supportedLangs.map((lang) => (
       <li>
         <a
-          href={translatePath(`/${urlWithoutLang}`, lang)}
+          href={translatePath(urlWithoutLang, lang)}
           class={
             lang === activeLang
               ? "text-dracula-purple underline underline-offset-4"
               : "text-dracula-purple/80 underline underline-offset-4 transition hover:text-dracula-purple"
           }
         >
-          {label}
+          {languages[lang]}
         </a>
       </li>
     ))
