@@ -5,6 +5,7 @@ import remarkMath from "remark-math";
 import { rehypeGithubAlerts } from "rehype-github-alerts";
 
 import react from "@astrojs/react";
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -30,6 +31,15 @@ function fileSystemPath() {
 export default defineConfig({
   site: SITE.url,
   markdown: {
+    processor: unified({
+      remarkPlugins: [remarkDescPlugin, remarkMath],
+      rehypePlugins: [
+        [rehypeExternalLinks, { target: "_blank" }],
+        rehypeGithubAlerts,
+        rehypeMathjax,
+      ],
+      smartypants: false,
+    }),
     shikiConfig: {
       theme: "dracula",
       wrap: true,
@@ -38,13 +48,6 @@ export default defineConfig({
         zshrc: "zsh",
       },
     },
-    remarkPlugins: [remarkDescPlugin, remarkMath],
-    rehypePlugins: [
-      [rehypeExternalLinks, { target: "_blank" }],
-      rehypeGithubAlerts,
-      rehypeMathjax,
-    ],
-    smartypants: false,
   },
   integrations: [react(), sitemap()],
   output: "static",

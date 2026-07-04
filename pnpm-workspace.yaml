@@ -1,0 +1,8 @@
+autoInstallPeers: true
+nodeLinker: hoisted
+minimumReleaseAge: 1440
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+allowBuilds:
+  esbuild: true
+  simple-git-hooks: true

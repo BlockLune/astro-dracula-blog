@@ -1,4 +1,5 @@
-import { type CollectionEntry, z } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { z } from "astro/zod";
 
 // From astro v5, the original `slug` is now `id`
 // I use `slug` as a pure slug, which is the part after the first `/`
