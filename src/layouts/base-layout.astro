@@ -25,6 +25,41 @@ const pageTitle = title
 
 <html lang={lang} class="scroll-smooth">
   <head>
+    <script is:inline>
+      // 激活前哨兵：在 React 激活前记录可观测用户操作（键盘/指针/触摸/滚动）。
+      // 用户已开始操作 → 本次自动聚焦机会结束（写会话标记，不补做）。
+      // 组件激活后由 SearchInput 接管（window.__searchAutofocusTakeover）。
+      // 与 src/components/ui/search-input.tsx 共用同一个会话键。
+      (() => {
+        const KEY = "search-autofocus-consumed";
+        let cancel = null;
+        const cleanup = () => {
+          if (!cancel) return;
+          window.removeEventListener("pointerdown", cancel, { capture: true });
+          window.removeEventListener("keydown", cancel, { capture: true });
+          window.removeEventListener("touchstart", cancel, { capture: true });
+          window.removeEventListener("wheel", cancel, { capture: true });
+          cancel = null;
+        };
+        cancel = () => {
+          try {
+            window.sessionStorage.setItem(KEY, "1");
+          } catch (err) {}
+          cleanup();
+        };
+        let consumed = false;
+        try {
+          consumed = window.sessionStorage.getItem(KEY) !== null;
+        } catch (err) {}
+        if (!consumed) {
+          window.addEventListener("pointerdown", cancel, { capture: true });
+          window.addEventListener("keydown", cancel, { capture: true });
+          window.addEventListener("touchstart", cancel, { capture: true });
+          window.addEventListener("wheel", cancel, { capture: true });
+        }
+        window.__searchAutofocusTakeover = cleanup;
+      })();
+    </script>
     <Meta {...metaProps} lang={lang} pageTitle={pageTitle} />
     <Favicon />
     <RssLink lang={lang} />

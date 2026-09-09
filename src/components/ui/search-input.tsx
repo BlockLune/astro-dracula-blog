@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { type Lang, useTranslations } from "@/utils/i18n";
 
 // 每标签页会话最多一次自动聚焦机会（sessionStorage 会话级记录）。
+// 键名与 base-layout.astro 的激活前哨兵脚本保持一致。
 const AUTOFOCUS_SESSION_KEY = "search-autofocus-consumed";
 
 export default function SearchInput({
@@ -26,6 +27,11 @@ export default function SearchInput({
       return;
     }
 
+    // 接管激活前哨兵（base-layout 内联脚本）：此后由组件负责监听与清理。
+    const w = window as Window & { __searchAutofocusTakeover?: () => void };
+    w.__searchAutofocusTakeover?.();
+    w.__searchAutofocusTakeover = undefined;
+
     // 会话记录不可用（存储被禁/隐私模式）→ 保守跳过，手动搜索不受影响。
     let storage: Storage;
     try {
@@ -34,6 +40,7 @@ export default function SearchInput({
       return;
     }
     // 机会只消费一次；刷新、站内导航、再次挂载不再自动聚焦。
+    // 激活前用户操作也会写入该标记（见 base-layout 哨兵）→ 不补聚焦。
     if (storage.getItem(AUTOFOCUS_SESSION_KEY) !== null) {
       return;
     }
@@ -53,6 +60,20 @@ export default function SearchInput({
     }
 
     let finished = false;
+
+    const cleanup = () => {
+      window.removeEventListener("load", tryFocus);
+      window.removeEventListener("pointerdown", cancel, { capture: true });
+      window.removeEventListener("keydown", cancel, { capture: true });
+      window.removeEventListener("touchstart", cancel, { capture: true });
+      window.removeEventListener("wheel", cancel, { capture: true });
+    };
+
+    // 机会结束（成功或被安全条件拦截），不再补做。
+    const finish = () => {
+      finished = true;
+      cleanup();
+    };
 
     const tryFocus = () => {
       if (finished) {
@@ -74,8 +95,7 @@ export default function SearchInput({
         window.scrollY !== 0 ||
         input.disabled
       ) {
-        finished = true;
-        cleanup();
+        finish();
         return;
       }
       // 安全条件：目标不可见或不在可视区域（不滚动寻找）。
@@ -88,31 +108,20 @@ export default function SearchInput({
         rect.left < 0 ||
         rect.right > window.innerWidth
       ) {
-        finished = true;
-        cleanup();
+        finish();
         return;
       }
       input.focus({ preventScroll: true });
       // 光标置于已有文本末尾：不清空、不全选。
       input.setSelectionRange(input.value.length, input.value.length);
-      finished = true;
-      cleanup();
+      finish();
     };
 
     // 用户先行操作（键盘/指针/触摸/主动滚动）→ 取消自动聚焦，不补做。
     const cancel = () => {
       if (!finished) {
-        finished = true;
-        cleanup();
+        finish();
       }
-    };
-
-    const cleanup = () => {
-      window.removeEventListener("load", tryFocus);
-      window.removeEventListener("pointerdown", cancel);
-      window.removeEventListener("keydown", cancel);
-      window.removeEventListener("touchstart", cancel);
-      window.removeEventListener("wheel", cancel);
     };
 
     window.addEventListener("pointerdown", cancel, { capture: true });
