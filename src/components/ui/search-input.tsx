@@ -28,7 +28,10 @@ export default function SearchInput({
     }
 
     // 接管激活前哨兵（base-layout 内联脚本）：此后由组件负责监听与清理。
-    const w = window as Window & { __searchAutofocusTakeover?: () => void };
+    const w = window as Window & {
+      __searchAutofocusTakeover?: () => void;
+      __searchAutofocusFirstEntry?: boolean;
+    };
     w.__searchAutofocusTakeover?.();
     w.__searchAutofocusTakeover = undefined;
 
@@ -39,8 +42,14 @@ export default function SearchInput({
     } catch {
       return;
     }
+    // 页面级会话判定：只有本标签页会话的首次入口文档才有机会；
+    // 刷新、重新加载、BFCache 恢复或中断首入后的新文档都不再聚焦。
+    if (w.__searchAutofocusFirstEntry !== true) {
+      return;
+    }
     // 机会只消费一次；刷新、站内导航、再次挂载不再自动聚焦。
-    // 激活前用户操作也会写入该标记（见 base-layout 哨兵）→ 不补聚焦。
+    // 激活前用户操作、无搜索框首入也会写入该标记（见 base-layout 哨兵）
+    // → 不补聚焦。
     if (storage.getItem(AUTOFOCUS_SESSION_KEY) !== null) {
       return;
     }
