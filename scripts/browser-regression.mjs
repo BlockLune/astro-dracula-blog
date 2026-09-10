@@ -1314,6 +1314,103 @@ async function scenarioFragmentEntry() {
   };
 }
 
+// Z1/Z2：不可见输入（opacity:0 / visibility:hidden，含祖先隐藏）→ 跳过、
+// 消费机会且不补做；opacity 场景下输入仍可交互（手动搜索可用）。
+async function scenarioHiddenInput(kind) {
+  const { sessionId } = await newPage();
+  await holdRequests(sessionId, "*post-stack*");
+  await navigate(sessionId, `${BASE}/`);
+  await evaluate(
+    sessionId,
+    `(() => {
+      const i = document.querySelector("#search");
+      i.style.${kind === "opacity" ? "opacity" : "visibility"} = "${kind === "opacity" ? "0" : "hidden"}";
+    })()`
+  );
+  await releaseRequests(sessionId);
+  await mustPoll(sessionId, hydrated, "React 激活完成", 10000);
+  await sleep(500);
+  const notFocused = await evaluate(sessionId, notSearchFocused);
+  const calls = await evaluate(sessionId, focusCalls);
+  const marker = await evaluate(sessionId, consumedMarker);
+  const errors = await evaluate(sessionId, runtimeErrors);
+  const exists = await evaluate(
+    sessionId,
+    `!!document.querySelector("#search")`
+  );
+
+  let ok =
+    Boolean(notFocused) &&
+    calls === 0 &&
+    marker === "1" &&
+    errors === "[]" &&
+    exists;
+  let manual = "n/a";
+  if (ok && kind === "opacity") {
+    await clickSearchInput(sessionId);
+    await send("Input.insertText", { text: "x" }, sessionId);
+    manual = await evaluate(
+      sessionId,
+      `document.querySelector("#search").value`
+    );
+    await mustPoll(
+      sessionId,
+      `new URLSearchParams(window.location.search).get("q") === "x"`,
+      "手动搜索 URL 同步",
+      2000,
+      100
+    );
+    ok = manual === "x";
+  }
+  return {
+    ok,
+    detail: `${kind}: notFocused=${Boolean(notFocused)} calls=${calls} marker=${marker} errors=${errors} exists=${exists} manual="${manual}"`,
+  };
+}
+
+// Z3：仅 consumed 键的存储读取抛 SecurityError → 保守跳过不卸载组件，
+// 手动搜索（输入 + URL 同步）仍可用。
+async function scenarioStorageReadDenied() {
+  const { sessionId } = await newPage({
+    extraScripts: [
+      `const qaOriginalGet = Storage.prototype.getItem; Storage.prototype.getItem = function (key) { if (key === "search-autofocus-consumed") throw new DOMException("QA storage read denied", "SecurityError"); return qaOriginalGet.call(this, key); };`,
+    ],
+  });
+  await navigate(sessionId, `${BASE}/`);
+  await mustPoll(sessionId, hydrated, "React 激活完成", 10000);
+  await sleep(400);
+  const notFocused = await evaluate(sessionId, notSearchFocused);
+  const calls = await evaluate(sessionId, focusCalls);
+  const errors = await evaluate(sessionId, runtimeErrors);
+  const exists = await evaluate(
+    sessionId,
+    `!!document.querySelector("#search")`
+  );
+  await clickSearchInput(sessionId);
+  await send("Input.insertText", { text: "x" }, sessionId);
+  const value = await evaluate(
+    sessionId,
+    `document.querySelector("#search").value`
+  );
+  await mustPoll(
+    sessionId,
+    `new URLSearchParams(window.location.search).get("q") === "x"`,
+    "手动搜索 URL 同步",
+    2000,
+    100
+  );
+  const ok =
+    Boolean(notFocused) &&
+    calls === 0 &&
+    errors === "[]" &&
+    exists &&
+    value === "x";
+  return {
+    ok,
+    detail: `notFocused=${Boolean(notFocused)} calls=${calls} errors=${errors} exists=${exists} manual="${value}"`,
+  };
+}
+
 // Y：首入时非零滚动位置（历史/程序性滚动）→ 跳过，滚动位置不被覆盖
 async function scenarioNonZeroScroll() {
   const { sessionId } = await newPage();
@@ -1404,6 +1501,15 @@ try {
     ["W 连续站内切换 10 次（G8）", scenarioTenNavigations],
     ["X URL fragment 首入跳过、手动搜索可用（G6）", scenarioFragmentEntry],
     ["Y 首入非零滚动位置跳过（G6）", scenarioNonZeroScroll],
+    [
+      "Z1 不可见输入 opacity:0 跳过、手动搜索可用（G6）",
+      () => scenarioHiddenInput("opacity"),
+    ],
+    [
+      "Z2 不可见输入 visibility:hidden 跳过（G6）",
+      () => scenarioHiddenInput("visibility"),
+    ],
+    ["Z3 存储读取失败保守跳过、手动搜索可用（G6）", scenarioStorageReadDenied],
   ];
 
   for (const [name, run] of scenarios) {

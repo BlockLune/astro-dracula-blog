@@ -49,8 +49,14 @@ export default function SearchInput({
     }
     // 机会只消费一次；刷新、站内导航、再次挂载不再自动聚焦。
     // 激活前用户操作、无搜索框首入也会写入该标记（见 base-layout 哨兵）
-    // → 不补聚焦。
-    if (storage.getItem(AUTOFOCUS_SESSION_KEY) !== null) {
+    // → 不补聚焦。读取失败（存储策略/隐私模式）同样保守跳过。
+    let consumed = false;
+    try {
+      consumed = storage.getItem(AUTOFOCUS_SESSION_KEY) !== null;
+    } catch {
+      return;
+    }
+    if (consumed) {
       return;
     }
     try {
@@ -117,6 +123,30 @@ export default function SearchInput({
         rect.left < 0 ||
         rect.right > window.innerWidth
       ) {
+        finish();
+        return;
+      }
+      // 安全条件：目标或其祖先被隐藏（display:none / visibility:hidden /
+      // opacity:0）→ 不把焦点送入看不见的输入框。内联声明的 opacity:0
+      // 同样视为隐藏，避免 CSS 过渡中段（checkVisibility 会误判为可见）。
+      let effectivelyHidden = false;
+      for (
+        let el: HTMLElement | null = input;
+        el && el !== document.documentElement;
+        el = el.parentElement
+      ) {
+        const style = getComputedStyle(el);
+        if (
+          style.display === "none" ||
+          style.visibility === "hidden" ||
+          style.opacity === "0" ||
+          el.style.opacity === "0"
+        ) {
+          effectivelyHidden = true;
+          break;
+        }
+      }
+      if (effectivelyHidden) {
         finish();
         return;
       }
