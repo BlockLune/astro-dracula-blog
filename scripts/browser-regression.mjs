@@ -1316,16 +1316,24 @@ async function scenarioFragmentEntry() {
 
 // Z1/Z2：不可见输入（opacity:0 / visibility:hidden，含祖先隐藏）→ 跳过、
 // 消费机会且不补做；opacity 场景下输入仍可交互（手动搜索可用）。
+// Z1/Z2/Z4/Z5：不可见输入/祖先/根元素（opacity:0 / visibility:hidden，含根元素
+// html 自身）→ 跳过、消费机会；恢复可见后也不补聚焦。
+// 输入级 opacity 场景下输入仍可交互（手动搜索可用）。
 async function scenarioHiddenInput(kind) {
   const { sessionId } = await newPage();
   await holdRequests(sessionId, "*post-stack*");
   await navigate(sessionId, `${BASE}/`);
+  const target =
+    kind === "opacity" || kind === "visibility"
+      ? `document.querySelector("#search")`
+      : kind === "html"
+        ? "document.documentElement"
+        : "document.body";
+  const prop = kind === "visibility" ? "visibility" : "opacity";
+  const value = kind === "visibility" ? "hidden" : "0";
   await evaluate(
     sessionId,
-    `(() => {
-      const i = document.querySelector("#search");
-      i.style.${kind === "opacity" ? "opacity" : "visibility"} = "${kind === "opacity" ? "0" : "hidden"}";
-    })()`
+    `(() => { const t = ${target}; t.style.${prop} = "${value}"; })()`
   );
   await releaseRequests(sessionId);
   await mustPoll(sessionId, hydrated, "React 激活完成", 10000);
@@ -1346,25 +1354,38 @@ async function scenarioHiddenInput(kind) {
     errors === "[]" &&
     exists;
   let manual = "n/a";
-  if (ok && kind === "opacity") {
-    await clickSearchInput(sessionId);
-    await send("Input.insertText", { text: "x" }, sessionId);
-    manual = await evaluate(
+  let restored = "n/a";
+  if (ok) {
+    // 恢复可见：不补做
+    await evaluate(
       sessionId,
-      `document.querySelector("#search").value`
+      `(() => { const t = ${target}; t.style.${prop} = ""; })()`
     );
-    await mustPoll(
-      sessionId,
-      `new URLSearchParams(window.location.search).get("q") === "x"`,
-      "手动搜索 URL 同步",
-      2000,
-      100
-    );
-    ok = manual === "x";
+    await sleep(400);
+    const stillNotFocused = await evaluate(sessionId, notSearchFocused);
+    const callsAfter = await evaluate(sessionId, focusCalls);
+    restored = `notFocused=${Boolean(stillNotFocused)} calls=${callsAfter}`;
+    ok = Boolean(stillNotFocused) && callsAfter === 0;
+    if (ok && kind === "opacity") {
+      await clickSearchInput(sessionId);
+      await send("Input.insertText", { text: "x" }, sessionId);
+      manual = await evaluate(
+        sessionId,
+        `document.querySelector("#search").value`
+      );
+      await mustPoll(
+        sessionId,
+        `new URLSearchParams(window.location.search).get("q") === "x"`,
+        "手动搜索 URL 同步",
+        2000,
+        100
+      );
+      ok = manual === "x";
+    }
   }
   return {
     ok,
-    detail: `${kind}: notFocused=${Boolean(notFocused)} calls=${calls} marker=${marker} errors=${errors} exists=${exists} manual="${manual}"`,
+    detail: `${kind}: notFocused=${Boolean(notFocused)} calls=${calls} marker=${marker} errors=${errors} exists=${exists} restore(${restored}) manual="${manual}"`,
   };
 }
 
@@ -1502,12 +1523,20 @@ try {
     ["X URL fragment 首入跳过、手动搜索可用（G6）", scenarioFragmentEntry],
     ["Y 首入非零滚动位置跳过（G6）", scenarioNonZeroScroll],
     [
-      "Z1 不可见输入 opacity:0 跳过、手动搜索可用（G6）",
+      "Z1 不可见输入 opacity:0 跳过、恢复不补做、手动搜索可用（G6）",
       () => scenarioHiddenInput("opacity"),
     ],
     [
-      "Z2 不可见输入 visibility:hidden 跳过（G6）",
+      "Z2 不可见输入 visibility:hidden 跳过、恢复不补做（G6）",
       () => scenarioHiddenInput("visibility"),
+    ],
+    [
+      "Z4 祖先 body opacity:0 跳过、恢复不补做（G6）",
+      () => scenarioHiddenInput("body"),
+    ],
+    [
+      "Z5 根元素 html opacity:0 跳过、恢复不补做（G6）",
+      () => scenarioHiddenInput("html"),
     ],
     ["Z3 存储读取失败保守跳过、手动搜索可用（G6）", scenarioStorageReadDenied],
   ];

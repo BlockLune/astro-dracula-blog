@@ -129,12 +129,10 @@ export default function SearchInput({
       // 安全条件：目标或其祖先被隐藏（display:none / visibility:hidden /
       // opacity:0）→ 不把焦点送入看不见的输入框。内联声明的 opacity:0
       // 同样视为隐藏，避免 CSS 过渡中段（checkVisibility 会误判为可见）。
+      // opacity 不继承，必须检查到根元素（含 documentElement 自身）。
       let effectivelyHidden = false;
-      for (
-        let el: HTMLElement | null = input;
-        el && el !== document.documentElement;
-        el = el.parentElement
-      ) {
+      let el: HTMLElement | null = input;
+      while (el) {
         const style = getComputedStyle(el);
         if (
           style.display === "none" ||
@@ -145,6 +143,7 @@ export default function SearchInput({
           effectivelyHidden = true;
           break;
         }
+        el = el.parentElement;
       }
       if (effectivelyHidden) {
         finish();
