@@ -1391,6 +1391,84 @@ async function scenarioHiddenInput(kind) {
 
 // Z3：仅 consumed 键的存储读取抛 SecurityError → 保守跳过不卸载组件，
 // 手动搜索（输入 + URL 同步）仍可用。
+// Z6：主触摸设备模拟（pointer:coarse + hover:none）→ 首入不聚焦（无程序性
+// 软键盘触发，代理断言：focus 调用数 0）；手动点按搜索仍可用。
+async function scenarioTouchPrimaryDevice() {
+  const { sessionId } = await newPage();
+  await send(
+    "Emulation.setTouchEmulationEnabled",
+    { enabled: true, maxTouchPoints: 5 },
+    sessionId
+  );
+  await send(
+    "Emulation.setEmulatedMedia",
+    {
+      features: [
+        { name: "hover", value: "none" },
+        { name: "pointer", value: "coarse" },
+      ],
+    },
+    sessionId
+  );
+  await navigate(sessionId, `${BASE}/`);
+  await mustPoll(sessionId, hydrated, "React 激活完成", 10000);
+  await sleep(400);
+  const notFocused = await evaluate(sessionId, notSearchFocused);
+  const calls = await evaluate(sessionId, focusCalls);
+  const marker = await evaluate(sessionId, consumedMarker);
+  const errors = await evaluate(sessionId, runtimeErrors);
+  const coarse = await evaluate(
+    sessionId,
+    `matchMedia("(hover: none) and (pointer: coarse)").matches`
+  );
+  // 手动点按搜索：tap 输入框（原生触摸聚焦不计入探针）→ 键入 → URL 同步
+  const rect = await evaluate(
+    sessionId,
+    `(() => {
+      const r = document.querySelector("#search").getBoundingClientRect();
+      return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+    })()`
+  );
+  await send(
+    "Input.dispatchTouchEvent",
+    {
+      type: "touchStart",
+      touchPoints: [{ x: rect.x, y: rect.y, radiusX: 1, radiusY: 1 }],
+    },
+    sessionId
+  );
+  await send(
+    "Input.dispatchTouchEvent",
+    { type: "touchEnd", touchPoints: [] },
+    sessionId
+  );
+  await send("Input.insertText", { text: "x" }, sessionId);
+  const value = await evaluate(
+    sessionId,
+    `document.querySelector("#search").value`
+  );
+  await mustPoll(
+    sessionId,
+    `new URLSearchParams(window.location.search).get("q") === "x"`,
+    "手动搜索 URL 同步",
+    2000,
+    100
+  );
+  const callsAfter = await evaluate(sessionId, focusCalls);
+  const ok =
+    coarse === true &&
+    Boolean(notFocused) &&
+    calls === 0 &&
+    marker === "1" &&
+    errors === "[]" &&
+    value === "x" &&
+    callsAfter === 0;
+  return {
+    ok,
+    detail: `coarse=${coarse} notFocused=${Boolean(notFocused)} calls=${calls} marker=${marker} errors=${errors} manual="${value}" callsAfter=${callsAfter}`,
+  };
+}
+
 async function scenarioStorageReadDenied() {
   const { sessionId } = await newPage({
     extraScripts: [
@@ -1539,6 +1617,7 @@ try {
       () => scenarioHiddenInput("html"),
     ],
     ["Z3 存储读取失败保守跳过、手动搜索可用（G6）", scenarioStorageReadDenied],
+    ["Z6 主触摸设备首入不聚焦、手动点按可用（G9）", scenarioTouchPrimaryDevice],
   ];
 
   for (const [name, run] of scenarios) {
