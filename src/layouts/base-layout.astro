@@ -25,6 +25,77 @@ const pageTitle = title
 
 <html lang={lang} class="scroll-smooth">
   <head>
+    <script is:inline>
+      // 激活前哨兵：页面级首次入口判定 + 激活前用户操作记录。
+      // 首次入口机会覆盖无搜索框页面（文章/关于/404 等）：这类入口不聚焦，
+      // 机会当场结束，不延后到随后站内页面。React 激活后由 SearchInput 接管。
+      // 与 src/components/ui/search-input.tsx 共用会话键。
+      (() => {
+        const ENTERED_KEY = "search-autofocus-entered";
+        const CONSUMED_KEY = "search-autofocus-consumed";
+        let storage = null;
+        try {
+          storage = window.sessionStorage;
+        } catch (err) {}
+        let entered = false;
+        let consumed = false;
+        if (storage) {
+          try {
+            entered = storage.getItem(ENTERED_KEY) !== null;
+            consumed = storage.getItem(CONSUMED_KEY) !== null;
+          } catch (err) {}
+        }
+        // 本标签页会话的首次入口标记（每个完整文档加载只判定一次）
+        const firstEntry = !entered;
+        window.__searchAutofocusFirstEntry = firstEntry;
+        if (firstEntry && storage) {
+          try {
+            storage.setItem(ENTERED_KEY, "1");
+          } catch (err) {}
+        }
+
+        let cancel = null;
+        const cleanup = () => {
+          if (!cancel) return;
+          window.removeEventListener("pointerdown", cancel, { capture: true });
+          window.removeEventListener("keydown", cancel, { capture: true });
+          window.removeEventListener("touchstart", cancel, { capture: true });
+          window.removeEventListener("wheel", cancel, { capture: true });
+          cancel = null;
+        };
+        const consume = () => {
+          if (storage) {
+            try {
+              storage.setItem(CONSUMED_KEY, "1");
+            } catch (err) {}
+          }
+          cleanup();
+        };
+        cancel = consume;
+
+        if (firstEntry && !consumed) {
+          // 激活前用户操作（键盘/指针/触摸/滚动）→ 机会结束，不补做
+          window.addEventListener("pointerdown", cancel, { capture: true });
+          window.addEventListener("keydown", cancel, { capture: true });
+          window.addEventListener("touchstart", cancel, { capture: true });
+          window.addEventListener("wheel", cancel, { capture: true });
+          // 首次入口页面没有搜索框（文章/关于/404 等）→ 机会结束，不延后
+          const endIfNoSearch = () => {
+            if (!document.getElementById("search")) {
+              consume();
+            }
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", endIfNoSearch, {
+              once: true,
+            });
+          } else {
+            endIfNoSearch();
+          }
+        }
+        window.__searchAutofocusTakeover = cleanup;
+      })();
+    </script>
     <Meta {...metaProps} lang={lang} pageTitle={pageTitle} />
     <Favicon />
     <RssLink lang={lang} />

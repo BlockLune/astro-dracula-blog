@@ -99,6 +99,9 @@ importers:
       oxlint:
         specifier: ^1.72.0
         version: 1.72.0
+      playwright:
+        specifier: ^1.63.0
+        version: 1.63.0
       simple-git-hooks:
         specifier: ^2.13.1
         version: 2.13.1
@@ -2465,6 +2468,16 @@ packages:
   pidtree@0.6.1:
     resolution: {integrity: sha512-e0F9AOF1JMrCfBsyJOwU9lNvQ0WtXTq0j/4jk0BQ5JSI9VAybPXmDpPRw/2FQ3e5d3ZFN1mLh7jW99m/jjaptw==}
     engines: {node: '>=0.10'}
+    hasBin: true
+
+  playwright-core@1.63.0:
+    resolution: {integrity: sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  playwright@1.63.0:
+    resolution: {integrity: sha512-+7ziBLidS4NaNCdt57SUDT+wYmmd5fmiQejUic/kb+YsYSCPyOOE9sebzMjNmQrsnNpDJqd4WHvV/8lfKfUDUg==}
+    engines: {node: '>=20'}
     hasBin: true
 
   postcss-selector-parser@6.0.10:
@@ -5533,6 +5546,12 @@ snapshots:
   picomatch@4.0.5: {}
 
   pidtree@0.6.1: {}
+
+  playwright-core@1.63.0: {}
+
+  playwright@1.63.0:
+    dependencies:
+      playwright-core: 1.63.0
 
   postcss-selector-parser@6.0.10:
     dependencies:
